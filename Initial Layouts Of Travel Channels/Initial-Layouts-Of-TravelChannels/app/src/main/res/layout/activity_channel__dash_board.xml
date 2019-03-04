@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Channel_DashBoard"
+android:id="@+id/drawer_layout"
+android:fitsSystemWindows="true"
+tools:openDrawer="start"
+
+
+
+    >
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/Darken"
+        android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+
+        ></android.support.v7.widget.Toolbar>
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        >
+
+
+    </FrameLayout>
+
+</LinearLayout>
+
+<android.support.design.widget.NavigationView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:id="@+id/nav_view"
+    app:headerLayout="@layout/channel_dashboard_nav_header"
+    app:menu="@menu/menu"
+
+
+    >
+
+
+</android.support.design.widget.NavigationView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="100dp"
+
+
+            >
+
+            <!--android:orientation="vertical"
+   android:gravity="center"
+   android:padding="10dp"-->
+
+
+            <android.support.v7.widget.CardView
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/create_package_cardview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1">
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+
+                       android:background="@drawable/earth"
+
+
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Bring People Together"
+                        android:textStyle="bold"
+                        android:textColor="@color/Darken"
+
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Create Packages Here"
+                        android:textStyle="bold"
+                        android:textColor="@color/Darken"
+
+
+                        />
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/button_styles_black"
+                        android:text="Create Packeges"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="10dp"
+                        />
+
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <!--Second Linear Layout for another cardview-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/running_packages_cardview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</android.support.v4.widget.DrawerLayout>

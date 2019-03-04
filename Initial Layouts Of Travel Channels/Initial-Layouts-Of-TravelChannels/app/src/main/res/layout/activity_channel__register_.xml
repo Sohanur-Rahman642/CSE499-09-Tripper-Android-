@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Channel_Register_Activity"
+    android:background="@drawable/agency_dashboard"
+
+    >
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <EditText
+
+        android:id="@+id/ChannelName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/edit_text_style"
+        android:hint="Channel Name"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <EditText
+
+        android:id="@+id/License"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edit_text_style"
+        android:hint="License No"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@color/white"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/ChannelName"
+        app:layout_constraintVertical_bias="0.092" />
+
+
+    <EditText
+
+        android:id="@+id/City"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edit_text_style"
+        android:hint="City"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@color/white"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/License"
+        app:layout_constraintVertical_bias="0.154" />
+
+
+
+    <EditText
+
+        android:id="@+id/PostalCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edit_text_style"
+        android:hint="Postal Code"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@color/white"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/City"
+        app:layout_constraintVertical_bias="0.154" />
+
+
+
+
+    <Button
+        android:id="@+id/Create_Channel_Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_styles_black"
+
+        android:padding="16dp"
+        android:text="Create Channel"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/PostalCode"
+        app:layout_constraintVertical_bias="0.872"
+
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>
