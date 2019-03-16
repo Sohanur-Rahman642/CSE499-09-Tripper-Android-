@@ -40,6 +40,10 @@ public class MyToursForGuide extends AppCompatActivity {
         BottomNavigationView bottomNav= findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
+       /* BottomNavigationView topNav= findViewById(R.id.top_nav_guide);
+        topNav.setItemIconTintList(null);
+        topNav.setOnNavigationItemSelectedListener(navListener1);*/
+
         //floatingActionButton.setOnClickListener(new View.OnClickListener() {
             //@Override
             //public void onClick(View v) {
@@ -47,6 +51,28 @@ public class MyToursForGuide extends AppCompatActivity {
             //}
         //});
     }
+
+   /* private BottomNavigationView.OnNavigationItemSelectedListener navListener1= new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment= null;
+
+            switch (item.getItemId()){
+                case R.id.active_package:
+                    selectedFragment= new ActivePackageFragment();
+                    break;
+
+                case R.id.completed_package:
+                    selectedFragment= new CompletedPackageFragment();
+                    break;
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+            return true;
+        }
+    };*/
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener= new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override

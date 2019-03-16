@@ -1,6 +1,350 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container_city"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/linearforusercity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/usercitycardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/deeptapic1"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/guide_name3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Deepta Barua"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorPrimary"/>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/guide_star9"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="5dp"
+                                        app:srcCompat="@drawable/ic_star_black_24dp"/>
+
+                                    <ImageView
+                                        android:id="@+id/guide_star10"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="0dp"
+                                        app:srcCompat="@drawable/ic_star_black_24dp"/>
+
+                                    <ImageView
+                                        android:id="@+id/guide_star11"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="0dp"
+                                        app:srcCompat="@drawable/ic_star_black_24dp"/>
+
+                                    <ImageView
+                                        android:id="@+id/guide_star12"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="0dp"
+                                        app:srcCompat="@drawable/ic_star_half_black_24dp"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/ashuliapic1"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_marginTop="5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ashulia"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:id="@+id/ashulianame1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="22sp"
+                                        android:text="Ashulia"
+                                        android:textColor="@color/colorPrimaryDark"
+                                        android:layout_marginLeft="5dp"
+                                        android:textStyle="bold"/>
+
+
+
+                                </LinearLayout>
+                                <TextView
+                                    android:id="@+id/ashuliadescription1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textSize="13sp"
+                                    android:text="Ashulia is a suburban area near Dhaka, the capital city of Bangladesh."
+                                    android:textStyle="italic" />
+
+
+
+
+
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="20dp"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Price"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hours"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Category"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="25dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/deeptapic1"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Deepta Barua"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorPrimary"/>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/guide_star13"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="5dp"
+                                        app:srcCompat="@drawable/ic_star_black_24dp"/>
+
+                                    <ImageView
+                                        android:id="@+id/guide_star14"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="0dp"
+                                        app:srcCompat="@drawable/ic_star_black_24dp"/>
+
+                                    <ImageView
+                                        android:id="@+id/guide_star15"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="0dp"
+                                        app:srcCompat="@drawable/ic_star_black_24dp"/>
+
+                                    <ImageView
+                                        android:id="@+id/guide_star16"
+                                        android:layout_width="20dp"
+                                        android:layout_height="15dp"
+                                        android:layout_marginLeft="0dp"
+                                        app:srcCompat="@drawable/ic_star_half_black_24dp"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/purandhakapic1"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_marginTop="5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/purandhaka"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/purandhakaname1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="22sp"
+                                        android:text="Puran Dhaka"
+                                        android:textColor="@color/colorPrimaryDark"
+                                        android:layout_marginLeft="5dp"
+                                        android:textStyle="bold"/>
+
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/purandhakadescription1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textSize="13sp"
+                                    android:text="Old Dhaka (in Bengali, পুরনো ঢাকা ) is a term used to refer to the historic old city of Dhaka, the capital of Bangladesh."
+                                    android:textStyle="italic" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="20dp"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Price"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hours"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Category"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+
+
+
+                </android.support.v7.widget.CardView>
+
+
+
+            </ScrollView>
+        </LinearLayout>
+
+
+
+    </FrameLayout>
 
 </RelativeLayout>
