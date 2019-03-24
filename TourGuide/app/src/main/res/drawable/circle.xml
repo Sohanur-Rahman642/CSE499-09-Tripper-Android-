@@ -4,6 +4,8 @@
 
     <solid android:color="@color/solidCircle"/>
 
-
+<stroke
+    android:width="2dp"
+    android:color="#605E6168"/>
 
 </shape>
