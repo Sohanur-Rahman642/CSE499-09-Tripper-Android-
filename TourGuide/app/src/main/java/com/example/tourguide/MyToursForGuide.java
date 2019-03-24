@@ -22,7 +22,7 @@ public class MyToursForGuide extends AppCompatActivity {
 
                                                     @Override
                                                     public void onClick(View v) {
-                                                        Intent i = new Intent(MyToursForGuide.this, HomeForUser.class);
+                                                        Intent i = new Intent(MyToursForGuide.this, AddingPackages.class);
                                                         startActivity(i);
                                                     }
                                                 }
