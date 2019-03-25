@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_menu_options_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/card_menu_layout_bg"
+    android:orientation="vertical"
+
+    >
+
+
+
+
+        <TextView
+            android:id="@+id/reportOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Report..."
+
+            android:textColor="@color/Darken"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="10dp"
+            style="@style/Base.TextAppearance.AppCompat.Small"
+            android:drawableLeft="@drawable/ic_report_problem_darken_24dp"
+            android:drawablePadding="5dp"
+            android:paddingLeft="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/trackOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Track"
+            android:textColor="@color/Darken"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            style="@style/Base.TextAppearance.AppCompat.Small"
+            android:drawableLeft="@drawable/ic_person_pin_circle_black_24dp"
+            android:drawablePadding="5dp"
+            android:paddingLeft="10dp"
+
+
+            />
+
+
+    <TextView
+        android:id="@+id/travellersOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check Travellers"
+
+        android:textColor="@color/Darken"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        style="@style/Base.TextAppearance.AppCompat.Small"
+        android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+        android:drawablePadding="5dp"
+        android:paddingLeft="10dp"
+
+
+        />
+
+
+    <TextView
+        android:id="@+id/guidesOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check Guides"
+
+        android:textColor="@color/Darken"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        style="@style/Base.TextAppearance.AppCompat.Small"
+        android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+        android:drawablePadding="5dp"
+        android:paddingLeft="10dp"
+
+
+        />
+
+    <TextView
+        android:id="@+id/markComplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mark Complete"
+
+        android:textColor="@color/Darken"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        style="@style/Base.TextAppearance.AppCompat.Small"
+        android:drawableLeft="@drawable/ic_check_darken_24dp"
+        android:drawablePadding="5dp"
+        android:paddingLeft="10dp"
+
+
+        />
+
+
+
+
+
+</LinearLayout>

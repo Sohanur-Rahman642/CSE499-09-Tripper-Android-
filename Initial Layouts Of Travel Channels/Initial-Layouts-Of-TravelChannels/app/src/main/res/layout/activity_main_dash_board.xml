@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainDashBoard"
+
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+
+
+            >
+            <ImageView
+                android:id="@+id/dashboard_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+
+                android:scaleType="fitEnd"
+                android:background="@drawable/main_dash_image"
+
+
+                android:layout_alignParentLeft="true" />
+
+
+
+            <Button
+                android:id="@+id/Off_To_Somewhere_Button"                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/dashboard_image"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="30dp"
+
+                android:background="@drawable/button_style_skyblue"
+                android:padding="4dp"
+                android:text="Off To Somewhere"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_light"
+
+
+
+
+                />
+
+            <Button
+                android:id="@+id/Be_A_Traveller_Button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/Off_To_Somewhere_Button"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_style_skyblue"
+                android:padding="4dp"
+                android:text="Be A Traveller"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_light"
+
+
+
+
+                />
+
+            <Button
+                android:id="@+id/Open_A_Travel_Agency_Button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/Be_A_Traveller_Button"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_styles_black"
+                android:padding="4dp"
+                android:text="Open A Travel Channel"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_light"
+
+
+
+
+                />
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
