@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="176dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/Darken"
+    android:background="@drawable/sundarban"
     android:layout_gravity="start"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
 
 
     >
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round"
+    <de.hdodenhof.circleimageview.CircleImageView
+
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+
+        app:civ_border_color="@color/white"
+        app:civ_border_width="1dp"
+
+        android:background="@drawable/tiger"
+
         />
 
     <TextView
@@ -23,6 +32,8 @@
         android:text="Sundarban Travel"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
 
         />
 
@@ -33,6 +44,7 @@
         android:padding="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
+        android:textStyle="bold"
 
         />
 

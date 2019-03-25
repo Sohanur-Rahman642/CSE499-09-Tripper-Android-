@@ -23,6 +23,7 @@ tools:openDrawer="start"
     >
 
     <android.support.v7.widget.Toolbar
+
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/Darken"
@@ -38,6 +39,7 @@ tools:openDrawer="start"
         android:layout_height="match_parent"
 
 
+
         >
 
 
@@ -46,7 +48,7 @@ tools:openDrawer="start"
 </LinearLayout>
 
 <android.support.design.widget.NavigationView
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:id="@+id/nav_view"
@@ -61,134 +63,46 @@ tools:openDrawer="start"
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="10dp"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="100dp"
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
 
 
-            >
+       >
 
-            <!--android:orientation="vertical"
-   android:gravity="center"
-   android:padding="10dp"-->
+       <FrameLayout
+           android:id="@+id/travel_channel_fragment_container"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_above="@+id/travel_channel_bnav"
+           android:layout_marginTop="70dp"
 
 
-            <android.support.v7.widget.CardView
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:id="@+id/create_package_cardview"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
+           >
+
+
+       </FrameLayout>
+
+       <android.support.design.widget.BottomNavigationView
+           android:id="@+id/travel_channel_bnav"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           app:menu="@menu/travel_channel_bottom_nav_menu"
+
+           app:itemTextColor="@color/Darken"
+           app:itemIconTint="@color/Darken"
 
 
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-
-                       android:background="@drawable/earth"
-
-
-                        android:padding="10dp"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Bring People Together"
-                        android:textStyle="bold"
-                        android:textColor="@color/Darken"
-
-
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Create Packages Here"
-                        android:textStyle="bold"
-                        android:textColor="@color/Darken"
-
-
-                        />
-                    <Button
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/button_styles_black"
-                        android:text="Create Packeges"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="10dp"
-                        />
+           ></android.support.design.widget.BottomNavigationView>
 
 
 
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <!--Second Linear Layout for another cardview-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.CardView
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:id="@+id/running_packages_cardview"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
+   </RelativeLayout>
 
 
 
-
-
-
-    </LinearLayout>
 
 
 

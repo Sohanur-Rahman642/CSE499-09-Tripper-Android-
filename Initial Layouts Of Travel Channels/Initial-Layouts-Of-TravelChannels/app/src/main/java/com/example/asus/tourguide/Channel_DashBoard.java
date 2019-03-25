@@ -1,10 +1,14 @@
 package com.example.asus.tourguide;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toolbar;
 
 public class Channel_DashBoard extends AppCompatActivity {
@@ -25,6 +29,9 @@ public class Channel_DashBoard extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,channelDrawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         channelDrawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.travel_channel_bnav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
     }
 
     @Override
@@ -36,4 +43,36 @@ public class Channel_DashBoard extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+            Fragment selectedFragment = null;
+
+            switch (menuItem.getItemId()){
+
+                case R.id.running_packages:
+                    selectedFragment = new RunningFragment();
+                    break;
+
+                case R.id.add_package:
+                    selectedFragment = new AddPackagesFragment();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().
+                    replace(R.id.travel_channel_fragment_container,
+                            selectedFragment).commit();
+
+            return true;
+
+
+        }
+
+    };
+
+
 }
