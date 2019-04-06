@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/channel_profile"
+            android:title="Profile"
+
+            ></item>
+
+
+        <item
+            android:id="@+id/channel_ratings"
+            android:title="Ratings"
+
+            ></item>
+        <item
+            android:id="@+id/completed_packages"
+            android:title="Complited Packages"
+
+            ></item>
+
+        <item android:title="Guides">
+
+            <menu>
+                <item
+                    android:id="@+id/add_guides"
+                    android:title="Add Guides">
+
+                </item>
+                <item
+                    android:id="@+id/guide_list"
+                    android:title="Guide List">
+
+                </item>
+
+
+            </menu>
+
+
+        </item>
+
+
+    </group>
+
+</menu>
