@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="100dp">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                  <!--  <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/propic1"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
@@ -38,7 +38,7 @@
                         android:src="@drawable/userpic"
                         android:scaleType="centerCrop"
 
-                        />
+                        />-->
                 </LinearLayout>
 
                 <LinearLayout

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,6 +44,18 @@ public class Signup extends AppCompatActivity {
     private static int PICK_IMAGE=123;
     Uri imagePath;
     private StorageReference storageReference;
+    private void init1(){
+        button7=(Button) findViewById(R.id.button7);
+        button7.setOnClickListener(new View.OnClickListener(){
+
+                                           @Override
+                                           public void onClick(View v) {
+                                               Intent s=new Intent(Signup.this, MyToursForGuide.class);
+                                               startActivity(s);
+                                           }
+                                       }
+        );
+    }
 
     private void init3(){
 
@@ -52,10 +65,10 @@ public class Signup extends AppCompatActivity {
         emailad=(EditText)findViewById(R.id.emailad);
         phone=(EditText)findViewById(R.id.phone);
         pass=(EditText)findViewById(R.id.pass);
-        propic1=(CircleImageView) findViewById(R.id.propic1);
+        //propic1=(CircleImageView) findViewById(R.id.propic1);
 
     }
-    @Override
+/*    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode==PICK_IMAGE && resultCode==RESULT_OK && data.getData()!=null){
             imagePath=data.getData();
@@ -68,13 +81,14 @@ public class Signup extends AppCompatActivity {
 
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         init3();
+        init1();
 
         DisplayMetrics dm=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -88,7 +102,7 @@ public class Signup extends AppCompatActivity {
         storageReference=firebaseStorage.getReference();
         //StorageReference myref1= storageReference.child(firebaseAuth.getUid());
 
-        propic1.setOnClickListener(new View.OnClickListener() {
+      /*  propic1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent();
@@ -96,12 +110,12 @@ public class Signup extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent,"Select Image"),PICK_IMAGE);
             }
-        });
+        });*/
 
 
 
 
-        button7.setOnClickListener(new View.OnClickListener() {
+       /* button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(validate()){
@@ -159,7 +173,7 @@ public class Signup extends AppCompatActivity {
             }
         });
         UserProfile userProfile=new UserProfile(name,addr,email,pho);
-        myref.setValue(userProfile);
+        myref.setValue(userProfile);*/
 
     }
 }

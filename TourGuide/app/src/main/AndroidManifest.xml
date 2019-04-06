@@ -13,14 +13,15 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SignupForGuide"></activity>
         <activity android:name=".LoginForGuide">
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
+
+
+
+
         </activity>
         <activity android:name=".UserForgotPass" />
         <activity
@@ -36,11 +37,11 @@
             -->
         </activity>
         <activity android:name=".LoginForUser">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".ClickOnPlaceByGuide" />
         <activity android:name=".AddingPackages" />
