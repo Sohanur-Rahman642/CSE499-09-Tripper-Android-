@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/mapFrame"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        >
+
+       <ImageView
+           android:id="@+id/imageMap"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:src="@drawable/bangladeshmap"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+
+
+           />
+
+
+
+    </FrameLayout>
+
+    <android.support.v4.widget.SlidingPaneLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapFrame"
+        app:umanoDragView="@id/dragView">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/dragView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+            >
+
+            <TextView
+                android:id="@+id/textExplore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Discover Nearby"
+                android:textColor="#1387E4"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+
+
+
+                />
+
+            <ImageView
+                android:id="@+id/hospitalImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/hospital_round_bg"
+                android:src="@drawable/ic_local_hospital_white"
+                app:layout_constraintHorizontal_bias="0.06"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textExplore"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+
+
+                />
+
+            <TextView
+                android:id="@+id/textHospital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Hospital"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hospitalImage"
+
+
+                />
+
+            <ImageView
+                android:background="@drawable/police_station_round_bg"
+                android:src="@drawable/ic_police_station_white"
+                android:id="@+id/police_stationImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toEndOf="@id/hospitalImage"
+                app:layout_constraintTop_toBottomOf="@id/textExplore"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+
+                 />
+
+            <TextView
+                android:id="@+id/textPolice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Police Station"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@id/textHospital"
+                app:layout_constraintTop_toBottomOf="@id/police_stationImage"
+
+
+                />
+
+            <ImageView
+                android:background="@drawable/attraction_round_bg"
+                android:src="@drawable/ic_star_white"
+                android:id="@+id/attractions"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toEndOf="@id/police_stationImage"
+                app:layout_constraintTop_toBottomOf="@id/textExplore"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+            <TextView
+                android:id="@+id/textAttractions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Attractions"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@id/textPolice"
+                app:layout_constraintTop_toBottomOf="@id/attractions"
+
+
+                />
+
+            <ImageView
+                android:background="@drawable/more_round_bg"
+                android:src="@drawable/ic_more_white_draw"
+                android:id="@+id/moreImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toEndOf="@id/attractions"
+                app:layout_constraintTop_toBottomOf="@id/textExplore"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/textMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Police Station"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/textAttractions"
+                app:layout_constraintTop_toBottomOf="@id/moreImage"
+
+
+                />
+
+
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+
+
+
+    </android.support.v4.widget.SlidingPaneLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
