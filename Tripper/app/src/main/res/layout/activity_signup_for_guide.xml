@@ -21,24 +21,30 @@
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp">
+                    android:layout_marginLeft="100dp">-->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
-                   <!-- <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/guide_propic1"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_margin="9dp"
                         android:adjustViewBounds="true"
-                        android:background="@drawable/circle"
+
                         android:padding="3dp"
                         android:src="@drawable/userpic"
                         android:scaleType="centerCrop"
 
-                        />-->
-                </LinearLayout>
+                        />
+
+                </RelativeLayout>
+                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -9,7 +9,7 @@ import android.view.WindowManager;
 
 public class MainDashBoard extends AppCompatActivity {
 
-    private CardView rootCardView1,rootCardView3;
+    private CardView rootCardView1,rootCardView3, rootCardView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +21,22 @@ public class MainDashBoard extends AppCompatActivity {
 
         rootCardView1 = (CardView) findViewById(R.id.rootCardView1);
 
+        rootCardView2= (CardView) findViewById(R.id.rootCardView2) ;
+
         rootCardView3 = (CardView) findViewById(R.id.rootCardView3);
 
         rootCardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainDashBoard.this,UserDashBoard.class);
+                Intent i = new Intent(MainDashBoard.this, UserDashBoard.class);
+                startActivity(i);
+            }
+        });
+
+        rootCardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainDashBoard.this,LoginForGuide.class);
                 startActivity(i);
             }
         });

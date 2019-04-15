@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "273154760847",
+    "firebase_url": "https://tripper-9262a.firebaseio.com",
+    "project_id": "tripper-9262a",
+    "storage_bucket": "tripper-9262a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273154760847:android:9f8b4aa5eeb05207",
+        "android_client_info": {
+          "package_name": "com.example.asus.tripper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273154760847-95vrv8qiai310p7qpa3hqa1k47nbi6u9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asus.tripper",
+            "certificate_hash": "2d63167ae858e1ccc43e4bd4140d974584a0b296"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxQeSj2eTKSGqA10l1XJh8-yKkBiHIF2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273154760847-7tl0a11v8accil7l3vvbfp22grp7hmah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
