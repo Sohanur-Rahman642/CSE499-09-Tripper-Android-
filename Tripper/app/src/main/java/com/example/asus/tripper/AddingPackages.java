@@ -37,7 +37,7 @@ public class AddingPackages extends AppCompatActivity {
 
     private ImageView back_button_for_adding_packages, addpackage;
     private Button createpackage_btn;
-    private EditText start_date_tv1, start_time_tv1, end_date_tv1, end_time_tv1, location1, price1, meetpoint1, group_members1, details1;
+    private EditText start_date_tv1, start_time_tv1, end_date_tv1, end_time_tv1, location1, price1, meetpoint1, group_members1, details1, package_name_ed1;
 
     private String details;
     private String start_date;
@@ -48,6 +48,7 @@ public class AddingPackages extends AppCompatActivity {
     private String price;
     private String meetpoint;
     private String group_members;
+    private String package_name;
 
     private StorageReference postimagesreference;
     private DatabaseReference guidesRef, packagesRef;
@@ -81,12 +82,13 @@ public class AddingPackages extends AppCompatActivity {
         current_guide_id=mAuth.getCurrentUser().getUid();
 
          postimagesreference= FirebaseStorage.getInstance().getReference();
-         guidesRef= FirebaseDatabase.getInstance().getReference().child("Guides");
+         guidesRef= FirebaseDatabase.getInstance().getReference().child("Users");
         packagesRef= FirebaseDatabase.getInstance().getReference().child("Packages");
 
         back_button_for_adding_packages=findViewById(R.id.back_button_for_adding_packages);
         addpackage=findViewById(R.id.addpackage);
         createpackage_btn=findViewById(R.id.createpackage_btn);
+        package_name_ed1= findViewById(R.id.package_name_ed1);
         start_date_tv1=findViewById(R.id.start_date_tv1);
         start_time_tv1=findViewById(R.id.start_time_tv1);
         end_date_tv1=findViewById(R.id.end_date_tv1);
@@ -118,6 +120,7 @@ public class AddingPackages extends AppCompatActivity {
     private void ValidatePostInfo() {
 
          details = details1.getText().toString();
+         package_name = package_name_ed1.getText().toString();
          start_date = start_date_tv1.getText().toString();
          end_date = end_date_tv1.getText().toString();
          start_time = start_time_tv1.getText().toString();
@@ -130,6 +133,11 @@ public class AddingPackages extends AppCompatActivity {
         if (ImageUri==null){
 
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (TextUtils.isEmpty(package_name)){
+
+            Toast.makeText(this, "Please enter package name", Toast.LENGTH_SHORT).show();
         }
 
         else if (TextUtils.isEmpty(start_date)){
@@ -212,7 +220,7 @@ public class AddingPackages extends AppCompatActivity {
                 }
                 else {
                     String message = task.getException().getMessage();
-                    Toast.makeText(AddingPackages.this, "Error occured" + message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddingPackages.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -226,13 +234,14 @@ public class AddingPackages extends AppCompatActivity {
 
                 if(dataSnapshot.exists()){
 
-                    String guideFullName= dataSnapshot.child("name").getValue().toString();
-                   // String guideProfileImage= dataSnapshot.child("Uploaded Profile Pictures For Guides").getValue().toString();
+                    String guideFullName= dataSnapshot.child("username").getValue().toString();
+                    String guideProfileImage= dataSnapshot.child("profileimage").getValue().toString();
 
                     HashMap packagesMap = new HashMap();
                     packagesMap.put("gid",current_guide_id);
                     packagesMap.put("date",saveCurrentDate);
                     packagesMap.put("time",saveCurrentTime);
+                    packagesMap.put("packagename", package_name);
                     packagesMap.put("details",details);
                     packagesMap.put("startdate",start_date);
                     packagesMap.put("starttime",start_time);
@@ -243,7 +252,7 @@ public class AddingPackages extends AppCompatActivity {
                     packagesMap.put("meetpoint",meetpoint);
                     packagesMap.put("groupmembers",group_members);
                     packagesMap.put("packageimage",downloadUrl);
-                    //packagesMap.put("profileimage",guideProfileImage);
+                    packagesMap.put("profileimage",guideProfileImage);
                     packagesMap.put("fullname",guideFullName);
 
                     packagesRef.child(current_guide_id + postRandomName).updateChildren(packagesMap).addOnCompleteListener(new OnCompleteListener() {

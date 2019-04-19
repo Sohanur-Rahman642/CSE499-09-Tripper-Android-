@@ -13,6 +13,8 @@
         android:layout_below="@+id/appbarlayout"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+
+
     <!-- Must be last for right layering display -->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarlayout"
@@ -32,6 +34,12 @@
                 android:background="#ffff" />
 
         </FrameLayout>
+
+        <Button
+            android:id="@+id/fakesignout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Signout"/>
 
 
 

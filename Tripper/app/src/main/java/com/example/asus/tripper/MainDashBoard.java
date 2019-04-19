@@ -7,6 +7,8 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.asus.tripper.RegisterAndLogin.LoginUser;
+
 public class MainDashBoard extends AppCompatActivity {
 
     private CardView rootCardView1,rootCardView3, rootCardView2;
@@ -28,7 +30,7 @@ public class MainDashBoard extends AppCompatActivity {
         rootCardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainDashBoard.this, UserDashBoard.class);
+                Intent i = new Intent(MainDashBoard.this, LoginUser.class);
                 startActivity(i);
             }
         });
@@ -36,7 +38,7 @@ public class MainDashBoard extends AppCompatActivity {
         rootCardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainDashBoard.this,LoginForGuide.class);
+                Intent i = new Intent(MainDashBoard.this, LoginUser.class);
                 startActivity(i);
             }
         });

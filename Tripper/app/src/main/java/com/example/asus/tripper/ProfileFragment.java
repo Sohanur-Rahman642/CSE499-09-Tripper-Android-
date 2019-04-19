@@ -28,13 +28,13 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener{
-     ImageView signout,editimage;
-     CircleImageView propic;
-     View v;
-     FirebaseAuth firebaseAuth;
-     FirebaseDatabase firebaseDatabase;
-    FirebaseStorage firebaseStorage;
-    TextView tv_name, tv_address1, tv_email, tv_phone, nid;
+     private ImageView signout,editimage;
+     private CircleImageView propic;
+     private View v;
+     private FirebaseAuth firebaseAuth;
+     private FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
+    private TextView tv_username, tv_fullname, tv_address1, tv_country, tv_phone;
 
 
      public ProfileFragment(){
@@ -53,17 +53,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
          signout.setOnClickListener(this);
          editimage= (ImageView) v.findViewById(R.id.editimage);
          editimage.setOnClickListener(this);
-         tv_name=(TextView) v.findViewById(R.id.tv_name);
+         tv_username=(TextView) v.findViewById(R.id.tv_username);
+         tv_fullname=(TextView) v.findViewById(R.id.tv_fullname);
          tv_address1=(TextView) v.findViewById(R.id.tv_address1);
-         tv_email=(TextView) v.findViewById(R.id.tv_email);
+         tv_country=(TextView) v.findViewById(R.id.tv_country);
          tv_phone=(TextView) v.findViewById(R.id.tv_phone);
-         nid=(TextView) v.findViewById(R.id.nid);
          propic=(CircleImageView) v.findViewById(R.id.propic);
 
-         final DatabaseReference databaseReference=firebaseDatabase.getReference("Guides").child(firebaseAuth.getUid());
+         final DatabaseReference databaseReference=firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
          StorageReference storageReference=firebaseStorage.getReference();
-         storageReference.child("Uploaded Profile Pictures For Guides").child(firebaseAuth.getUid()).child("Images for guide/Profile pic for guide").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+         storageReference.child("User Profile Images").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
              @Override
              public void onSuccess(Uri uri) {
                  //propic.setImageURI(uri);
@@ -78,11 +78,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                  GuideProfile guideProfile = dataSnapshot.getValue(GuideProfile.class);
-                 tv_name.setText("" + guideProfile.getName());
+                 tv_username.setText("" + guideProfile.getUsername());
+                 tv_fullname.setText("" + guideProfile.getFullname());
                  tv_address1.setText("" + guideProfile.getAddress());
-                 tv_email.setText("" + guideProfile.getEmail());
+                 tv_country.setText("" + guideProfile.getCountry());
                  tv_phone.setText("" + guideProfile.getPhone());
-                 nid.setText("" + guideProfile.getNid());
 
              }
 
@@ -106,9 +106,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
          switch (v.getId()){
              case R.id.signout:
                  firebaseAuth.signOut();
-                 //finish();
+                 getActivity().finish();
                  Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
-                 startActivity(new Intent(getActivity(), LoginForGuide.class));
+                 Intent i= new Intent(getActivity(), LoginForGuide.class);
+                 startActivity(i);
+
                  break;
              case R.id.editimage:
 
