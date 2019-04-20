@@ -99,6 +99,8 @@ public class MyToursFragment extends Fragment  {
                         holder.setPrice(model.getPrice());
                         holder.setGroupmembers(model.getGroupmembers());*/
 
+                        final String packagekey = getRef(position).getKey();
+
 
 
 
@@ -108,8 +110,18 @@ public class MyToursFragment extends Fragment  {
                         holder.package_time.setText(model.getTime());
                         holder.package_price.setText(model.getPrice());
                         holder.package_group_members.setText(model.getGroupmembers());
-                        Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.addpic).fit().centerCrop().into(holder.package_image);
+                        Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
                         Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+
+                        holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent clickpackageIntent = new Intent(getActivity(), ClickPackage.class);
+                                clickpackageIntent.putExtra("packagekey", packagekey);
+                                startActivity(clickpackageIntent);
+                            }
+                        });
                     }
 
                     @NonNull

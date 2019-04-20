@@ -67,7 +67,8 @@
                        android:id="@+id/addpackage"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:src="@drawable/addpic"/>
+                       android:scaleType="centerInside"
+                       android:src="@drawable/hill"/>
 
 
 
@@ -251,7 +252,7 @@
 
             <Button
                 android:id="@+id/createpackage_btn"
-                android:layout_width="200dp"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_create_packages"
                 android:text="Create Package"
@@ -260,7 +261,6 @@
                 android:layout_below="@id/details1"
                 android:layout_marginTop="40dp"
                 android:layout_margin="5dp"
-                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
 
                 />

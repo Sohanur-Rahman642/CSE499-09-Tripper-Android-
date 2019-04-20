@@ -33,9 +33,10 @@
 
             <EditText
                 android:id="@+id/login_email"
-                android:layout_width="360dp"
+                android:layout_width="340dp"
                 android:layout_height="38dp"
                 android:hint="Email"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:paddingLeft="5dp"
                 android:inputType="textEmailAddress"
@@ -49,9 +50,10 @@
 
             <EditText
                 android:id="@+id/login_password"
-                android:layout_width="360dp"
+                android:layout_width="340dp"
                 android:layout_height="38dp"
                 android:hint="Password"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="5dp"
@@ -64,7 +66,7 @@
 
             <Button
                 android:id="@+id/login_button"
-                android:layout_width="360dp"
+                android:layout_width="340dp"
                 android:layout_height="29dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/login_btn_stroke"

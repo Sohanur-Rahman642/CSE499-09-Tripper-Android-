@@ -70,7 +70,7 @@
                         android:id="@+id/package_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date"
+                        android:text=" Date"
                         android:textColor="@color/black"
                         android:textSize="13sp"
                         />
@@ -99,7 +99,7 @@
             android:layout_height="200dp"
             android:layout_margin="3dp"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerInside"/>
 
         <LinearLayout
             android:layout_width="match_parent"
