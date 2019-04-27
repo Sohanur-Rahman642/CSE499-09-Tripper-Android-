@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupForGuide">
+    tools:context=".RegisterAndLogin.RegisterUser">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -25,13 +26,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="100dp">-->
-                <RelativeLayout
+                <!--<RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
 
                     <ImageView
-                        android:id="@+id/guide_propic1"
+                        android:id="@+id/register_propic1"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_margin="9dp"
@@ -43,10 +44,10 @@
 
                         />
 
-                </RelativeLayout>
+                </RelativeLayout>-->
                 <!--</LinearLayout>-->
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -60,14 +61,14 @@
                         android:textSize="13sp"/>
 
                     <EditText
-                        android:id="@+id/guide_fullname"
+                        android:id="@+id/register_fullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
                         android:textColor="#000000"/>
 
-                </LinearLayout>
+                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -82,7 +83,7 @@
                         android:textSize="13sp"/>
 
                     <EditText
-                        android:id="@+id/guide_emailad"
+                        android:id="@+id/register_emailad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
@@ -93,7 +94,7 @@
                 </LinearLayout>
 
 
-                <LinearLayout
+               <!-- <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -107,40 +108,18 @@
                         android:textSize="13sp"/>
 
                     <EditText
-                        android:id="@+id/guide_address"
+                        android:id="@+id/register_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
                         android:textColor="#000000"/>
 
-                </LinearLayout>
+                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="NID/Passport"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="13sp"/>
 
-                    <EditText
-                        android:id="@+id/guide_nid"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:textSize="15sp"
-                        android:inputType="number"
-                        android:textColor="#000000"/>
-
-                </LinearLayout>
-
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -154,7 +133,7 @@
                         android:textSize="13sp"/>
 
                     <EditText
-                        android:id="@+id/guide_phone"
+                        android:id="@+id/register_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
@@ -162,7 +141,7 @@
                         android:inputType="phone"
                         android:textColor="#000000"/>
 
-                </LinearLayout>
+                </LinearLayout>-->
 
 
 
@@ -181,7 +160,31 @@
                         android:textSize="13sp"/>
 
                     <EditText
-                        android:id="@+id/guide_pass"
+                        android:id="@+id/register_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:textSize="15sp"
+                        android:inputType="textPassword"
+                        android:textColor="#000000"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Confirm Password"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp"/>
+
+                    <EditText
+                        android:id="@+id/register_pass_confirm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
@@ -199,7 +202,7 @@
                     android:layout_marginTop="10dp">
 
                     <Button
-                        android:id="@+id/guide_button7"
+                        android:id="@+id/register_button7"
                         android:layout_width="104dp"
                         android:layout_height="30dp"
                         android:layout_marginBottom="8dp"
@@ -227,6 +230,5 @@
 
         </RelativeLayout>
     </ScrollView>
-
 
 </RelativeLayout>

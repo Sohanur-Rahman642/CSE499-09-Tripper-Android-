@@ -53,7 +53,7 @@
 
                     <EditText
                         android:id="@+id/tv_name1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
                         android:fontFamily="sans-serif-light"
@@ -74,15 +74,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Email"
+                        android:text="Country"
                         android:textColor="@color/headings"
                         android:textSize="13sp"/>
 
                     <EditText
                         android:id="@+id/tv_email1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
+                        android:inputType="textEmailAddress"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
                         android:textColor="#000000"/>
@@ -109,9 +110,10 @@
 
                     <EditText
                         android:id="@+id/tv_address2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
+
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
                         android:textColor="#000000"/>
@@ -137,9 +139,10 @@
 
                     <EditText
                         android:id="@+id/tv_phone1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
+                        android:inputType="phone"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
                         android:textColor="#000000"/>
@@ -159,7 +162,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NID/Passport"
+                        android:text="Fullname"
                         android:textColor="@color/headings"
                         android:textSize="13sp"/>
 
@@ -168,6 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=""
+                        android:layout_marginTop="10dp"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
                         android:textColor="#000000"/>

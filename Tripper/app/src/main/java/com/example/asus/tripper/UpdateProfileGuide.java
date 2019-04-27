@@ -40,18 +40,18 @@ public class UpdateProfileGuide extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
 
-        final DatabaseReference databaseReference=firebaseDatabase.getReference("Guides").child(firebaseAuth.getUid());
+        final DatabaseReference databaseReference=firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 GuideProfile guideProfile=dataSnapshot.getValue(GuideProfile.class);
-                upname.setText(guideProfile.getName());
+                upname.setText(guideProfile.getUsername());
                 upaddress1.setText(guideProfile.getAddress());
-                upemail.setText(guideProfile.getEmail());
+                upemail.setText(guideProfile.getCountry());
                 upphone.setText(guideProfile.getPhone());
-                upnid.setText(guideProfile.getNid());
+                upnid.setText(guideProfile.getFullname());
 
             }
 
@@ -70,7 +70,7 @@ public class UpdateProfileGuide extends AppCompatActivity {
                 String phone=upphone.getText().toString();
                 String nid= upnid.getText().toString();
 
-                GuideProfile guideProfile=new GuideProfile(name,address,email,phone,nid);
+                GuideProfile guideProfile=new GuideProfile(name,nid, address,email,phone);
 
                 databaseReference.setValue(guideProfile);
 

@@ -2,27 +2,37 @@ package com.example.asus.tripper;
 
 public class GuideProfile {
 
-    public String name;
+    public String username;
+    public String fullname;
     public String address;
-    public String email;
+    public String country;
     public String phone;
-    public String nid;
+    //public String profileimage;
 
 
 
-    public GuideProfile(String name, String address, String email, String phone, String nid){
-        this.name=name;
+    public GuideProfile(String username, String fullname, String address, String country, String phone){
+        this.username=username;
+        this.fullname=fullname;
         this.address=address;
-        this.email=email;
+        this.country=country;
         this.phone=phone;
-        this.nid=nid;
+        //this.profileimage=profileimage;
+
 
     }
-    public String getName(){
-        return name;
+    public String getUsername(){
+        return username;
     }
-    public void setName(String name){
-        this.name=name;
+    public void setUsername(String username){
+        this.username=username;
+    }
+
+    public String getFullname(){
+        return fullname;
+    }
+    public void setFullname(String fullname){
+        this.fullname=fullname;
     }
     public String getAddress(){
         return address;
@@ -30,11 +40,11 @@ public class GuideProfile {
     public void setAddress(String address){
         this.address=address;
     }
-    public String getEmail(){
-        return email;
+    public String getCountry(){
+        return country;
     }
-    public void setEmail(String email){
-        this.email=email;
+    public void setCountry(String country){
+        this.country=country;
     }
     public String getPhone(){
         return phone;
@@ -42,12 +52,13 @@ public class GuideProfile {
     public void setPhone(String phone){
         this.phone=phone;
     }
-    public String getNid(){
-        return nid;
+    /*public String getProfileimage(){
+        return profileimage;
     }
-    public void setNid(String nid){
-        this.nid=nid;
-    }
+    public void setProfileimage(String profileimage){
+        this.profileimage=profileimage;
+    }*/
+
     public GuideProfile(){
 
     }
