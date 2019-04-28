@@ -120,7 +120,7 @@ public class LoginUser extends AppCompatActivity {
 
     private void SendUserToHome() {
 
-        Intent i = new Intent(LoginUser.this, MyToursForGuide.class);
+        Intent i = new Intent(LoginUser.this, UserDashBoard.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
         finish();
@@ -130,5 +130,7 @@ public class LoginUser extends AppCompatActivity {
 
         Intent registerIntent = new Intent(LoginUser.this, RegisterUser.class);
         startActivity(registerIntent);
+        finish();
+
     }
 }

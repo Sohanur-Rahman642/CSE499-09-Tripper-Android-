@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <!-- Irrelevant stuff -->
-    <android.support.v4.view.ViewPager
+    <!--<android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +15,7 @@
 
 
 
-    <!-- Must be last for right layering display -->
+    &lt;!&ndash; Must be last for right layering display &ndash;&gt;
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
@@ -43,6 +43,6 @@
 
 
 
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>-->
 
 </RelativeLayout>

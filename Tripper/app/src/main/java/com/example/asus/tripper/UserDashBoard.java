@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.example.asus.tripper.RegisterAndLogin.SetupUser;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,15 +25,23 @@ public class UserDashBoard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dash_board);
 
-        mAuth=FirebaseAuth.getInstance();
-        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        getWindow().setFlags(WindowManager.LayoutParams
+                .FLAG_FULLSCREEN,WindowManager.LayoutParams
+                .FLAG_FULLSCREEN);
+
+       /* mAuth=FirebaseAuth.getInstance();
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");*/
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.user_dashboard_bnav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
     }
+/*
 
     @Override
     public void onStart() {
@@ -88,6 +97,7 @@ public class UserDashBoard extends AppCompatActivity {
         startActivity(loginIntent);
         finish();
     }
+*/
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -112,9 +122,9 @@ public class UserDashBoard extends AppCompatActivity {
                     selectedFragment = new fragment_user_profile();
                     break;
 
-                case R.id.settings:
+             /*   case R.id.settings:
                     selectedFragment = new fragment_user_settings();
-                    break;
+                    break;*/
 
 
 
