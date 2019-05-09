@@ -101,6 +101,15 @@
 
 
                 />
+
+                <ImageView
+                    android:id="@+id/editpackagebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_edit_black_24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="94dp"
+                    />
             </RelativeLayout>
 
             <RelativeLayout
@@ -415,7 +424,7 @@
 
 
 
-            <Button
+            <!--<Button
                 android:id="@+id/editpackagebtn"
                 android:layout_width="290dp"
                 android:layout_height="wrap_content"
@@ -428,7 +437,7 @@
                 android:layout_margin="5dp"
                 android:layout_centerHorizontal="true"
 
-                />
+                />-->
 
             <Button
                 android:id="@+id/deletepackagebtn"
@@ -438,10 +447,10 @@
                 android:text="Delete"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:layout_below="@id/editpackagebtn"
                 android:layout_marginTop="40dp"
                 android:layout_margin="5dp"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@+id/cv4"
 
                 />
 

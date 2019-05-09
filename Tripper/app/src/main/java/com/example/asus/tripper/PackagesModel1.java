@@ -1,30 +1,30 @@
 package com.example.asus.tripper;
 
-public class PackagesModel {
+public class PackagesModel1 {
 
     public String packagename, date,details, enddate, endtime, fullname, gid, groupmembers,location,meetpoint,packageimage,price,startdate,starttime,time, profileimage;
 
-    public PackagesModel(){
+    public PackagesModel1(){
 
     }
 
-    public PackagesModel(String packagename, String date, String details, String enddate, String endtime, String fullname, String gid,  String groupmembers, String location, String meetpoint, String packageimage, String price, String startdate, String starttime, String time, String profileimage) {
+    public PackagesModel1(String packagename,  String details, String enddate, String endtime,  String groupmembers, String location, String meetpoint, String price, String startdate, String starttime) {
         this.packagename = packagename;
-        this.date = date;
+        //this.date = date;
         this.details = details;
         this.enddate = enddate;
         this.endtime = endtime;
-        this.fullname = fullname;
-        this.gid = gid;
+        //this.fullname = fullname;
+        //this.gid = gid;
         this.groupmembers = groupmembers;
         this.location = location;
         this.meetpoint = meetpoint;
-        this.packageimage = packageimage;
+        //this.packageimage = packageimage;
         this.price = price;
         this.startdate = startdate;
         this.starttime = starttime;
-        this.time = time;
-        this.profileimage = profileimage;
+        //this.time = time;
+        //this.profileimage = profileimage;
     }
 
     public String getPackagename() {
@@ -35,13 +35,13 @@ public class PackagesModel {
         this.packagename = packagename;
     }
 
-    public String getDate() {
+   /* public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
-    }
+    }*/
 
     public String getDetails() {
         return details;
@@ -67,7 +67,7 @@ public class PackagesModel {
         this.endtime = endtime;
     }
 
-    public String getFullname() {
+   /* public String getFullname() {
         return fullname;
     }
 
@@ -81,7 +81,7 @@ public class PackagesModel {
 
     public void setGid(String gid) {
         this.gid = gid;
-    }
+    }*/
 
     public String getGroupmembers() {
         return groupmembers;
@@ -107,13 +107,13 @@ public class PackagesModel {
         this.meetpoint = meetpoint;
     }
 
-    public String getPackageimage() {
+   /* public String getPackageimage() {
         return packageimage;
     }
 
     public void setPackageimage(String packageimage) {
         this.packageimage = packageimage;
-    }
+    }*/
 
     public String getPrice() {
         return price;
@@ -139,7 +139,7 @@ public class PackagesModel {
         this.starttime = starttime;
     }
 
-    public String getTime() {
+   /* public String getTime() {
         return time;
     }
 
@@ -153,5 +153,5 @@ public class PackagesModel {
 
     public void setProfileimage(String profileimage) {
         this.profileimage = profileimage;
-    }
+    }*/
 }

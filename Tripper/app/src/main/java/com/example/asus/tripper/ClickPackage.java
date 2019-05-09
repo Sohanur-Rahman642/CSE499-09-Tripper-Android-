@@ -1,12 +1,16 @@
 package com.example.asus.tripper;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +26,9 @@ import com.squareup.picasso.Picasso;
 
 public class ClickPackage extends AppCompatActivity {
 
-    private ImageView clickaddpackagepic;
+    private ImageView clickaddpackagepic, editpackagebtn;
     private TextView clickpackagename, clickdetail, clickstartdate, clickenddate, clickstarttime, clickendtime, clicklocation, clickmeetpoint, clickprice, clickmembers;
-    private Button editpackagebtn, deletepackagebtn;
+    private Button  deletepackagebtn;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 
@@ -94,6 +98,15 @@ public class ClickPackage extends AppCompatActivity {
                         deletepackagebtn.setVisibility(View.VISIBLE);
                         editpackagebtn.setVisibility(View.VISIBLE);
                     }
+
+                    editpackagebtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Intent i= new Intent(ClickPackage.this, UpdatePackage.class);
+                            startActivity(i);
+                        }
+                    });
                 }
             }
 
@@ -111,6 +124,75 @@ public class ClickPackage extends AppCompatActivity {
             }
         });
     }
+
+   /* private void EditCurrentPackage(String details, String packagename,  String startdate, String enddate, String starttime, String endtime, String location, String meetpoint, String price, String groupmembers) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ClickPackage.this);
+        builder.setTitle("Edit Package:");
+
+        final EditText inputField = new EditText(ClickPackage.this);
+        final EditText inputField1 = new EditText(ClickPackage.this);
+        final EditText inputField2 = new EditText(ClickPackage.this);
+        final EditText inputField3 = new EditText(ClickPackage.this);
+        final EditText inputField4 = new EditText(ClickPackage.this);
+        final EditText inputField5 = new EditText(ClickPackage.this);
+        final EditText inputField6 = new EditText(ClickPackage.this);
+        final EditText inputField7 = new EditText(ClickPackage.this);
+        final EditText inputField8 = new EditText(ClickPackage.this);
+        final EditText inputField9 = new EditText(ClickPackage.this);
+        inputField.setText(details);
+        builder.setView(inputField);
+        inputField.setText(packagename);
+        builder.setView(inputField1);
+        //inputField.setText(packageimage);
+        inputField.setText(startdate);
+        builder.setView(inputField2);
+        inputField.setText(enddate);
+        builder.setView(inputField3);
+        inputField.setText(starttime);
+        builder.setView(inputField4);
+        inputField.setText(endtime);
+        builder.setView(inputField5);
+        inputField.setText(location);
+        builder.setView(inputField6);
+        inputField.setText(meetpoint);
+        builder.setView(inputField7);
+        inputField.setText(price);
+        builder.setView(inputField8);
+        inputField.setText(groupmembers);
+        builder.setView(inputField9);
+
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                databaseReference.child("details").setValue(inputField.getText().toString());
+                databaseReference.child("packagename").setValue(inputField1.getText().toString());
+                databaseReference.child("startdate").setValue(inputField2.getText().toString());
+                databaseReference.child("enddate").setValue(inputField3.getText().toString());
+                databaseReference.child("starttime").setValue(inputField4.getText().toString());
+                databaseReference.child("endtime").setValue(inputField5.getText().toString());
+                databaseReference.child("location").setValue(inputField6.getText().toString());
+                databaseReference.child("meetpoint").setValue(inputField7.getText().toString());
+                databaseReference.child("price").setValue(inputField8.getText().toString());
+                databaseReference.child("groupmembers").setValue(inputField9.getText().toString());
+                Toast.makeText(ClickPackage.this, "Post Updated Successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.cancel();
+
+            }
+        });
+
+        Dialog dialog = builder.create();
+        dialog.show();
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_green_dark);
+    }*/
 
     private void deleteCurrentPackage() {
 
