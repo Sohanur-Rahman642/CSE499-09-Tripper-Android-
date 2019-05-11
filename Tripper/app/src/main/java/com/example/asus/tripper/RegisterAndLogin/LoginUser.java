@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.asus.tripper.GuideForgotPass;
 import com.example.asus.tripper.MyToursForGuide;
 import com.example.asus.tripper.R;
 import com.example.asus.tripper.UserDashBoard;
@@ -38,7 +39,7 @@ public class LoginUser extends AppCompatActivity {
 
     private Button login_button;
     private EditText login_email, login_password;
-    private TextView login_signup;
+    private TextView login_signup, login_forgot_pass;
     private ProgressDialog loadingbar;
     private ImageView login_google_pic;
 
@@ -58,6 +59,7 @@ public class LoginUser extends AppCompatActivity {
         login_password = findViewById(R.id.login_password);
         login_button = findViewById(R.id.login_button);
         login_google_pic=findViewById(R.id.login_google_pic);
+        login_forgot_pass=findViewById(R.id.login_forgot_pass);
 
         loadingbar = new ProgressDialog(this);
 
@@ -77,6 +79,14 @@ public class LoginUser extends AppCompatActivity {
             public void onClick(View v) {
 
                 AllowingUserToLogin();
+            }
+        });
+
+        login_forgot_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginUser.this, GuideForgotPass.class);
+                startActivity(i);
             }
         });
 

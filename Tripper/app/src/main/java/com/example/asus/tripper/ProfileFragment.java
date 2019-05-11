@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.asus.tripper.RegisterAndLogin.LoginUser;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
@@ -108,7 +109,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                  firebaseAuth.signOut();
                  getActivity().finish();
                  Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
-                 Intent i= new Intent(getActivity(), LoginForGuide.class);
+                 Intent i= new Intent(getActivity(), LoginUser.class);
                  startActivity(i);
 
                  break;

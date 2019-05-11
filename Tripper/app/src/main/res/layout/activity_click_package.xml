@@ -441,7 +441,7 @@
 
             <Button
                 android:id="@+id/deletepackagebtn"
-                android:layout_width="290dp"
+                android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_create_packages"
                 android:text="Delete"
@@ -453,6 +453,38 @@
                 android:layout_below="@+id/cv4"
 
                 />
+
+            <Button
+                android:id="@+id/confirm_package_btn"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_create_packages"
+                android:text="Confirm Trip"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_marginTop="40dp"
+                android:layout_margin="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/cv4"
+
+                />
+
+            <Button
+                android:id="@+id/cancel_package_btn"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_create_packages"
+                android:text="Cancel Trip"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_marginTop="40dp"
+                android:layout_margin="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/confirm_package_btn"
+
+                />
+
+
 
 
 

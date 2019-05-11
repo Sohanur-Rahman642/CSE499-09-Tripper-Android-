@@ -56,6 +56,8 @@ public class AddingPackages extends AppCompatActivity {
 
     private String saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, current_guide_id;
 
+    private long countPackages = 0; //new
+
     private static final int Gallery_Pick=1;
     private Uri ImageUri;
 
@@ -228,14 +230,36 @@ public class AddingPackages extends AppCompatActivity {
 
     private void SavingPackageInformationToDatabase() {
 
+        packagesRef.addValueEventListener(new ValueEventListener() {        //new start, counting packages
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()){
+
+                    countPackages = dataSnapshot.getChildrenCount();
+
+                }
+                else {
+
+                    countPackages = 0;
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });                                                                       //new end
+
         guidesRef.child(current_guide_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if(dataSnapshot.exists()){
 
-                    String guideFullName= dataSnapshot.child("username").getValue().toString();
-                    String guideProfileImage= dataSnapshot.child("profileimage").getValue().toString();
+                    final String guideFullName= dataSnapshot.child("username").getValue().toString();
+                    final String guideProfileImage= dataSnapshot.child("profileimage").getValue().toString();
 
                     HashMap packagesMap = new HashMap();
                     packagesMap.put("gid",current_guide_id);
@@ -254,6 +278,7 @@ public class AddingPackages extends AppCompatActivity {
                     packagesMap.put("packageimage",downloadUrl);
                     packagesMap.put("profileimage",guideProfileImage);
                     packagesMap.put("fullname",guideFullName);
+                    packagesMap.put("counter", countPackages);        //newwww
 
                     packagesRef.child(current_guide_id + postRandomName).updateChildren(packagesMap).addOnCompleteListener(new OnCompleteListener() {
                         @Override

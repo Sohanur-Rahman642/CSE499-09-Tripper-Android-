@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SearchForPackage"></activity>
-        <activity android:name=".FindGuide" />
+        <activity android:name=".FindGuide"
+            android:parentActivityName=".MyToursForGuide"></activity>
         <activity android:name=".UpdatePackage" />
         <activity android:name=".ClickPackage" />
         <activity android:name=".RegisterAndLogin.SetupUser" />

@@ -28,11 +28,11 @@ public class ClickPackage extends AppCompatActivity {
 
     private ImageView clickaddpackagepic, editpackagebtn;
     private TextView clickpackagename, clickdetail, clickstartdate, clickenddate, clickstarttime, clickendtime, clicklocation, clickmeetpoint, clickprice, clickmembers;
-    private Button  deletepackagebtn;
-    private DatabaseReference databaseReference;
+    private Button  deletepackagebtn, confirm_package_btn, cancel_package_btn;
+    private DatabaseReference databaseReference, UsersRef ;
     private FirebaseAuth mAuth;
 
-    private String packagekey , currentUserId, databaseUserId, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
+    private String packagekey , currentUserId, receiverUserId, databaseUserId, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,10 @@ public class ClickPackage extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
+
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Packages"); //this is new
+
+        receiverUserId = getIntent().getExtras().get("packagekey").toString(); //this is new
 
         packagekey= getIntent().getExtras().get("packagekey").toString();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(packagekey);
@@ -58,9 +62,13 @@ public class ClickPackage extends AppCompatActivity {
         clickmembers=findViewById(R.id.clickmembers);
         editpackagebtn=findViewById(R.id.editpackagebtn);
         deletepackagebtn=findViewById(R.id.deletepackagebtn);
+        confirm_package_btn=findViewById(R.id.confirm_package_btn);
+        cancel_package_btn=findViewById(R.id.cancel_package_btn);
 
         deletepackagebtn.setVisibility(View.INVISIBLE);
         editpackagebtn.setVisibility(View.INVISIBLE);
+
+        //UsersRef.child(receiverUserId).addValue....
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,6 +105,8 @@ public class ClickPackage extends AppCompatActivity {
 
                         deletepackagebtn.setVisibility(View.VISIBLE);
                         editpackagebtn.setVisibility(View.VISIBLE);
+                        confirm_package_btn.setVisibility(View.INVISIBLE);
+                        cancel_package_btn.setVisibility(View.INVISIBLE);
                     }
 
                     editpackagebtn.setOnClickListener(new View.OnClickListener() {

@@ -112,9 +112,11 @@ public class MyToursFragment extends Fragment  {
         Query searchPackageQuery = packagesRef.orderByChild("packagename")
                 .startAt(searchBoxInput).endAt(searchBoxInput + "\uf8ff");*/
 
+       Query SortPackagesInDescendingOrder = packagesRef.orderByChild("counter");  //neww
+
         FirebaseRecyclerOptions<PackagesModel> options =
                 new FirebaseRecyclerOptions.Builder<PackagesModel>()
-                .setQuery(packagesRef, PackagesModel.class)
+                .setQuery(SortPackagesInDescendingOrder, PackagesModel.class)
                 .build();
 
         FirebaseRecyclerAdapter<PackagesModel, PackageViewHolder> firebaseRecyclerAdapter =
