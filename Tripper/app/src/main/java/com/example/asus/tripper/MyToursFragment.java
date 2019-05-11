@@ -13,8 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -30,6 +33,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MyToursFragment extends Fragment  {
 
     private FirebaseAuth mAuth;
+
+    private ImageView SearchButton;
+   // private EditText SearchInputText;
 
     private FloatingActionButton floatingActionButton;
 
@@ -56,6 +62,9 @@ public class MyToursFragment extends Fragment  {
         linearLayoutManager.setStackFromEnd(true);
         packages_recycle.setLayoutManager(linearLayoutManager);
 
+        SearchButton = (ImageView) v.findViewById(R.id.searchbtn_for_mytours);
+        //SearchInputText = (EditText) v.findViewById(R.id.search_box1);
+
         floatingActionButton = (FloatingActionButton) v.findViewById(R.id.floatformytours);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
 
@@ -67,6 +76,25 @@ public class MyToursFragment extends Fragment  {
                                                 }
         );
 
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        Intent i = new Intent(getActivity(), SearchForPackage.class);
+                                                        startActivity(i);
+                                                    }
+                                                }
+        );
+
+       /* SearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String searchBoxInput = SearchInputText.getText().toString();
+                DisplayAllPackages(searchBoxInput);
+            }
+        });*/
+
         DisplayAllPackages();
 
 
@@ -77,6 +105,12 @@ public class MyToursFragment extends Fragment  {
     }
 
     private void DisplayAllPackages() {
+
+       /* Toast.makeText(getActivity(), "Searching...", Toast.LENGTH_LONG).show();
+
+
+        Query searchPackageQuery = packagesRef.orderByChild("packagename")
+                .startAt(searchBoxInput).endAt(searchBoxInput + "\uf8ff");*/
 
         FirebaseRecyclerOptions<PackagesModel> options =
                 new FirebaseRecyclerOptions.Builder<PackagesModel>()

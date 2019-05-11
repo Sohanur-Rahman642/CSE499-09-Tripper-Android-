@@ -31,10 +31,10 @@ public class TouristsFragment extends Fragment {
 
                                            @Override
                                            public void onClick(View v) {
-                                               firebaseAuth.signOut();
+                                               /*firebaseAuth.signOut();
                                                getActivity().finish();
-                                               Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
-                                               Intent i = new Intent(getActivity(), MainDashBoard.class);
+                                               Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();*/
+                                               Intent i = new Intent(getActivity(), FindGuide.class);
                                                startActivity(i);
                                            }
                                        }
