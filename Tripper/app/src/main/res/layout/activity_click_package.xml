@@ -465,7 +465,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_margin="5dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/cv4"
+                android:layout_below="@+id/deletepackagebtn"
 
                 />
 
@@ -476,11 +476,11 @@
                 android:background="@drawable/button_create_packages"
                 android:text="Cancel Trip"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginTop="40dp"
                 android:layout_margin="5dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/confirm_package_btn"
+                android:layout_below="@+id/cv4"
 
                 />
 

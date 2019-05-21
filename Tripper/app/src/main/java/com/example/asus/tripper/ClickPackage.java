@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asus.tripper.RegisterAndLogin.LoginUser;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,15 +26,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class ClickPackage extends AppCompatActivity {
 
     private ImageView clickaddpackagepic, editpackagebtn;
     private TextView clickpackagename, clickdetail, clickstartdate, clickenddate, clickstarttime, clickendtime, clicklocation, clickmeetpoint, clickprice, clickmembers;
     private Button  deletepackagebtn, confirm_package_btn, cancel_package_btn;
-    private DatabaseReference databaseReference, UsersRef ;
+    private DatabaseReference databaseReference, UsersRef, confirmRef, tripRef ;
     private FirebaseAuth mAuth;
 
-    private String packagekey , currentUserId, receiverUserId, databaseUserId, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
+    private String packagekey , currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, saveCurrentDate, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +49,12 @@ public class ClickPackage extends AppCompatActivity {
 
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Packages"); //this is new
 
-        receiverUserId = getIntent().getExtras().get("packagekey").toString(); //this is new
+        //databaseUserId = getIntent().getExtras().get("packagekey").toString(); //this is new
 
         packagekey= getIntent().getExtras().get("packagekey").toString();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(packagekey);
+        confirmRef = FirebaseDatabase.getInstance().getReference().child("ConfirmedPackages");             //this is new
+        tripRef = FirebaseDatabase.getInstance().getReference().child("Trips");    //this is new
 
         clickaddpackagepic = findViewById(R.id.clickaddpackagepic);
         clickpackagename=findViewById(R.id.clickpackagename);
@@ -65,8 +72,13 @@ public class ClickPackage extends AppCompatActivity {
         confirm_package_btn=findViewById(R.id.confirm_package_btn);
         cancel_package_btn=findViewById(R.id.cancel_package_btn);
 
+
+        CURRENT_STATE = "not_confirm";   //this is new
+
         deletepackagebtn.setVisibility(View.INVISIBLE);
         editpackagebtn.setVisibility(View.INVISIBLE);
+        //cancel_package_btn.setVisibility(View.INVISIBLE);     // implemented after commenting it in the if condition
+        //confirm_package_btn.setVisibility(View.INVISIBLE);  // same as before
 
         //UsersRef.child(receiverUserId).addValue....
 
@@ -101,13 +113,64 @@ public class ClickPackage extends AppCompatActivity {
                     clickmembers.setText(groupmembers);
                     Picasso.get().load(packageimage).placeholder(R.drawable.hill).into(clickaddpackagepic);
 
+                    MaintenanceOfButtons();   //this is new
+
+
                     if (currentUserId.equals(databaseUserId)) {
 
                         deletepackagebtn.setVisibility(View.VISIBLE);
+                        deletepackagebtn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                         editpackagebtn.setVisibility(View.VISIBLE);
                         confirm_package_btn.setVisibility(View.INVISIBLE);
                         cancel_package_btn.setVisibility(View.INVISIBLE);
+
+                       /* if(CURRENT_STATE.equals("confirmation_sent")) {
+
+                            confirm_package_btn.setVisibility(View.VISIBLE);
+
+                            confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
+                                @Override
+                                public void onClick(View v) {                                       //this is new
+
+                                    confirm_package_btn.setEnabled(false);
+
+                                    if (CURRENT_STATE.equals("confirmation_received")) {
+
+                                        AcceptTrip();
+                                    }
+                                }
+                            });
+                        }*/
+
+
+
                     }
+                    else{
+
+                       // confirm_package_btn.setVisibility(View.VISIBLE);  // this can be removed
+
+                        confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
+                            @Override
+                            public void onClick(View v) {                                       //this is new
+
+                                confirm_package_btn.setEnabled(false);
+
+                                if (CURRENT_STATE.equals("not_confirm")){
+
+                                    ConfirmTrip();
+                                }
+
+                                if (CURRENT_STATE.equals("confirmation_sent")){
+
+                                    CancelTrip();
+                                }
+                                if (CURRENT_STATE.equals("confirmation_received")){
+
+                                    AcceptTrip();
+                                }
+                            }
+                        });
+                    }                                                                            // new up to this
 
                     editpackagebtn.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -133,7 +196,217 @@ public class ClickPackage extends AppCompatActivity {
                 deleteCurrentPackage();
             }
         });
+
+        cancel_package_btn.setVisibility(View.INVISIBLE);  // this is new
+        cancel_package_btn.setEnabled(false);              // this is new
+
+       /* if (!currentUserId.equals(databaseUserId)){                                 //this is new
+
+            confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
+                @Override
+                public void onClick(View v) {                                       //this is new
+
+                    confirm_package_btn.setEnabled(false);
+                }
+            });
+        }
+        else {
+
+            cancel_package_btn.setVisibility(View.INVISIBLE);
+            confirm_package_btn.setVisibility(View.INVISIBLE);
+        }      */                                                                     // up to this is new
     }
+
+    private void AcceptTrip() {      //this is new
+
+        Calendar calForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
+        saveCurrentDate = currentDate.format(calForDate.getTime());
+
+        tripRef.child(currentUserId).child(packagekey).child("date").setValue(saveCurrentDate)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()){
+
+                            tripRef.child(databaseUserId).child(packagekey).child("date").setValue(saveCurrentDate)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if (task.isSuccessful()){
+
+                                                confirmRef.child(currentUserId).child(packagekey)        //remove from database after accepting
+                                                        .removeValue()
+                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+
+                                                                if (task.isSuccessful()){
+
+                                                                    confirmRef.child(databaseUserId).child(packagekey)
+                                                                            .removeValue()
+                                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<Void> task) {
+
+                                                                                    if (task.isSuccessful()){
+
+                                                                                        confirm_package_btn.setEnabled(true);
+                                                                                        CURRENT_STATE = "trips";              //trips that will occur
+                                                                                        confirm_package_btn.setText("Decline Trip");
+
+                                                                                        cancel_package_btn.setVisibility(View.INVISIBLE);
+                                                                                        cancel_package_btn.setEnabled(false);
+
+
+                                                                                        //confirm_package_btn.setBackgroundResource(R.drawable.button_create_packages);
+                                                                                        //confirm_package_btn.setTextColor(getResources().getColor(android.R.color.white));
+
+                                                                                    }
+                                                                                }
+                                                                            });
+                                                                }
+                                                            }
+                                                        });
+
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                });
+    }                                                                                     //up to this
+
+    private void CancelTrip() {           //this is new
+
+        confirmRef.child(currentUserId).child(packagekey)  //previously databaseUserId
+                .removeValue()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()){
+
+                            confirmRef.child(databaseUserId).child(packagekey)
+                                    .removeValue()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if (task.isSuccessful()){
+
+                                                confirm_package_btn.setEnabled(true);
+                                                CURRENT_STATE = "not_confirm";
+                                                confirm_package_btn.setText("Confirm Trip");
+
+                                                cancel_package_btn.setVisibility(View.INVISIBLE);
+                                                cancel_package_btn.setEnabled(false);
+
+                                                confirm_package_btn.setBackgroundResource(R.drawable.button_create_packages);
+                                                confirm_package_btn.setTextColor(getResources().getColor(android.R.color.white));
+
+
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                });
+    }                                                                                                //up to this
+
+    private void MaintenanceOfButtons() {         //this is new
+
+        confirmRef.child(currentUserId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.hasChild(packagekey)){    //previously databaseUserId in bracket
+
+                            String confirm_type = dataSnapshot.child(packagekey).child("confirm_type").getValue().toString();
+
+                            if (confirm_type.equals("confirmed")){
+
+                                CURRENT_STATE = "confirmation_sent";
+                                confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
+                                confirm_package_btn.setText("Cancel Trip");
+                                confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
+
+                                cancel_package_btn.setEnabled(true);   // before it was false
+                                cancel_package_btn.setVisibility(View.VISIBLE);    //before it was visible
+                                cancel_package_btn.setText("View Profile");  // it was not here
+                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white)); //it was not here before
+
+
+                            }
+                            /*else if (confirm_type.equals("confirmation_receive")){     //for receiver if accept or decline
+
+                                CURRENT_STATE = "confirmation_received";
+                                confirm_package_btn.setText("Accept Trip");
+
+                                cancel_package_btn.setVisibility(View.VISIBLE);
+                                cancel_package_btn.setEnabled(true);
+
+
+                            }*/
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+
+
+    }                                                                                   //up to this
+
+    private void ConfirmTrip() {                                                     // this is new
+
+        confirmRef.child(currentUserId).child(packagekey)
+                .child("confirm_type").setValue("confirmed")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()){
+
+                            confirmRef.child(databaseUserId).child(packagekey)
+                                    .child("confirm_type").setValue("confirmation_received")
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if (task.isSuccessful()){
+
+                                                confirm_package_btn.setEnabled(true);
+                                                CURRENT_STATE = "confirmation_sent";
+                                                confirm_package_btn.setText("Cancel Trip");
+
+                                                cancel_package_btn.setEnabled(true);
+                                                cancel_package_btn.setVisibility(View.VISIBLE);
+                                                cancel_package_btn.setText("View Profile");
+                                                cancel_package_btn.setBackgroundResource(R.drawable.button_create_packages);
+                                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white));
+
+                                                /*cancel_package_btn.setVisibility(View.INVISIBLE);   //before it was here
+                                                cancel_package_btn.setEnabled(false);*/               //before it was here
+
+                                                //confirm_package_btn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                                                confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
+                                                confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                });
+    }                                                                                                 // up to this
 
    /* private void EditCurrentPackage(String details, String packagename,  String startdate, String enddate, String starttime, String endtime, String location, String meetpoint, String price, String groupmembers) {
 
