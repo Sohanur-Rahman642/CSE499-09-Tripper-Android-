@@ -124,11 +124,8 @@ public class ClickPackage extends AppCompatActivity {
                         confirm_package_btn.setVisibility(View.INVISIBLE);
                         cancel_package_btn.setVisibility(View.INVISIBLE);
 
-                       /* if(CURRENT_STATE.equals("confirmation_sent")) {
 
-                            confirm_package_btn.setVisibility(View.VISIBLE);
-
-                            confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
+                           /* confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
                                 @Override
                                 public void onClick(View v) {                                       //this is new
 
@@ -139,32 +136,49 @@ public class ClickPackage extends AppCompatActivity {
                                         AcceptTrip();
                                     }
                                 }
-                            });
-                        }*/
+                            });*/
+
 
 
 
                     }
                     else{
 
-                       // confirm_package_btn.setVisibility(View.VISIBLE);  // this can be removed
+                        // confirm_package_btn.setVisibility(View.VISIBLE);  // this can be removed
 
                         confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
                             @Override
                             public void onClick(View v) {                                       //this is new
 
-                                confirm_package_btn.setEnabled(false);
+                                confirm_package_btn.setEnabled(true);   //it was false before
 
                                 if (CURRENT_STATE.equals("not_confirm")){
 
-                                    ConfirmTrip();
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(ClickPackage.this);
+
+                                    builder.setTitle("Are you sure?").setMessage("You won't be able to cancel the trip later")
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                    ConfirmTrip();
+
+                                                }
+
+
+                                            }).setNegativeButton("CANCEL", null);
+
+                                    AlertDialog alert = builder.create();
+                                    alert.show();
                                 }
 
                                 if (CURRENT_STATE.equals("confirmation_sent")){
 
-                                    CancelTrip();
+                                    //CancelTrip();
+
+                                    ViewProfile();
                                 }
-                                if (CURRENT_STATE.equals("confirmation_received")){
+                                if (CURRENT_STATE.equals("confirmation_receive")){
 
                                     AcceptTrip();
                                 }
@@ -217,6 +231,18 @@ public class ClickPackage extends AppCompatActivity {
         }      */                                                                     // up to this is new
     }
 
+    private void ViewProfile() {
+
+        confirm_package_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                startActivity(i);
+            }
+        });
+    }
+
     private void AcceptTrip() {      //this is new
 
         Calendar calForDate = Calendar.getInstance();
@@ -254,15 +280,18 @@ public class ClickPackage extends AppCompatActivity {
                                                                                     if (task.isSuccessful()){
 
                                                                                         confirm_package_btn.setEnabled(true);
-                                                                                        CURRENT_STATE = "trips";              //trips that will occur
+                                                                                        CURRENT_STATE = "trips_accept";          //trips that will occur
+                                                                                        confirm_package_btn.setVisibility(View.VISIBLE);     //new added
                                                                                         confirm_package_btn.setText("Decline Trip");
+
+
 
                                                                                         cancel_package_btn.setVisibility(View.INVISIBLE);
                                                                                         cancel_package_btn.setEnabled(false);
 
 
-                                                                                        //confirm_package_btn.setBackgroundResource(R.drawable.button_create_packages);
-                                                                                        //confirm_package_btn.setTextColor(getResources().getColor(android.R.color.white));
+                                                                                        confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
+                                                                                        confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
 
                                                                                     }
                                                                                 }
@@ -279,7 +308,10 @@ public class ClickPackage extends AppCompatActivity {
                 });
     }                                                                                     //up to this
 
-    private void CancelTrip() {           //this is new
+
+
+
+   /* private void CancelTrip() {           //this is new
 
         confirmRef.child(currentUserId).child(packagekey)  //previously databaseUserId
                 .removeValue()
@@ -314,7 +346,7 @@ public class ClickPackage extends AppCompatActivity {
                         }
                     }
                 });
-    }                                                                                                //up to this
+    }                                          */                                                      //up to this
 
     private void MaintenanceOfButtons() {         //this is new
 
@@ -331,23 +363,62 @@ public class ClickPackage extends AppCompatActivity {
 
                                 CURRENT_STATE = "confirmation_sent";
                                 confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
-                                confirm_package_btn.setText("Cancel Trip");
+                                confirm_package_btn.setText("View Profile");   //it was cancel trip
                                 confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
 
-                                cancel_package_btn.setEnabled(true);   // before it was false
+                               /* cancel_package_btn.setEnabled(true);   // before it was false
                                 cancel_package_btn.setVisibility(View.VISIBLE);    //before it was visible
                                 cancel_package_btn.setText("View Profile");  // it was not here
-                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white)); //it was not here before
+                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white)); //it was not here before*/
+
+                                confirm_package_btn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                        Intent i =new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                                        startActivity(i);
+                                    }
+                                });
 
 
                             }
-                            /*else if (confirm_type.equals("confirmation_receive")){     //for receiver if accept or decline
+                            else if (confirm_type.equals("confirmation_received")){     //for receiver if accept or decline
 
-                                CURRENT_STATE = "confirmation_received";
-                                confirm_package_btn.setText("Accept Trip");
+                                CURRENT_STATE = "confirmation_receive";
+                                confirm_package_btn.setEnabled(false);                //new added, was not before
+                                confirm_package_btn.setVisibility(View.INVISIBLE);     //new added
+                                confirm_package_btn.setText("Accept Request");
 
-                                cancel_package_btn.setVisibility(View.VISIBLE);
-                                cancel_package_btn.setEnabled(true);
+
+
+                                /*deletepackagebtn.setEnabled(false);              //new added
+                                deletepackagebtn.setVisibility(View.INVISIBLE);   //new added
+                                deletepackagebtn.setText("Decline Request");    //new added*/
+
+                                cancel_package_btn.setVisibility(View.INVISIBLE);  //before it was visible
+                                cancel_package_btn.setEnabled(false);  //before it was false
+
+
+                            }
+
+
+                           /* else if (confirm_type.equals("trips_accepted")){     //for receiver if accept or decline
+
+                                confirm_package_btn.setEnabled(true);  //new added, was not before
+                                CURRENT_STATE = "trips_accept";
+                                confirm_package_btn.setVisibility(View.VISIBLE);     //new added
+                                confirm_package_btn.setText("Cancel Request");
+                                confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
+                                confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
+
+
+
+                                deletepackagebtn.setEnabled(true);              //new added
+                                deletepackagebtn.setVisibility(View.VISIBLE);   //new added
+                                deletepackagebtn.setText("Decline Request");    //new added
+
+                                cancel_package_btn.setVisibility(View.INVISIBLE);  //before it was visible
+                                cancel_package_btn.setEnabled(false);  //before it was false
 
 
                             }*/
@@ -364,11 +435,86 @@ public class ClickPackage extends AppCompatActivity {
 
 
 
+
     }                                                                                   //up to this
 
-    private void ConfirmTrip() {                                                     // this is new
+    private void ConfirmTrip() {   // this is new
+
 
         confirmRef.child(currentUserId).child(packagekey)
+                .child("confirm_type").setValue("confirmed")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+
+                            confirmRef.child(databaseUserId).child(packagekey)
+                                    .child("confirm_type").setValue("confirmation_received")
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if (task.isSuccessful()) {
+
+                                                confirm_package_btn.setEnabled(true);
+                                                CURRENT_STATE = "confirmation_sent";
+                                                confirm_package_btn.setText("View Profile");    //it was cancel trip
+
+                                               /* cancel_package_btn.setEnabled(true);
+                                                cancel_package_btn.setVisibility(View.VISIBLE);
+                                                cancel_package_btn.setText("View Profile");
+                                                cancel_package_btn.setBackgroundResource(R.drawable.button_create_packages);
+                                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white));*/
+
+                                                cancel_package_btn.setVisibility(View.INVISIBLE);   //before it was here
+                                                cancel_package_btn.setEnabled(false);              //before it was here
+
+                                                //confirm_package_btn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                                                confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
+                                                confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
+
+                                                confirm_package_btn.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+
+                                   /* AlertDialog.Builder builder = new AlertDialog.Builder(ClickPackage.this);
+
+                                    builder.setTitle("Are you sure?")
+                                            .setMessage("You can't be able to cancel the trip later")
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                    Intent i =new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                                                    startActivity(i);
+                                                    finish();
+
+                                                    confirm_package_btn.setVisibility(View.INVISIBLE);
+                                                    confirm_package_btn.setEnabled(false);
+
+                                                }
+                                            }).setNegativeButton("CANCEL", null);
+
+                                    AlertDialog alert = builder.create();
+                                    alert.show();*/
+
+                                                        Intent i = new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                                                        startActivity(i);
+                                                    }
+                                                });
+
+                                            }
+                                        }
+                                    });
+
+
+                        }
+                    }
+                });
+
+
+        /*confirmRef.child(currentUserId).child(packagekey)
                 .child("confirm_type").setValue("confirmed")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -386,27 +532,66 @@ public class ClickPackage extends AppCompatActivity {
 
                                                 confirm_package_btn.setEnabled(true);
                                                 CURRENT_STATE = "confirmation_sent";
-                                                confirm_package_btn.setText("Cancel Trip");
+                                                confirm_package_btn.setText("View Profile");    //it was cancel trip
 
-                                                cancel_package_btn.setEnabled(true);
+                                               *//* cancel_package_btn.setEnabled(true);
                                                 cancel_package_btn.setVisibility(View.VISIBLE);
                                                 cancel_package_btn.setText("View Profile");
                                                 cancel_package_btn.setBackgroundResource(R.drawable.button_create_packages);
-                                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white));
+                                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white));*//*
 
-                                                /*cancel_package_btn.setVisibility(View.INVISIBLE);   //before it was here
-                                                cancel_package_btn.setEnabled(false);*/               //before it was here
+                                                cancel_package_btn.setVisibility(View.INVISIBLE);   //before it was here
+                                                cancel_package_btn.setEnabled(false);              //before it was here
 
                                                 //confirm_package_btn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                                                 confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
                                                 confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
+
                                             }
                                         }
                                     });
+
+                            confirm_package_btn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                   *//* AlertDialog.Builder builder = new AlertDialog.Builder(ClickPackage.this);
+
+                                    builder.setTitle("Are you sure?")
+                                            .setMessage("You can't be able to cancel the trip later")
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                    Intent i =new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                                                    startActivity(i);
+                                                    finish();
+
+                                                    confirm_package_btn.setVisibility(View.INVISIBLE);
+                                                    confirm_package_btn.setEnabled(false);
+
+                                                }
+                                            }).setNegativeButton("CANCEL", null);
+
+                                    AlertDialog alert = builder.create();
+                                    alert.show();*//*
+
+                                    Intent i =new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                                    startActivity(i);
+                                }
+                            });
                         }
                     }
-                });
-    }                                                                                                 // up to this
+                });*/
+        // up to this
+
+
+    }
+
+
+
+
+
 
    /* private void EditCurrentPackage(String details, String packagename,  String startdate, String enddate, String starttime, String endtime, String location, String meetpoint, String price, String groupmembers) {
 
