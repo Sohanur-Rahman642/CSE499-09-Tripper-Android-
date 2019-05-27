@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ import java.util.Calendar;
 public class ClickPackage extends AppCompatActivity {
 
     private ImageView clickaddpackagepic, editpackagebtn;
+    private ImageButton back_button_for_adding_packages1;
     private TextView clickpackagename, clickdetail, clickstartdate, clickenddate, clickstarttime, clickendtime, clicklocation, clickmeetpoint, clickprice, clickmembers;
     private Button  deletepackagebtn, confirm_package_btn, cancel_package_btn;
     private DatabaseReference databaseReference, UsersRef, confirmRef, tripRef ;
@@ -44,8 +46,20 @@ public class ClickPackage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_click_package);
 
+        back_button_for_adding_packages1 = findViewById(R.id.back_button_for_adding_packages1);
+
+        back_button_for_adding_packages1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(ClickPackage.this, MyToursForGuide.class);
+                startActivity(i);
+            }
+        });
+
         mAuth=FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
+
 
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Packages"); //this is new
 
@@ -81,6 +95,7 @@ public class ClickPackage extends AppCompatActivity {
         //confirm_package_btn.setVisibility(View.INVISIBLE);  // same as before
 
         //UsersRef.child(receiverUserId).addValue....
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -203,13 +218,17 @@ public class ClickPackage extends AppCompatActivity {
             }
         });
 
-        deletepackagebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                deleteCurrentPackage();
-            }
-        });
+                        deletepackagebtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                deleteCurrentPackage();
+                            }
+                        });
+
+
+
 
         cancel_package_btn.setVisibility(View.INVISIBLE);  // this is new
         cancel_package_btn.setEnabled(false);              // this is new
@@ -664,10 +683,25 @@ public class ClickPackage extends AppCompatActivity {
 
     private void deleteCurrentPackage() {
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(ClickPackage.this);
+
+        builder.setTitle("Are you sure?").setMessage("Once you delete it won't be recovered")
+        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+@Override
+public void onClick(DialogInterface dialog, int which) {
+
         databaseReference.removeValue();
 
         SendUserToHome();
-        Toast.makeText(this, "Package is deleted", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ClickPackage.this, "Package is deleted", Toast.LENGTH_SHORT).show();
+
+}
+
+
+        }).setNegativeButton("CANCEL", null);
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void SendUserToHome() {

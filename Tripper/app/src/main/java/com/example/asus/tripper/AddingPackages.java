@@ -290,6 +290,8 @@ public class AddingPackages extends AppCompatActivity {
 
                                 startActivity(new Intent(AddingPackages.this, MyToursForGuide.class));
 
+                                finish();
+
                                 Toast.makeText(AddingPackages.this, "New package is created successfully.", Toast.LENGTH_SHORT).show();
 
                                 loadingBar.dismiss();

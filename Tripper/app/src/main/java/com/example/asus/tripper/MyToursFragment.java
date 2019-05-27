@@ -137,6 +137,8 @@ public class MyToursFragment extends Fragment  {
 
                         final String packagekey = getRef(position).getKey();
 
+                        //final String userkey = getRef(position).getKey();
+
 
 
 
@@ -156,6 +158,26 @@ public class MyToursFragment extends Fragment  {
                                 Intent clickpackageIntent = new Intent(getActivity(), ClickPackage.class);
                                 clickpackageIntent.putExtra("packagekey", packagekey);
                                 startActivity(clickpackageIntent);
+                            }
+                        });
+
+                       /* holder.package_user_name.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent clickusernameIntent = new Intent(getActivity(), SeeGuidesProfileAfterConfirmingTrip.class);
+                                clickusernameIntent.putExtra("userkey", userkey);
+                                startActivity(clickusernameIntent);
+                            }
+                        });*/
+
+                        holder.package_name.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent clickpackagenameIntent = new Intent(getActivity(), ClickPackage.class);
+                                clickpackagenameIntent.putExtra("packagekey", packagekey);
+                                startActivity(clickpackagenameIntent);
                             }
                         });
                     }

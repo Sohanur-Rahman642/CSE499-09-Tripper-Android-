@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SeeGuidesProfileAfterConfirmingTrip"></activity>
+        <activity
+            android:name=".SeeGuidesProfileAfterConfirmingTrip"
+            android:theme="@style/AppTheme.CustomTheme"/>
         <activity android:name=".SearchForPackage" />
         <activity
             android:name=".FindGuide"

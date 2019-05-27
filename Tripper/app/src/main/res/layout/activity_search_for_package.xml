@@ -11,14 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/toolbar_for_adding_packages"
+        <include layout="@layout/toolbar_for_search_package"
             android:id="@+id/toolbar_for_search_package"/>
 
         <ImageView
             android:id="@+id/back_button_for_search_packages"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+            app:srcCompat="@drawable/ic_arrow_back_black_24dp1"
             android:layout_margin="12dp"
             tools:ignore="VectorDrawableCompat" />
 
