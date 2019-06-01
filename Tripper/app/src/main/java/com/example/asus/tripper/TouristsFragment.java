@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,6 +38,11 @@ public class TouristsFragment extends Fragment {
     private String online_user_id;
 
 
+   /* TextView confirmed_trips, accepted_trips;   //new
+    ViewPager viewPager;
+    PagerViewAdapter pagerViewAdapter;           //upto this*/
+
+
 
     @Nullable
     @Override
@@ -50,6 +56,51 @@ public class TouristsFragment extends Fragment {
 
         confirmed_trips_recycle = v.findViewById(R.id.confirmed_trips_recycle);
 
+
+       /* confirmed_trips = v.findViewById(R.id.confirmed_trips_text);    // new
+        accepted_trips = v.findViewById(R.id.accepted_trips_text);
+        viewPager = v.findViewById(R.id.viewpager_for_confirmed);       //upto this*/
+
+
+       /* pagerViewAdapter = new PagerViewAdapter(getActivity().getSupportFragmentManager());    //new
+
+        viewPager.setAdapter(pagerViewAdapter);
+
+        confirmed_trips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                viewPager.setCurrentItem(0);
+            }
+        });
+
+        accepted_trips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                viewPager.setCurrentItem(1);
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+                onChangeTab(i);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });                                                                 //upto this*/
+
         confirmed_trips_recycle.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getActivity());
         linearLayoutManager .setReverseLayout(true);
@@ -61,6 +112,27 @@ public class TouristsFragment extends Fragment {
 
         return v;
     }
+
+   /* private void onChangeTab(int i) {                            //new
+
+        if (i == 0){
+
+            confirmed_trips.setTextSize(25);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.brightcolor));   //need api 23
+
+            accepted_trips.setTextSize(20);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.lightcolor));
+        }
+
+        if (i == 1){
+
+            confirmed_trips.setTextSize(20);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.lightcolor));   //need api 23
+
+            accepted_trips.setTextSize(25);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.brightcolor));
+        }
+    }                                    //upto this*/
 
     private void DisplayConfirmedTrips() {
 
@@ -90,7 +162,13 @@ public class TouristsFragment extends Fragment {
                             final String packageDate = dataSnapshot.child("date").getValue().toString();
                             final String packagePrice = dataSnapshot.child("price").getValue().toString();
                             final String packageGroupMembers = dataSnapshot.child("groupmembers").getValue().toString();
-                            final String packageProfileImage = dataSnapshot.child("profileimage").getValue().toString();
+                            final String packageStartDate = dataSnapshot.child("startdate").getValue().toString();
+                            final String packageStartTime = dataSnapshot.child("starttime").getValue().toString();
+                            final String packageEndDate = dataSnapshot.child("enddate").getValue().toString();
+                            final String packageEndTime = dataSnapshot.child("endtime").getValue().toString();
+                            final String packageMeetPoint = dataSnapshot.child("meetpoint").getValue().toString();
+                            final String packageLocation = dataSnapshot.child("location").getValue().toString();
+                            //final String packageProfileImage = dataSnapshot.child("profileimage").getValue().toString();
 
                            holder.setPackagename(packageName);
                            holder.setPackageimage(getActivity().getApplicationContext(), packageImage);
@@ -98,7 +176,13 @@ public class TouristsFragment extends Fragment {
                            holder.setDate(packageDate);
                            holder.setPrice(packagePrice);
                            holder.setGroupmembers(packageGroupMembers);
-                           holder.setProfileimage(getActivity().getApplicationContext(), packageProfileImage);
+                           holder.setStartdate(packageStartDate);
+                           holder.setStarttime(packageStartTime);
+                           holder.setEnddate(packageStartDate);
+                           holder.setEndtime(packageEndTime);
+                           holder.setMeetpoint(packageMeetPoint);
+                           holder.setLocation(packageLocation);
+                          // holder.setProfileimage(getActivity().getApplicationContext(), packageProfileImage);
 
 
 
@@ -161,7 +245,7 @@ public class TouristsFragment extends Fragment {
             @Override
             public confirmedTripsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_packages_layout,viewGroup,false);
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_confirmed_packages_layout,viewGroup,false);
 
                 TouristsFragment.confirmedTripsViewHolder viewHolder = new TouristsFragment.confirmedTripsViewHolder(view);
                 return viewHolder;
@@ -198,50 +282,86 @@ public class TouristsFragment extends Fragment {
 
 
         public void setFullname(String fullname){
-            TextView name = (TextView)mView.findViewById(R.id.package_user_name);
+            TextView name = (TextView)mView.findViewById(R.id.confirmed_username);
             name.setText(fullname);
         }
 
-        public void setProfileimage(Context ctx, String profileimage){
+       /* public void setProfileimage(Context ctx, String profileimage){
 
             CircleImageView image = (CircleImageView) mView.findViewById(R.id.package_profile_image);
             Picasso.get().load(profileimage).into(image);
-        }
+        }*/
 
         public void setPackageimage(Context ctx1, String packageimage){
 
-            ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
+            ImageView postimage = (ImageView) mView.findViewById(R.id.confirmed_package_image);
             Picasso.get().load(packageimage).into(postimage);
         }
 
         public void setConfirm_type(String confirm_type){
 
-            TextView confirmType=(TextView) mView.findViewById(R.id.package_time);
-            confirmType.setText(" -"+confirm_type);
+            Button confirmType=(Button) mView.findViewById(R.id.confirmed_text);
+            confirmType.setText(""+confirm_type);
         }
 
         public void setDate(String date){
 
-            TextView postdate = (TextView) mView.findViewById(R.id.package_date);
+            TextView postdate = (TextView) mView.findViewById(R.id.confirmed_date);
             postdate.setText(" "+date);
         }
 
         public void setPackagename(String packagename){
 
-            TextView postname = (TextView) mView.findViewById(R.id.package_name);
+            TextView postname = (TextView) mView.findViewById(R.id.confirmed_package_name);
             postname.setText(packagename);
         }
 
         public void setPrice(String price){
 
-            TextView postprice = (TextView) mView.findViewById(R.id.package_price);
+            TextView postprice = (TextView) mView.findViewById(R.id.confirmed_package_price);
             postprice.setText(price);
         }
 
         public void setGroupmembers(String groupmembers){
 
-            TextView postgroup = (TextView) mView.findViewById(R.id.package_group_members);
+            TextView postgroup = (TextView) mView.findViewById(R.id.confirmed_group_members);
             postgroup.setText(groupmembers);
+        }
+
+        public void setStartdate(String startdate){
+
+            TextView poststartdate = (TextView) mView.findViewById(R.id.confirmed_start_date);
+            poststartdate.setText(startdate);
+        }
+
+        public void setEnddate(String enddate){
+
+            TextView postenddate = (TextView) mView.findViewById(R.id.confirmed_end_date);
+            postenddate.setText(enddate);
+        }
+
+        public void setStarttime(String starttime){
+
+            TextView poststarttime = (TextView) mView.findViewById(R.id.confirmed_start_time);
+            poststarttime.setText(starttime);
+        }
+
+        public void setEndtime(String endtime){
+
+            TextView postendtime = (TextView) mView.findViewById(R.id.confirmed_end_time);
+            postendtime.setText(endtime);
+        }
+
+        public void setMeetpoint(String meetpoint){
+
+            TextView postmeetpoint = (TextView) mView.findViewById(R.id.confirmed_meeting_point);
+            postmeetpoint.setText(meetpoint);
+        }
+
+        public void setLocation(String location){
+
+            TextView postlocation = (TextView) mView.findViewById(R.id.confirmed_location);
+            postlocation.setText(location);
         }
     }
 }

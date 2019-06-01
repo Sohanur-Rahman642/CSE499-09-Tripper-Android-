@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
+
     >
 
 
@@ -20,6 +21,16 @@
 
             <include layout="@layout/toolbar_for_adding_packages"
                 android:id="@+id/toolbar_for_confirmed_trips"/>
+
+            <!--<include layout="@layout/tab_bar_confirmed"
+                android:id="@+id/tab_bar_for_confirmed_trips" />-->
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager_for_confirmed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="52dp"
+                />
 
 
             <TextView

@@ -378,7 +378,7 @@ public class ClickPackage extends AppCompatActivity {
 
                             String confirm_type = dataSnapshot.child(packagekey).child("confirm_type").getValue().toString();
 
-                            if (confirm_type.equals("confirmed")){
+                            if (confirm_type.equals("confirmed at "+saveCurrentDate)){
 
                                 CURRENT_STATE = "confirmation_sent";
                                 confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
@@ -401,7 +401,7 @@ public class ClickPackage extends AppCompatActivity {
 
 
                             }
-                            else if (confirm_type.equals("confirmation_received")){     //for receiver if accept or decline
+                            else if (confirm_type.equals("confirmation received")){     //for receiver if accept or decline
 
                                 CURRENT_STATE = "confirmation_receive";
                                 confirm_package_btn.setEnabled(false);                //new added, was not before
@@ -459,9 +459,13 @@ public class ClickPackage extends AppCompatActivity {
 
     private void ConfirmTrip() {   // this is new
 
+        Calendar calForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
+        saveCurrentDate = currentDate.format(calForDate.getTime());
+
 
         confirmRef.child(currentUserId).child(packagekey)
-                .child("confirm_type").setValue("confirmed")
+                .child("confirm_type").setValue("confirmed at "+saveCurrentDate)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -469,7 +473,7 @@ public class ClickPackage extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             confirmRef.child(databaseUserId).child(packagekey)
-                                    .child("confirm_type").setValue("confirmation_received")
+                                    .child("confirm_type").setValue("confirmation received")
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

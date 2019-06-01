@@ -135,7 +135,7 @@
                     <android.support.v7.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="95dp"
+                        android:layout_marginLeft="85dp"
                         app:cardBackgroundColor="#ECE6F8"
                         app:cardCornerRadius="50dp">
 
@@ -161,12 +161,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:layout_marginRight="3dp"
+                            android:layout_marginRight="0dp"
                             android:padding="3dp"
                             android:textSize="13sp"
                             android:gravity="center"
                             android:textStyle="italic"
                             android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="3dp"
+                        android:padding="3dp"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:text="Tk"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
 
 
 
@@ -197,12 +209,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:layout_marginRight="3dp"
+                            android:layout_marginRight="0dp"
                             android:padding="3dp"
                             android:textSize="13sp"
                             android:gravity="center"
                             android:textStyle="italic"
                             android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:padding="3dp"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:text="persons"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
 
 
                 </LinearLayout>

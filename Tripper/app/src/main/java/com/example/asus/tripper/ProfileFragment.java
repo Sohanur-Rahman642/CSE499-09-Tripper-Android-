@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,13 +30,15 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener{
-     private ImageView signout,editimage;
-     private CircleImageView propic;
+     private ImageView signout,editimage,propic;
+     private Button button_mytrips,button_acceptedtrips;
+     //private CircleImageView propic;
      private View v;
      private FirebaseAuth firebaseAuth;
      private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
     private TextView tv_username, tv_fullname, tv_address1, tv_country, tv_phone;
+
 
 
      public ProfileFragment(){
@@ -59,7 +62,28 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
          tv_address1=(TextView) v.findViewById(R.id.tv_address1);
          tv_country=(TextView) v.findViewById(R.id.tv_country);
          tv_phone=(TextView) v.findViewById(R.id.tv_phone);
-         propic=(CircleImageView) v.findViewById(R.id.propic);
+         propic=(ImageView) v.findViewById(R.id.propic);
+
+         button_mytrips=v.findViewById(R.id.button_mytrips);
+         button_acceptedtrips=v.findViewById(R.id.button_acceptedtrips);
+
+         button_mytrips.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+                 Intent i=new Intent(getActivity(), MyTrips.class);
+                 startActivity(i);
+             }
+         });
+
+         button_acceptedtrips.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+                 Intent i=new Intent(getActivity(), AcceptedTrips.class);
+                 startActivity(i);
+             }
+         });
 
          final DatabaseReference databaseReference=firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 

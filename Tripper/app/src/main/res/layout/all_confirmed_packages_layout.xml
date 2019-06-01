@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:layout_height="170dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:id="@+id/confirmed_package_image"
+            android:layout_width="128dp"
+            android:layout_height="150dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/hill"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/confirmed_package_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Package Name"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"/>
+
+
+                    <Button
+                        android:id="@+id/confirmed_text"
+                        android:layout_width="110dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/green_button"
+                        android:text="Confirmed at 20-may-2019"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textAllCaps="false"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/itemprice4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="11sp"
+                    android:text="Price:"
+                    android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/confirmed_package_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="11sp"
+                        android:text="200"
+                        />
+
+                    <TextView
+                        android:id="@+id/itempric"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="0dp"
+                        android:textSize="11sp"
+                        android:text="Tk"
+                        />
+
+                    <TextView
+                        android:id="@+id/itempri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:textSize="11sp"
+                        android:text="Group Members:"
+                        android:textStyle="bold"/>
+
+
+                    <TextView
+                        android:id="@+id/confirmed_group_members"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="11sp"
+                        android:text="10" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/itempr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="11sp"
+                        android:text="Start Date:"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/confirmed_start_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="11sp"
+                        android:text="20/12/2019"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/itemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="11sp"
+                        android:text="End Date:"
+                        android:textStyle="bold"/>
+
+
+                    <TextView
+                        android:id="@+id/confirmed_end_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="11sp"
+                        android:text="20/12/2019" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="11sp"
+                        android:text="Start Time:"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/confirmed_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="11sp"
+                        android:text="10:20 p.m."
+                        />
+
+
+                    <TextView
+                        android:id="@+id/ite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="11sp"
+                        android:text="End Time:"
+                        android:textStyle="bold"/>
+
+
+                    <TextView
+                        android:id="@+id/confirmed_end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="11sp"
+                        android:text="12.00 a.m." />
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/it"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="9sp"
+                        android:text="Meet Point:"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/confirmed_meeting_point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="9sp"
+                        android:text="Dhanmondi"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/i"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="9sp"
+                        android:text="Location:"
+                        android:textStyle="bold"/>
+
+
+                    <TextView
+                        android:id="@+id/confirmed_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="9sp"
+                        android:text="Shilpokola Academy" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="9sp"
+                        android:text="Posted By:"
+                        android:textStyle="bold"/>
+
+
+                    <TextView
+                        android:id="@+id/confirmed_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="9sp"
+                        android:text="Shilpokola Academy" />
+
+
+                    <TextView
+                        android:id="@+id/confirmed_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="6dp"
+                        android:textSize="9sp"
+                        android:text="12-10-2019" />
+
+
+
+                </LinearLayout>
+
+
+
+               <!-- <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                    android:id="@+id/numberbtn4"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    app:textSize="8sp"
+                    app:backGroundColor="@color/colorAccent"
+                    app:initialNumber="1"
+                    app:finalNumber="1000"></com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>-->
+
+               <!-- <ImageView
+                    android:id="@+id/creamcart"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/ic_shopping_cart_black_24dp"
+                    />-->
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
