@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AcceptedTrips">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/accepted_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp">
+
+
+        <include layout="@layout/toolbar_for_adding_packages"
+            android:id="@+id/toolbar_for_accepted_trips"/>
+
+
+        <TextView
+            android:id="@+id/textAcceptedTrips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trips Received"
+            android:textSize="26dp"
+            android:fontFamily="cursive"
+            android:textColor="@color/white"
+            android:layout_margin="14dp"/>
+
+        <ImageView
+            android:id="@+id/searchbtn_for_accepted_trips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_black_24dp"
+            android:layout_toRightOf="@+id/textAcceptedTrips"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="14dp"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/accepted_trips_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

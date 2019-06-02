@@ -39,7 +39,7 @@ public class ClickPackage extends AppCompatActivity {
     private DatabaseReference databaseReference, UsersRef, confirmRef, tripRef ;
     private FirebaseAuth mAuth;
 
-    private String packagekey , currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, saveCurrentDate, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
+    private String packagekey , currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, databaseUserId2, saveCurrentDate, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +115,7 @@ public class ClickPackage extends AppCompatActivity {
                     price = dataSnapshot.child("price").getValue().toString();
                     groupmembers = dataSnapshot.child("groupmembers").getValue().toString();
                     databaseUserId = dataSnapshot.child("gid").getValue().toString();
+                   // currentUserId=dataSnapshot.child("fullname").getValue().toString();
 
                     clickdetail.setText(details);
                     clickpackagename.setText(packagename);
@@ -401,7 +402,7 @@ public class ClickPackage extends AppCompatActivity {
 
 
                             }
-                            else if (confirm_type.equals("confirmation received")){     //for receiver if accept or decline
+                            else if (confirm_type.equals("requested by "+currentUserId)){     //for receiver if accept or decline
 
                                 CURRENT_STATE = "confirmation_receive";
                                 confirm_package_btn.setEnabled(false);                //new added, was not before
@@ -473,7 +474,7 @@ public class ClickPackage extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             confirmRef.child(databaseUserId).child(packagekey)
-                                    .child("confirm_type").setValue("confirmation received")
+                                    .child("confirm_type").setValue("requested by "+currentUserId)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
