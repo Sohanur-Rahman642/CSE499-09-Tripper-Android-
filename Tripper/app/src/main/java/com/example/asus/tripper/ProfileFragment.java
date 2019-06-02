@@ -1,11 +1,13 @@
 package com.example.asus.tripper;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener{
      private ImageView signout,editimage,propic;
-     private Button button_mytrips,button_acceptedtrips;
+     private Button button_mytrips,button_acceptedtrips, button_settings;
      //private CircleImageView propic;
      private View v;
      private FirebaseAuth firebaseAuth;
@@ -66,6 +68,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
          button_mytrips=v.findViewById(R.id.button_mytrips);
          button_acceptedtrips=v.findViewById(R.id.button_acceptedtrips);
+         button_settings = v.findViewById(R.id.button_settings);
 
          button_mytrips.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -81,6 +84,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
              public void onClick(View v) {
 
                  Intent i=new Intent(getActivity(), AcceptedTrips.class);
+                 startActivity(i);
+             }
+         });
+
+         button_settings.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+                 Intent i=new Intent(getActivity(), Settings.class);
                  startActivity(i);
              }
          });
@@ -130,11 +142,32 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
          switch (v.getId()){
              case R.id.signout:
-                 firebaseAuth.signOut();
+
+                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                 builder.setTitle("Log Out").setMessage("Do you want to log out?")
+                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialog, int which) {
+
+                                 firebaseAuth.signOut();
+                                 getActivity().finish();
+                                 Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
+                                 Intent i= new Intent(getActivity(), LoginUser.class);
+                                 startActivity(i);
+
+                             }
+
+
+                         }).setNegativeButton("No", null);
+
+                 AlertDialog alert = builder.create();
+                 alert.show();
+                /* firebaseAuth.signOut();
                  getActivity().finish();
                  Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
                  Intent i= new Intent(getActivity(), LoginUser.class);
-                 startActivity(i);
+                 startActivity(i);*/
 
                  break;
              case R.id.editimage:
