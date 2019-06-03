@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Message"
+            android:parentActivityName=".MyToursForGuide"></activity>
+        <activity android:name=".Settings" />
         <activity android:name=".AcceptedTrips" />
         <activity android:name=".MyTrips" />
         <activity

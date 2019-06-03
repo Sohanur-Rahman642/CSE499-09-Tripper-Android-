@@ -137,7 +137,7 @@ public class MyToursFragment extends Fragment  {
 
                         final String packagekey = getRef(position).getKey();
 
-                        //final String userkey = getRef(position).getKey();
+                        final String userkey = getRef(position).getKey();
 
 
 
@@ -161,7 +161,7 @@ public class MyToursFragment extends Fragment  {
                             }
                         });
 
-                       /* holder.package_user_name.setOnClickListener(new View.OnClickListener() {
+                        holder.package_user_name.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
@@ -169,7 +169,7 @@ public class MyToursFragment extends Fragment  {
                                 clickusernameIntent.putExtra("userkey", userkey);
                                 startActivity(clickusernameIntent);
                             }
-                        });*/
+                        });
 
                         holder.package_name.setOnClickListener(new View.OnClickListener() {
                             @Override

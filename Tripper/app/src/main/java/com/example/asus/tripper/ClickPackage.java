@@ -39,7 +39,7 @@ public class ClickPackage extends AppCompatActivity {
     private DatabaseReference databaseReference, UsersRef, confirmRef, tripRef ;
     private FirebaseAuth mAuth;
 
-    private String packagekey , currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, databaseUserId2, saveCurrentDate, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
+    private String packagekey , userkey, currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, databaseUserId2, saveCurrentDate, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,8 @@ public class ClickPackage extends AppCompatActivity {
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Packages"); //this is new
 
         //databaseUserId = getIntent().getExtras().get("packagekey").toString(); //this is new
+
+        //userkey= getIntent().getExtras().get("userkey").toString();
 
         packagekey= getIntent().getExtras().get("packagekey").toString();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(packagekey);
@@ -258,6 +260,7 @@ public class ClickPackage extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                //i.putExtra("userkey", userkey);
                 startActivity(i);
             }
         });

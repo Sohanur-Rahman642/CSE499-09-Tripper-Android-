@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,7 +49,7 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
         getWindow().setLayout((int) (width * .9), (int) (height * .7));
 
 
-       /* mAuth=FirebaseAuth.getInstance();
+        mAuth=FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
 
         //UsersRef = FirebaseDatabase.getInstance().getReference().child("Packages"); //this is new
@@ -76,28 +77,31 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
                 if (dataSnapshot.exists()) {  //for validation
 
                     username = dataSnapshot.child("fullname").getValue().toString();
-                    //phone = dataSnapshot.child("phone").getValue().toString();
-                    //country = dataSnapshot.child("country").getValue().toString();
+                    phone = dataSnapshot.child("phone").getValue().toString();
+                    country = dataSnapshot.child("country").getValue().toString();
                     profileimage = dataSnapshot.child("profileimage").getValue().toString();
                     databaseUserId = dataSnapshot.child("gid").getValue().toString();
 
                     username1.setText(username);
-                    //phone1.setText(phone);
-                    //country1.setText(country);
-                    Picasso.get().load(profileimage).placeholder(R.drawable.deeptapic).into(profilepic1);*/
+                    phone1.setText(phone);
+                    country1.setText(country);
+                    Picasso.get().load(profileimage).into(profilepic1);
 
 
 
-                   /* if (currentUserId.equals(databaseUserId)) {
+                    //if (currentUserId.equals(databaseUserId)) {
 
-                        *//*deletepackagebtn.setVisibility(View.VISIBLE);
+
+                        //message_float1.setVisibility(View.GONE);
+
+                        /*deletepackagebtn.setVisibility(View.VISIBLE);
                         deletepackagebtn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                         editpackagebtn.setVisibility(View.VISIBLE);
                         confirm_package_btn.setVisibility(View.INVISIBLE);
-                        cancel_package_btn.setVisibility(View.INVISIBLE);*//*
+                        cancel_package_btn.setVisibility(View.INVISIBLE);*/
 
 
-                           *//* confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
+                           /* confirm_package_btn.setOnClickListener(new View.OnClickListener() {     //this is new
                                 @Override
                                 public void onClick(View v) {                                       //this is new
 
@@ -108,24 +112,26 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
                                         AcceptTrip();
                                     }
                                 }
-                            });*//*
+                            });*/
 
 
 
 
-                    }
-                    else{
+                    //}
+                   /* else{
 
                         // confirm_package_btn.setVisibility(View.VISIBLE);  // this can be removed
 
 
-                    }                  */                                                          // new up to this
+                    } */                                                                           // new up to this
 
-                    /*message_float1.setOnClickListener(new View.OnClickListener() {
+
+                    message_float1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
-                            Intent i= new Intent(SeeGuidesProfileAfterConfirmingTrip.this, ClickPackage.class);
+                            Intent i= new Intent(SeeGuidesProfileAfterConfirmingTrip.this, Message.class);
+                            i.putExtra("userkey", userkey);
                             startActivity(i);
                         }
                     });
@@ -137,6 +143,5 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
 
             }
         });
-*/
     }
 }

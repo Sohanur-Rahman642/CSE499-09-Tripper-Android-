@@ -105,10 +105,18 @@ public class SetupUser extends AppCompatActivity {
 
                         String image = dataSnapshot.child("profileimage").getValue().toString();
 
+                        Picasso.get().load(image).into(setup_propic);
+
                         //Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
                        // Picasso.get().load(image).fit().centerCrop().into(setup_propic);
-                        Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
+                        //Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
                         //Glide.with(SetupUser.this).load(image).into(setup_propic);
+
+                        /*Picasso.get()
+                                .load(image)
+                                .resize(50, 50)
+                                .centerCrop()
+                                .into(setup_propic);*/
                     }
                     else {
                         Toast.makeText(SetupUser.this, "Please select profile image first", Toast.LENGTH_SHORT).show();

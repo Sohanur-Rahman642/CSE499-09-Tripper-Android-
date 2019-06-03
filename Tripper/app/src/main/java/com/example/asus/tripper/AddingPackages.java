@@ -259,6 +259,8 @@ public class AddingPackages extends AppCompatActivity {
                 if(dataSnapshot.exists()){
 
                     final String guideFullName= dataSnapshot.child("username").getValue().toString();
+                    final String guidePhone = dataSnapshot.child("phone").getValue().toString();
+                    final String guideCountry = dataSnapshot.child("country").getValue().toString();
                     final String guideProfileImage= dataSnapshot.child("profileimage").getValue().toString();
 
                     HashMap packagesMap = new HashMap();
@@ -278,6 +280,8 @@ public class AddingPackages extends AppCompatActivity {
                     packagesMap.put("packageimage",downloadUrl);
                     packagesMap.put("profileimage",guideProfileImage);
                     packagesMap.put("fullname",guideFullName);
+                    packagesMap.put("phone", guidePhone);
+                    packagesMap.put("country", guideCountry);
                     packagesMap.put("counter", countPackages);        //newwww
 
                     packagesRef.child(current_guide_id + postRandomName).updateChildren(packagesMap).addOnCompleteListener(new OnCompleteListener() {

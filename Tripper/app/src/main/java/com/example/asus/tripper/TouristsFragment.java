@@ -178,7 +178,7 @@ public class TouristsFragment extends Fragment {
                            holder.setGroupmembers(packageGroupMembers);
                            holder.setStartdate(packageStartDate);
                            holder.setStarttime(packageStartTime);
-                           holder.setEnddate(packageStartDate);
+                           holder.setEnddate(packageEndDate);
                            holder.setEndtime(packageEndTime);
                            holder.setMeetpoint(packageMeetPoint);
                            holder.setLocation(packageLocation);
