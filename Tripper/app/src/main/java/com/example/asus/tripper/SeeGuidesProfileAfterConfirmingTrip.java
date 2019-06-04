@@ -85,7 +85,8 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
                     username1.setText(username);
                     phone1.setText(phone);
                     country1.setText(country);
-                    Picasso.get().load(profileimage).into(profilepic1);
+                    //Picasso.get().load(profileimage).into(profilepic1);
+                    Picasso.with(SeeGuidesProfileAfterConfirmingTrip.this).load(profileimage).into(profilepic1);
 
 
 

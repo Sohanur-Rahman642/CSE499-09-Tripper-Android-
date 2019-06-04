@@ -350,7 +350,7 @@
                 android:drawableLeft="@drawable/ic_terrain_black_24dp"
                 />
 
-            <Button
+           <!-- <Button
                 android:id="@+id/button_acceptedtrips"
                 android:layout_width="330dp"
                 android:layout_height="45dp"
@@ -364,7 +364,7 @@
                 android:textColor="#464646"
                 android:drawableRight="@drawable/ic_chevron_right_black_24dp"
                 android:drawableLeft="@drawable/ic_playlist_add_check_black_24dp"
-                />
+                />-->
 
 
             <Button

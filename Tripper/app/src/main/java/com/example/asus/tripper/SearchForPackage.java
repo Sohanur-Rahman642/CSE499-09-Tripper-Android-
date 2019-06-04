@@ -126,8 +126,11 @@ public class SearchForPackage extends AppCompatActivity {
                         holder.package_time.setText(model.getTime());
                         holder.package_price.setText(model.getPrice());
                         holder.package_group_members.setText(model.getGroupmembers());
-                        Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
-                        Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+                        //Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
+                        //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+
+                        Picasso.with(SearchForPackage.this).load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
+                        Picasso.with(SearchForPackage.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
 
                         holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
                             @Override

@@ -65,7 +65,7 @@ public class ClickPackage extends AppCompatActivity {
 
         //databaseUserId = getIntent().getExtras().get("packagekey").toString(); //this is new
 
-        //userkey= getIntent().getExtras().get("userkey").toString();
+       // userkey= getIntent().getExtras().get("userkey").toString();
 
         packagekey= getIntent().getExtras().get("packagekey").toString();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(packagekey);
@@ -129,7 +129,8 @@ public class ClickPackage extends AppCompatActivity {
                     clickmeetpoint.setText(meetpoint);
                     clickprice.setText(price);
                     clickmembers.setText(groupmembers);
-                    Picasso.get().load(packageimage).placeholder(R.drawable.hill).into(clickaddpackagepic);
+                    //Picasso.get().load(packageimage).placeholder(R.drawable.hill).into(clickaddpackagepic);
+                    Picasso.with(ClickPackage.this).load(packageimage).placeholder(R.drawable.hill).into(clickaddpackagepic);
 
                     MaintenanceOfButtons();   //this is new
 

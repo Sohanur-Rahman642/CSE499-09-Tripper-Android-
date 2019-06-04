@@ -234,7 +234,7 @@ public class AcceptedTrips extends AppCompatActivity {
         public void setPackageimage(Context ctx1, String packageimage){
 
             ImageView postimage = (ImageView) mView.findViewById(R.id.confirmed_package_image);
-            Picasso.get().load(packageimage).into(postimage);
+            Picasso.with(ctx1).load(packageimage).into(postimage);
         }
 
         public void setConfirm_type(String confirm_type){

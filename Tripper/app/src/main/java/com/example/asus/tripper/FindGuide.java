@@ -90,7 +90,8 @@ public class FindGuide extends AppCompatActivity {
                 holder.username.setText(model.getUsername());
                 holder.phone.setText(model.getPhone());
                 holder.country.setText(model.getCountry());
-                Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.profileimage);
+                //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.profileimage);
+                Picasso.with(FindGuide.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.profileimage);
 
                /* holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
                     @Override

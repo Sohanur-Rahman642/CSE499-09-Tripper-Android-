@@ -67,7 +67,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
          propic=(ImageView) v.findViewById(R.id.propic);
 
          button_mytrips=v.findViewById(R.id.button_mytrips);
-         button_acceptedtrips=v.findViewById(R.id.button_acceptedtrips);
+         //button_acceptedtrips=v.findViewById(R.id.button_acceptedtrips);
          button_settings = v.findViewById(R.id.button_settings);
 
          button_mytrips.setOnClickListener(new View.OnClickListener() {
@@ -79,14 +79,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
              }
          });
 
-         button_acceptedtrips.setOnClickListener(new View.OnClickListener() {
+        /* button_acceptedtrips.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
 
                  Intent i=new Intent(getActivity(), AcceptedTrips.class);
                  startActivity(i);
              }
-         });
+         });*/
 
          button_settings.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -104,7 +104,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
              @Override
              public void onSuccess(Uri uri) {
                  //propic.setImageURI(uri);
-                 Picasso.get().load(uri).fit().centerCrop().into(propic);
+                 //Picasso.get().load(uri).fit().centerCrop().into(propic);
+                 Picasso.with(getActivity()).load(uri).fit().centerCrop().into(propic);
              }
          });
 

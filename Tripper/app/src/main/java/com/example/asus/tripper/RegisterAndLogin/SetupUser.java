@@ -105,12 +105,12 @@ public class SetupUser extends AppCompatActivity {
 
                         String image = dataSnapshot.child("profileimage").getValue().toString();
 
-                        Picasso.get().load(image).into(setup_propic);
+                        //Picasso.get().load(image).into(setup_propic);
 
                         //Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
                        // Picasso.get().load(image).fit().centerCrop().into(setup_propic);
                         //Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
-                        //Glide.with(SetupUser.this).load(image).into(setup_propic);
+                        Picasso.with(SetupUser.this).load(image).into(setup_propic);
 
                         /*Picasso.get()
                                 .load(image)
