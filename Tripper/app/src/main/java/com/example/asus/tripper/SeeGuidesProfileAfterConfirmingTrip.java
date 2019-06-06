@@ -31,8 +31,9 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
     private FloatingActionButton message_float1;
     private CircleImageView profilepic1;
     private TextView username1, country1 , phone1, ratings1, trips1, cross_btn1;
-    private DatabaseReference databaseReference, UsersRef ;
+    private DatabaseReference databaseReference, UsersRef, tripsRef ;
     private FirebaseAuth mAuth;
+    private int countConfirmedTrips = 0;
 
     private String username, fullname, userkey, phone, country, profileimage,  packagekey , currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, saveCurrentDate  ;  //userid who is online
 
@@ -58,6 +59,7 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
 
         userkey= getIntent().getExtras().get("userkey").toString();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(userkey);
+        tripsRef = FirebaseDatabase.getInstance().getReference().child("ConfirmedPackages");
 
         message_float1 = findViewById(R.id.message_float);
         profilepic1 = findViewById(R.id.profilepic);
@@ -68,6 +70,29 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
         trips1 = findViewById(R.id.trips);
         cross_btn1 = findViewById(R.id.cross_btn);
 
+
+
+        tripsRef.child(currentUserId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()){
+
+                    countConfirmedTrips = (int)dataSnapshot.getChildrenCount();
+                    trips1.setText(Integer.toString(countConfirmedTrips));
+                }
+                else {
+
+                    trips1.setText("0");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {

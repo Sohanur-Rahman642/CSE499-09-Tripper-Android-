@@ -350,6 +350,15 @@
                 android:drawableLeft="@drawable/ic_terrain_black_24dp"
                 />
 
+
+            <TextView
+                android:id="@+id/numberoftripstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:layout_marginLeft="270dp"
+                android:textSize="13sp"/>
+
            <!-- <Button
                 android:id="@+id/button_acceptedtrips"
                 android:layout_width="330dp"
@@ -372,7 +381,7 @@
                 android:layout_width="330dp"
                 android:layout_height="45dp"
                 android:background="@drawable/button_white"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Settings"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"

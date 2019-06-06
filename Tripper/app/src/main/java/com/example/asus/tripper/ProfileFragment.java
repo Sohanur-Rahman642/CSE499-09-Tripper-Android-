@@ -39,7 +39,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
      private FirebaseAuth firebaseAuth;
      private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
-    private TextView tv_username, tv_fullname, tv_address1, tv_country, tv_phone;
+    private TextView tv_username, tv_fullname, tv_address1, tv_country, tv_phone, numberoftripstext;
+    private DatabaseReference mytripsRef;
+    private String currentUserId, packagekey;
+    private int countMyTrips = 0;
 
 
 
@@ -51,8 +54,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
          firebaseAuth=FirebaseAuth.getInstance();
+         currentUserId = firebaseAuth.getCurrentUser().getUid();
          firebaseDatabase=FirebaseDatabase.getInstance();
          firebaseStorage=FirebaseStorage.getInstance();
+
+         //packagekey= getIntent().getExtras().get("packagekey").toString();
+
+         mytripsRef = FirebaseDatabase.getInstance().getReference().child("Packages");
 
          v=inflater.inflate(R.layout.fragment_profile,container,false);
          signout= (ImageView) v.findViewById(R.id.signout);
@@ -65,19 +73,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
          tv_country=(TextView) v.findViewById(R.id.tv_country);
          tv_phone=(TextView) v.findViewById(R.id.tv_phone);
          propic=(ImageView) v.findViewById(R.id.propic);
+         numberoftripstext = v.findViewById(R.id.numberoftripstext);
+
+
+         //numberoftripstext.setVisibility(View.INVISIBLE);     //this could be removed later for counting total trips
+
 
          button_mytrips=v.findViewById(R.id.button_mytrips);
          //button_acceptedtrips=v.findViewById(R.id.button_acceptedtrips);
          button_settings = v.findViewById(R.id.button_settings);
 
-         button_mytrips.setOnClickListener(new View.OnClickListener() {
+        /* button_mytrips.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
 
                  Intent i=new Intent(getActivity(), MyTrips.class);
                  startActivity(i);
              }
-         });
+         });*/
 
         /* button_acceptedtrips.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -96,6 +109,47 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                  startActivity(i);
              }
          });
+
+
+         mytripsRef.orderByChild("gid")     //code for counting total trips
+                 .startAt(currentUserId).endAt(currentUserId + "\uf8ff")
+                 .addValueEventListener(new ValueEventListener() {
+                     @Override
+                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                         if (dataSnapshot.exists()){
+
+                             countMyTrips = (int) dataSnapshot.getChildrenCount();
+                             numberoftripstext.setText(Integer.toString(countMyTrips) + " Trips");
+
+                             button_mytrips.setOnClickListener(new View.OnClickListener() {
+                                 @Override
+                                 public void onClick(View v) {
+
+                                     Intent i=new Intent(getActivity(), MyTrips.class);
+                                     //i.putExtra("packagekey", packagekey);
+                                     startActivity(i);
+                                 }
+                             });
+                         }
+                         else {
+
+                             numberoftripstext.setText("0 Trips");
+                             button_mytrips.setOnClickListener(new View.OnClickListener() {
+                                 @Override
+                                 public void onClick(View v) {
+
+                                     Toast.makeText(getActivity(), "You have no trips to show", Toast.LENGTH_SHORT).show();
+                                 }
+                             });
+                         }
+                     }
+
+                     @Override
+                     public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                     }
+                 });             //up to this(counting total trips)
 
          final DatabaseReference databaseReference=firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 

@@ -24,7 +24,8 @@
             android:parentActivityName=".MyToursForGuide"></activity>
         <activity android:name=".Settings" />
         <activity android:name=".AcceptedTrips" />
-        <activity android:name=".MyTrips" />
+        <activity android:name=".MyTrips"
+            android:parentActivityName=".MyToursForGuide"/>
         <activity
             android:name=".SeeGuidesProfileAfterConfirmingTrip"
             android:theme="@style/AppTheme.CustomTheme" />
