@@ -34,6 +34,7 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
     private DatabaseReference databaseReference, UsersRef, tripsRef ;
     private FirebaseAuth mAuth;
     private int countConfirmedTrips = 0;
+    private Button btn_ratings;
 
     private String username, fullname, userkey, phone, country, profileimage,  packagekey , currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, saveCurrentDate  ;  //userid who is online
 
@@ -69,6 +70,8 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
         ratings1 = findViewById(R.id.ratings);
         trips1 = findViewById(R.id.trips);
         cross_btn1 = findViewById(R.id.cross_btn);
+
+        btn_ratings = findViewById(R.id.btn_ratings);
 
 
 
@@ -157,6 +160,16 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
                         public void onClick(View v) {
 
                             Intent i= new Intent(SeeGuidesProfileAfterConfirmingTrip.this, Message.class);
+                            i.putExtra("userkey", userkey);
+                            startActivity(i);
+                        }
+                    });
+
+                    btn_ratings.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Intent i= new Intent(SeeGuidesProfileAfterConfirmingTrip.this, Ratings.class);
                             i.putExtra("userkey", userkey);
                             startActivity(i);
                         }
