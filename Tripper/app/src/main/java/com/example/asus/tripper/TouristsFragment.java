@@ -24,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import com.squareup.picasso.Picasso;
@@ -136,6 +137,8 @@ public class TouristsFragment extends Fragment {
 
     private void DisplayConfirmedTrips() {
 
+        //Query myTripsQuery = confirmedTripsRef.orderByChild("counter");
+
         FirebaseRecyclerOptions<ConfirmedTripsModel> options =
                 new FirebaseRecyclerOptions.Builder<ConfirmedTripsModel>()
                         .setQuery(confirmedTripsRef, ConfirmedTripsModel.class)
@@ -146,11 +149,11 @@ public class TouristsFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull final confirmedTripsViewHolder holder, int position, @NonNull ConfirmedTripsModel model) {
 
-                holder.setConfirm_type(model.getConfirm_type());
+                holder.setConfirm_type_user(model.getConfirm_type_user());
 
                 final String usersId = getRef(position).getKey();
 
-                usersRef.child(usersId).addValueEventListener(new ValueEventListener() {
+                usersRef.child(usersId).addValueEventListener(new ValueEventListener() {    //userId before
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -162,13 +165,14 @@ public class TouristsFragment extends Fragment {
                             final String packageDate = dataSnapshot.child("date").getValue().toString();
                             final String packagePrice = dataSnapshot.child("price").getValue().toString();
                             final String packageGroupMembers = dataSnapshot.child("groupmembers").getValue().toString();
-                            final String packageStartDate = dataSnapshot.child("startdate").getValue().toString();
+                            final String packageTime = dataSnapshot.child("time").getValue().toString();
+                           /* final String packageStartDate = dataSnapshot.child("startdate").getValue().toString();
                             final String packageStartTime = dataSnapshot.child("starttime").getValue().toString();
                             final String packageEndDate = dataSnapshot.child("enddate").getValue().toString();
                             final String packageEndTime = dataSnapshot.child("endtime").getValue().toString();
                             final String packageMeetPoint = dataSnapshot.child("meetpoint").getValue().toString();
-                            final String packageLocation = dataSnapshot.child("location").getValue().toString();
-                            //final String packageProfileImage = dataSnapshot.child("profileimage").getValue().toString();
+                            final String packageLocation = dataSnapshot.child("location").getValue().toString();*/
+                            final String packageProfileImage = dataSnapshot.child("profileimage").getValue().toString();
 
                            holder.setPackagename(packageName);
                            holder.setPackageimage(getActivity().getApplicationContext(), packageImage);
@@ -176,13 +180,15 @@ public class TouristsFragment extends Fragment {
                            holder.setDate(packageDate);
                            holder.setPrice(packagePrice);
                            holder.setGroupmembers(packageGroupMembers);
-                           holder.setStartdate(packageStartDate);
+                           holder.setTime(packageTime);
+                          /* holder.setStartdate(packageStartDate);
                            holder.setStarttime(packageStartTime);
                            holder.setEnddate(packageEndDate);
                            holder.setEndtime(packageEndTime);
                            holder.setMeetpoint(packageMeetPoint);
-                           holder.setLocation(packageLocation);
-                          // holder.setProfileimage(getActivity().getApplicationContext(), packageProfileImage);
+                           holder.setLocation(packageLocation);*/
+                           holder.setProfileimage(getActivity().getApplicationContext(), packageProfileImage);
+
 
 
 
@@ -194,6 +200,8 @@ public class TouristsFragment extends Fragment {
 
                     }
                 });
+
+
 
                 //final String userkey = getRef(position).getKey();
 
@@ -245,7 +253,7 @@ public class TouristsFragment extends Fragment {
             @Override
             public confirmedTripsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_confirmed_packages_layout,viewGroup,false);
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_packages_layout,viewGroup,false);
 
                 TouristsFragment.confirmedTripsViewHolder viewHolder = new TouristsFragment.confirmedTripsViewHolder(view);
                 return viewHolder;
@@ -282,53 +290,59 @@ public class TouristsFragment extends Fragment {
 
 
         public void setFullname(String fullname){
-            TextView name = (TextView)mView.findViewById(R.id.confirmed_username);
+            TextView name = (TextView)mView.findViewById(R.id.package_user_name);
             name.setText(fullname);
         }
 
-       /* public void setProfileimage(Context ctx, String profileimage){
+        public void setProfileimage(Context ctx, String profileimage){
 
             CircleImageView image = (CircleImageView) mView.findViewById(R.id.package_profile_image);
-            Picasso.get().load(profileimage).into(image);
-        }*/
+            Picasso.with(ctx).load(profileimage).placeholder(R.drawable.userpic).fit().centerCrop().into(image);
+        }
 
         public void setPackageimage(Context ctx1, String packageimage){
 
-            ImageView postimage = (ImageView) mView.findViewById(R.id.confirmed_package_image);
-            Picasso.with(ctx1).load(packageimage).into(postimage);
+            ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
+            Picasso.with(ctx1).load(packageimage).placeholder(R.drawable.hill).fit().centerCrop().into(postimage);
         }
 
-        public void setConfirm_type(String confirm_type){
+        public void setConfirm_type_user(String confirm_type_user){
 
             Button confirmType=(Button) mView.findViewById(R.id.confirmed_text);
-            confirmType.setText(""+confirm_type);
+            confirmType.setText(""+confirm_type_user);
         }
 
         public void setDate(String date){
 
-            TextView postdate = (TextView) mView.findViewById(R.id.confirmed_date);
+            TextView postdate = (TextView) mView.findViewById(R.id.package_date);
             postdate.setText(" "+date);
         }
 
         public void setPackagename(String packagename){
 
-            TextView postname = (TextView) mView.findViewById(R.id.confirmed_package_name);
+            TextView postname = (TextView) mView.findViewById(R.id.package_name);
             postname.setText(packagename);
         }
 
         public void setPrice(String price){
 
-            TextView postprice = (TextView) mView.findViewById(R.id.confirmed_package_price);
+            TextView postprice = (TextView) mView.findViewById(R.id.package_price);
             postprice.setText(price);
         }
 
         public void setGroupmembers(String groupmembers){
 
-            TextView postgroup = (TextView) mView.findViewById(R.id.confirmed_group_members);
+            TextView postgroup = (TextView) mView.findViewById(R.id.package_group_members);
             postgroup.setText(groupmembers);
         }
 
-        public void setStartdate(String startdate){
+        public void setTime(String time){
+
+            TextView posttime = (TextView) mView.findViewById(R.id.package_time);
+            posttime.setText(time);
+        }
+
+       /* public void setStartdate(String startdate){
 
             TextView poststartdate = (TextView) mView.findViewById(R.id.confirmed_start_date);
             poststartdate.setText(startdate);
@@ -362,6 +376,6 @@ public class TouristsFragment extends Fragment {
 
             TextView postlocation = (TextView) mView.findViewById(R.id.confirmed_location);
             postlocation.setText(location);
-        }
+        }*/
     }
 }

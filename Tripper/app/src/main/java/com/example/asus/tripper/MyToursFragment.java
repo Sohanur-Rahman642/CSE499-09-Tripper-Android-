@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class MyToursFragment extends Fragment  {
     private RecyclerView packages_recycle;
 
     private DatabaseReference packagesRef;
+    private Button confirmed_text;
     //private Query query;
 
 
@@ -61,6 +63,9 @@ public class MyToursFragment extends Fragment  {
         linearLayoutManager .setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         packages_recycle.setLayoutManager(linearLayoutManager);
+
+        //confirmed_text=v.findViewById(R.id.confirmed_text);
+        //confirmed_text.setVisibility(View.INVISIBLE);
 
         SearchButton = (ImageView) v.findViewById(R.id.searchbtn_for_mytours);
         //SearchInputText = (EditText) v.findViewById(R.id.search_box1);
@@ -139,8 +144,7 @@ public class MyToursFragment extends Fragment  {
 
                         final String userkey = getRef(position).getKey();
 
-
-
+                        holder.confirmed_text.setVisibility(View.INVISIBLE);
 
                         holder.package_user_name.setText(model.getFullname());
                         holder.package_name.setText(model.getPackagename());
@@ -214,6 +218,7 @@ public class MyToursFragment extends Fragment  {
         TextView package_user_name, package_date, package_time, package_name, package_price, package_group_members;
         CircleImageView package_profile_image;
         ImageView package_image;
+        Button confirmed_text;
 
 
         public PackageViewHolder(@NonNull View itemView) {
@@ -229,6 +234,7 @@ public class MyToursFragment extends Fragment  {
             package_group_members = itemView.findViewById(R.id.package_group_members);
             package_profile_image = itemView.findViewById(R.id.package_profile_image);
             package_image = itemView.findViewById(R.id.package_image);
+            confirmed_text = itemView.findViewById(R.id.confirmed_text);
         }
 
       /*  public void setFullname(String fullname){

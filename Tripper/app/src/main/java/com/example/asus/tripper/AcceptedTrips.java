@@ -20,15 +20,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AcceptedTrips extends AppCompatActivity {
 
     private RecyclerView accepted_trips_recycle;
-    private DatabaseReference acceptedTripsRef, usersRef;
+    private DatabaseReference confirmedTripsRef, usersRef;
     private FirebaseAuth mAuth;
-    private String online_user_id, databaseUserId;
+    private String online_user_id, packagekey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +40,56 @@ public class AcceptedTrips extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         online_user_id = mAuth.getCurrentUser().getUid();
-        acceptedTripsRef = FirebaseDatabase.getInstance().getReference().child("ConfirmedPackages").child(online_user_id);
+        confirmedTripsRef = FirebaseDatabase.getInstance().getReference().child("ConfirmedPackages").child(online_user_id);
         usersRef = FirebaseDatabase.getInstance().getReference().child("Packages");  //it could be users in bracket
-
-        /*databaseUserId = getIntent().getExtras().get("gid").toString();*/  //gid
+        packagekey= getIntent().getExtras().get("packagekey").toString();
 
         accepted_trips_recycle = findViewById(R.id.accepted_trips_recycle);
+
+
+       /* confirmed_trips = v.findViewById(R.id.confirmed_trips_text);    // new
+        accepted_trips = v.findViewById(R.id.accepted_trips_text);
+        viewPager = v.findViewById(R.id.viewpager_for_confirmed);       //upto this*/
+
+
+       /* pagerViewAdapter = new PagerViewAdapter(getActivity().getSupportFragmentManager());    //new
+
+        viewPager.setAdapter(pagerViewAdapter);
+
+        confirmed_trips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                viewPager.setCurrentItem(0);
+            }
+        });
+
+        accepted_trips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                viewPager.setCurrentItem(1);
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+                onChangeTab(i);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });                                                                 //upto this*/
 
         accepted_trips_recycle.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(AcceptedTrips.this);
@@ -50,78 +97,88 @@ public class AcceptedTrips extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         accepted_trips_recycle.setLayoutManager(linearLayoutManager);
 
-        DisplayAcceptedTrips();
+        DisplayConfirmedTrips();
+
+
     }
 
-    private void DisplayAcceptedTrips() {
+   /* private void onChangeTab(int i) {                            //new
+
+        if (i == 0){
+
+            confirmed_trips.setTextSize(25);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.brightcolor));   //need api 23
+
+            accepted_trips.setTextSize(20);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.lightcolor));
+        }
+
+        if (i == 1){
+
+            confirmed_trips.setTextSize(20);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.lightcolor));   //need api 23
+
+            accepted_trips.setTextSize(25);
+            //confirmed_trips.setTextColor(getActivity().getColor(R.color.brightcolor));
+        }
+    }                                    //upto this*/
+
+    private void DisplayConfirmedTrips() {
+
+
+        Query myTripsQuery = confirmedTripsRef.orderByChild("confirm_type_guide")
+                .startAt(online_user_id).endAt( packagekey + "\uf8ff");
 
         FirebaseRecyclerOptions<ConfirmedTripsModel> options =
                 new FirebaseRecyclerOptions.Builder<ConfirmedTripsModel>()
-                        .setQuery(acceptedTripsRef, ConfirmedTripsModel.class)
+                        .setQuery(myTripsQuery, ConfirmedTripsModel.class)
                         .build();
 
-        FirebaseRecyclerAdapter<ConfirmedTripsModel, AcceptedTrips.acceptedTripsViewHolder> firebaseRecyclerAdapter
-                = new FirebaseRecyclerAdapter<ConfirmedTripsModel, AcceptedTrips.acceptedTripsViewHolder>(options) {
+        FirebaseRecyclerAdapter<ConfirmedTripsModel, TouristsFragment.confirmedTripsViewHolder> firebaseRecyclerAdapter
+                = new FirebaseRecyclerAdapter<ConfirmedTripsModel, TouristsFragment.confirmedTripsViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final AcceptedTrips.acceptedTripsViewHolder holder, int position, @NonNull ConfirmedTripsModel model) {
+            protected void onBindViewHolder(@NonNull final TouristsFragment.confirmedTripsViewHolder holder, int position, @NonNull ConfirmedTripsModel model) {
 
-                holder.setConfirm_type(model.getConfirm_type());
+                holder.setConfirm_type_user(model.getConfirm_type_user());
 
                 final String usersId = getRef(position).getKey();
 
-                usersRef.child(usersId).addValueEventListener(new ValueEventListener() {
+                usersRef.child(usersId).addValueEventListener(new ValueEventListener() {    //userId before
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         if (dataSnapshot.exists()){
 
-                                final String packageName = dataSnapshot.child("packagename").getValue().toString();
-                                final String packageImage = dataSnapshot.child("packageimage").getValue().toString();
-                                //final String packageFullname = dataSnapshot.child("fullname").getValue().toString();
-                                final String packageDate = dataSnapshot.child("date").getValue().toString();
-                                final String packagePrice = dataSnapshot.child("price").getValue().toString();
-                                final String packageGroupMembers = dataSnapshot.child("groupmembers").getValue().toString();
-                                final String packageStartDate = dataSnapshot.child("startdate").getValue().toString();
-                                final String packageStartTime = dataSnapshot.child("starttime").getValue().toString();
-                                final String packageEndDate = dataSnapshot.child("enddate").getValue().toString();
-                                final String packageEndTime = dataSnapshot.child("endtime").getValue().toString();
-                                final String packageMeetPoint = dataSnapshot.child("meetpoint").getValue().toString();
-                                final String packageLocation = dataSnapshot.child("location").getValue().toString();
-                                //final String packageProfileImage = dataSnapshot.child("profileimage").getValue().toString();
-                                //final String databaseUserId = dataSnapshot.child("gid").getValue().toString();     //new
+                            final String packageName = dataSnapshot.child("packagename").getValue().toString();
+                            final String packageImage = dataSnapshot.child("packageimage").getValue().toString();
+                            final String packageFullname= dataSnapshot.child("fullname").getValue().toString();
+                            final String packageDate = dataSnapshot.child("date").getValue().toString();
+                            final String packagePrice = dataSnapshot.child("price").getValue().toString();
+                            final String packageGroupMembers = dataSnapshot.child("groupmembers").getValue().toString();
+                            final String packageTime = dataSnapshot.child("time").getValue().toString();
+                           /* final String packageStartDate = dataSnapshot.child("startdate").getValue().toString();
+                            final String packageStartTime = dataSnapshot.child("starttime").getValue().toString();
+                            final String packageEndDate = dataSnapshot.child("enddate").getValue().toString();
+                            final String packageEndTime = dataSnapshot.child("endtime").getValue().toString();
+                            final String packageMeetPoint = dataSnapshot.child("meetpoint").getValue().toString();
+                            final String packageLocation = dataSnapshot.child("location").getValue().toString();*/
+                            final String packageProfileImage = dataSnapshot.child("profileimage").getValue().toString();
 
-                                holder.setPackagename(packageName);
-                                holder.setPackageimage(getApplicationContext(), packageImage);
-                                //holder.setFullname(packageFullname);
-                                holder.setDate(packageDate);
-                                holder.setPrice(packagePrice);
-                                holder.setGroupmembers(packageGroupMembers);
-                                holder.setStartdate(packageStartDate);
-                                holder.setStarttime(packageStartTime);
-                                holder.setEnddate(packageEndDate);
-                                holder.setEndtime(packageEndTime);
-                                holder.setMeetpoint(packageMeetPoint);
-                                holder.setLocation(packageLocation);
-                                // holder.setProfileimage(getActivity().getApplicationContext(), packageProfileImage);
+                            holder.setPackagename(packageName);
+                            holder.setPackageimage(AcceptedTrips.this.getApplicationContext(), packageImage);
+                            holder.setFullname(packageFullname);
+                            holder.setDate(packageDate);
+                            holder.setPrice(packagePrice);
+                            holder.setGroupmembers(packageGroupMembers);
+                            holder.setTime(packageTime);
+                          /* holder.setStartdate(packageStartDate);
+                           holder.setStarttime(packageStartTime);
+                           holder.setEnddate(packageEndDate);
+                           holder.setEndtime(packageEndTime);
+                           holder.setMeetpoint(packageMeetPoint);
+                           holder.setLocation(packageLocation);*/
+                            holder.setProfileimage(AcceptedTrips.this.getApplicationContext(), packageProfileImage);
 
-
-
-
-
-                           /* if (online_user_id.equals(databaseUserId)) {
-
-
-                                deletepackagebtn.setVisibility(View.VISIBLE);
-                                deletepackagebtn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                                editpackagebtn.setVisibility(View.VISIBLE);
-                                confirm_package_btn.setVisibility(View.INVISIBLE);
-                                cancel_package_btn.setVisibility(View.INVISIBLE);
-
-
-
-
-
-                            }*/
 
 
                         }
@@ -181,11 +238,11 @@ public class AcceptedTrips extends AppCompatActivity {
 
             @NonNull
             @Override
-            public AcceptedTrips.acceptedTripsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            public TouristsFragment.confirmedTripsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_confirmed_packages_layout,viewGroup,false);
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_packages_layout,viewGroup,false);
 
-                AcceptedTrips.acceptedTripsViewHolder viewHolder = new AcceptedTrips.acceptedTripsViewHolder(view);
+                TouristsFragment.confirmedTripsViewHolder viewHolder = new TouristsFragment.confirmedTripsViewHolder(view);
                 return viewHolder;
             }
         };
@@ -194,8 +251,7 @@ public class AcceptedTrips extends AppCompatActivity {
         accepted_trips_recycle.setAdapter(firebaseRecyclerAdapter);
     }
 
-
-    public static class acceptedTripsViewHolder extends RecyclerView.ViewHolder{
+    public static class confirmedTripsViewHolder extends RecyclerView.ViewHolder{
 
         View mView;
 
@@ -203,7 +259,7 @@ public class AcceptedTrips extends AppCompatActivity {
         CircleImageView package_profile_image;
         ImageView package_image;*/
 
-        public acceptedTripsViewHolder(@NonNull View itemView) {
+        public confirmedTripsViewHolder(@NonNull View itemView) {
 
             super(itemView);
 
@@ -220,54 +276,60 @@ public class AcceptedTrips extends AppCompatActivity {
         }
 
 
-       /* public void setFullname(String fullname){
-            TextView name = (TextView)mView.findViewById(R.id.confirmed_username);
+        public void setFullname(String fullname){
+            TextView name = (TextView)mView.findViewById(R.id.package_user_name);
             name.setText(fullname);
-        }*/
+        }
 
-       /* public void setProfileimage(Context ctx, String profileimage){
+        public void setProfileimage(Context ctx, String profileimage){
 
             CircleImageView image = (CircleImageView) mView.findViewById(R.id.package_profile_image);
-            Picasso.get().load(profileimage).into(image);
-        }*/
+            Picasso.with(ctx).load(profileimage).placeholder(R.drawable.userpic).fit().centerCrop().into(image);
+        }
 
         public void setPackageimage(Context ctx1, String packageimage){
 
-            ImageView postimage = (ImageView) mView.findViewById(R.id.confirmed_package_image);
-            Picasso.with(ctx1).load(packageimage).into(postimage);
+            ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
+            Picasso.with(ctx1).load(packageimage).placeholder(R.drawable.hill).fit().centerCrop().into(postimage);
         }
 
-        public void setConfirm_type(String confirm_type){
+        public void setConfirm_type_user(String confirm_type_user){
 
             Button confirmType=(Button) mView.findViewById(R.id.confirmed_text);
-            confirmType.setText(""+confirm_type);
+            confirmType.setText(""+confirm_type_user);
         }
 
         public void setDate(String date){
 
-            TextView postdate = (TextView) mView.findViewById(R.id.confirmed_date);
+            TextView postdate = (TextView) mView.findViewById(R.id.package_date);
             postdate.setText(" "+date);
         }
 
         public void setPackagename(String packagename){
 
-            TextView postname = (TextView) mView.findViewById(R.id.confirmed_package_name);
+            TextView postname = (TextView) mView.findViewById(R.id.package_name);
             postname.setText(packagename);
         }
 
         public void setPrice(String price){
 
-            TextView postprice = (TextView) mView.findViewById(R.id.confirmed_package_price);
+            TextView postprice = (TextView) mView.findViewById(R.id.package_price);
             postprice.setText(price);
         }
 
         public void setGroupmembers(String groupmembers){
 
-            TextView postgroup = (TextView) mView.findViewById(R.id.confirmed_group_members);
+            TextView postgroup = (TextView) mView.findViewById(R.id.package_group_members);
             postgroup.setText(groupmembers);
         }
 
-        public void setStartdate(String startdate){
+        public void setTime(String time){
+
+            TextView posttime = (TextView) mView.findViewById(R.id.package_time);
+            posttime.setText(time);
+        }
+
+       /* public void setStartdate(String startdate){
 
             TextView poststartdate = (TextView) mView.findViewById(R.id.confirmed_start_date);
             poststartdate.setText(startdate);
@@ -301,7 +363,7 @@ public class AcceptedTrips extends AppCompatActivity {
 
             TextView postlocation = (TextView) mView.findViewById(R.id.confirmed_location);
             postlocation.setText(location);
-        }
+        }*/
     }
 
 }

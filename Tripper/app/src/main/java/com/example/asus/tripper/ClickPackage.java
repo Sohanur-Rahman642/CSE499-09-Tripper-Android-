@@ -36,7 +36,7 @@ public class ClickPackage extends AppCompatActivity {
     private ImageButton back_button_for_adding_packages1;
     private TextView clickpackagename, clickdetail, clickstartdate, clickenddate, clickstarttime, clickendtime, clicklocation, clickmeetpoint, clickprice, clickmembers;
     private Button  deletepackagebtn, confirm_package_btn, cancel_package_btn;
-    private DatabaseReference databaseReference, UsersRef, confirmRef, tripRef ;
+    private DatabaseReference databaseReference, UsersRef, confirmRef, tripRef , databaseReference2;
     private FirebaseAuth mAuth;
 
     private String packagekey , userkey, currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, databaseUserId2, saveCurrentDate, details, packagename,packageimage, startdate,enddate,starttime,endtime,location,price,groupmembers, meetpoint;  //userid who is online
@@ -69,6 +69,7 @@ public class ClickPackage extends AppCompatActivity {
 
         packagekey= getIntent().getExtras().get("packagekey").toString();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(packagekey);
+        //databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Packages").child("fullname");
         confirmRef = FirebaseDatabase.getInstance().getReference().child("ConfirmedPackages");             //this is new
         tripRef = FirebaseDatabase.getInstance().getReference().child("Trips");    //this is new
 
@@ -381,9 +382,10 @@ public class ClickPackage extends AppCompatActivity {
 
                         if (dataSnapshot.hasChild(packagekey)){    //previously databaseUserId in bracket
 
-                            String confirm_type = dataSnapshot.child(packagekey).child("confirm_type").getValue().toString();
+                            String confirm_type_user = dataSnapshot.child(packagekey).child("confirm_type_user").getValue().toString();
+                            //String confirm_type_guide = dataSnapshot.child(packagekey).child("confirm_type_guide").getValue().toString();
 
-                            if (confirm_type.equals("confirmed at "+saveCurrentDate)){
+                            if (confirm_type_user.equals("confirmed at "+saveCurrentDate)){
 
                                 CURRENT_STATE = "confirmation_sent";
                                 confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
@@ -406,7 +408,7 @@ public class ClickPackage extends AppCompatActivity {
 
 
                             }
-                            else if (confirm_type.equals("requested by "+currentUserId)){     //for receiver if accept or decline
+                            /*else if (confirm_type_guide.equals("requested by "+currentUserId)){     //for receiver if accept or decline
 
                                 CURRENT_STATE = "confirmation_receive";
                                 confirm_package_btn.setEnabled(false);                //new added, was not before
@@ -415,15 +417,15 @@ public class ClickPackage extends AppCompatActivity {
 
 
 
-                                /*deletepackagebtn.setEnabled(false);              //new added
+                                deletepackagebtn.setEnabled(false);              //new added
                                 deletepackagebtn.setVisibility(View.INVISIBLE);   //new added
-                                deletepackagebtn.setText("Decline Request");    //new added*/
+                                deletepackagebtn.setText("Decline Request");    //new added
 
                                 cancel_package_btn.setVisibility(View.INVISIBLE);  //before it was visible
                                 cancel_package_btn.setEnabled(false);  //before it was false
 
 
-                            }
+                            }*/
 
 
                            /* else if (confirm_type.equals("trips_accepted")){     //for receiver if accept or decline
@@ -447,6 +449,7 @@ public class ClickPackage extends AppCompatActivity {
 
                             }*/
                         }
+
                     }
 
                     @Override
@@ -470,7 +473,7 @@ public class ClickPackage extends AppCompatActivity {
 
 
         confirmRef.child(currentUserId).child(packagekey)
-                .child("confirm_type").setValue("confirmed at "+saveCurrentDate)
+                .child("confirm_type_user").setValue("confirmed at "+saveCurrentDate)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -478,7 +481,7 @@ public class ClickPackage extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             confirmRef.child(databaseUserId).child(packagekey)
-                                    .child("confirm_type").setValue("requested by "+currentUserId)
+                                    .child("confirm_type_user").setValue("requested by "+currentUserId)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

@@ -42,7 +42,7 @@
                     android:textStyle="bold"/>
 
 
-                    <Button
+                    <!--<Button
                         android:id="@+id/confirmed_text"
                         android:layout_width="110dp"
                         android:layout_height="20dp"
@@ -51,7 +51,7 @@
                         android:text="Confirmed at 20-may-2019"
                         android:textColor="@color/white"
                         android:textSize="8sp"
-                        android:textAllCaps="false"/>
+                        android:textAllCaps="false"/>-->
 
                 </LinearLayout>
 

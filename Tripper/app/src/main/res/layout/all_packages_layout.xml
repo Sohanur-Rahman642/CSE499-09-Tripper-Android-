@@ -88,6 +88,18 @@
                             />
 
 
+                        <Button
+                            android:id="@+id/confirmed_text"
+                            android:layout_width="110dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/green_button"
+                            android:text="Confirmed at dd-mm-year"
+                            android:textColor="@color/white"
+                            android:textSize="8sp"
+                            android:textAllCaps="false"/>
+
+
                     </LinearLayout>
 
                 </LinearLayout>

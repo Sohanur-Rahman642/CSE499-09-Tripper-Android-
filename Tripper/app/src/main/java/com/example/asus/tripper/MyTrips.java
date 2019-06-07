@@ -1,5 +1,6 @@
 package com.example.asus.tripper;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -79,7 +81,7 @@ public class MyTrips extends AppCompatActivity {
                 final String userkey = getRef(position).getKey();
 
 
-
+                holder.confirmed_text.setVisibility(View.INVISIBLE);
 
                 holder.package_user_name.setText(model.getFullname());
                 holder.package_name.setText(model.getPackagename());
@@ -93,6 +95,36 @@ public class MyTrips extends AppCompatActivity {
                 Picasso.with(MyTrips.this).load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
                 Picasso.with(MyTrips.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
 
+
+                holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent clickpackageIntent = new Intent(MyTrips.this, ClickPackage.class);
+                        clickpackageIntent.putExtra("packagekey", packagekey);
+                        startActivity(clickpackageIntent);
+                    }
+                });
+
+               /* holder.package_user_name.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent clickusernameIntent = new Intent(MyTrips.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                        clickusernameIntent.putExtra("userkey", userkey);
+                        startActivity(clickusernameIntent);
+                    }
+                });*/
+
+                holder.package_name.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent clickpackagenameIntent = new Intent(MyTrips.this, ClickPackage.class);
+                        clickpackagenameIntent.putExtra("packagekey", packagekey);
+                        startActivity(clickpackagenameIntent);
+                    }
+                });
 
             }
 
@@ -123,6 +155,7 @@ public class MyTrips extends AppCompatActivity {
         TextView package_user_name, package_date, package_time, package_name, package_price, package_group_members;
         CircleImageView package_profile_image;
         ImageView package_image;
+        Button confirmed_text;
 
         public MyTripsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -137,6 +170,7 @@ public class MyTrips extends AppCompatActivity {
             package_group_members = itemView.findViewById(R.id.package_group_members);
             package_profile_image = itemView.findViewById(R.id.package_profile_image);
             package_image = itemView.findViewById(R.id.package_image);
+            confirmed_text = itemView.findViewById(R.id.confirmed_text);
         }
     }
 }

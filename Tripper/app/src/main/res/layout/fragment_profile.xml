@@ -364,7 +364,7 @@
                 android:layout_width="330dp"
                 android:layout_height="45dp"
                 android:background="@drawable/button_white"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Accepted Trips"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
@@ -374,6 +374,14 @@
                 android:drawableRight="@drawable/ic_chevron_right_black_24dp"
                 android:drawableLeft="@drawable/ic_playlist_add_check_black_24dp"
                 />-->
+
+           <!-- <TextView
+                android:id="@+id/numberofacceptedtripstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:layout_marginLeft="270dp"
+                android:textSize="13sp"/>-->
 
 
             <Button

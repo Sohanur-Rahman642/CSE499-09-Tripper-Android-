@@ -72,7 +72,7 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
 
 
 
-        tripsRef.child(currentUserId).addValueEventListener(new ValueEventListener() {
+        tripsRef.child(currentUserId).addValueEventListener(new ValueEventListener() {    //at first only child(currentUserId)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
