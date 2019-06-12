@@ -59,7 +59,9 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
         //databaseUserId = getIntent().getExtras().get("packagekey").toString(); //this is new
 
         userkey= getIntent().getExtras().get("userkey").toString();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(userkey);
+        //databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(userkey);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userkey);
         tripsRef = FirebaseDatabase.getInstance().getReference().child("ConfirmedPackages");
 
         message_float1 = findViewById(R.id.message_float);
@@ -104,11 +106,13 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
 
                 if (dataSnapshot.exists()) {  //for validation
 
-                    username = dataSnapshot.child("fullname").getValue().toString();
+                    //username = dataSnapshot.child("fullname").getValue().toString();
+
+                    username = dataSnapshot.child("username").getValue().toString();
                     phone = dataSnapshot.child("phone").getValue().toString();
                     country = dataSnapshot.child("country").getValue().toString();
                     profileimage = dataSnapshot.child("profileimage").getValue().toString();
-                    databaseUserId = dataSnapshot.child("gid").getValue().toString();
+                    //databaseUserId = dataSnapshot.child("gid").getValue().toString();
 
                     username1.setText(username);
                     phone1.setText(phone);

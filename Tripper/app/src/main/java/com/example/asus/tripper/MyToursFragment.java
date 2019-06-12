@@ -42,7 +42,7 @@ public class MyToursFragment extends Fragment  {
 
     private RecyclerView packages_recycle;
 
-    private DatabaseReference packagesRef;
+    private DatabaseReference packagesRef, usersRef;
     private Button confirmed_text;
     //private Query query;
 
@@ -55,6 +55,10 @@ public class MyToursFragment extends Fragment  {
 
         mAuth=FirebaseAuth.getInstance();
         packagesRef = FirebaseDatabase.getInstance().getReference().child("Packages");
+
+        //userkey= getIntent().getExtras().get("userkey").toString();
+
+        //packagesRef = FirebaseDatabase.getInstance().getReference().child("Users");     //newly added
         //query=FirebaseDatabase.getInstance().getReference().child("Packages");
 
         packages_recycle = (RecyclerView) v.findViewById(R.id.packages_recycle);
@@ -142,7 +146,9 @@ public class MyToursFragment extends Fragment  {
 
                         final String packagekey = getRef(position).getKey();
 
-                        final String userkey = getRef(position).getKey();
+                        //final String userkey = getRef(position).getKey();
+                        //final String userkey= getIntent().getExtras().get("userkey").toString();
+
 
                         holder.confirmed_text.setVisibility(View.INVISIBLE);
 
@@ -168,7 +174,7 @@ public class MyToursFragment extends Fragment  {
                             }
                         });
 
-                        holder.package_user_name.setOnClickListener(new View.OnClickListener() {
+                       /* holder.package_user_name.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
@@ -176,7 +182,7 @@ public class MyToursFragment extends Fragment  {
                                 clickusernameIntent.putExtra("userkey", userkey);
                                 startActivity(clickusernameIntent);
                             }
-                        });
+                        });*/
 
                         holder.package_name.setOnClickListener(new View.OnClickListener() {
                             @Override

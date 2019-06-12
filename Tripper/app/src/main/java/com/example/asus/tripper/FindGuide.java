@@ -82,7 +82,7 @@ public class FindGuide extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull FindGuidesViewHolder holder, int position, @NonNull FindGuideModel model) {
 
-                final String guidekey = getRef(position).getKey();
+                final String userkey = getRef(position).getKey();
 
 
 
@@ -102,6 +102,18 @@ public class FindGuide extends AppCompatActivity {
                         startActivity(clickpackageIntent);
                     }
                 });*/
+
+                holder.username.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent clickusernameIntent = new Intent(FindGuide.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                        clickusernameIntent.putExtra("userkey", userkey);
+                        startActivity(clickusernameIntent);
+                    }
+                });
+
+
             }
 
             @NonNull
