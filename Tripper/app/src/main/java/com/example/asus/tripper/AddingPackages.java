@@ -2,7 +2,9 @@ package com.example.asus.tripper;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -15,7 +17,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.asus.tripper.RegisterAndLogin.SetupUser;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +31,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -48,10 +53,10 @@ public class AddingPackages extends AppCompatActivity {
     private String price;
     private String meetpoint;
     private String group_members;
-    private String package_name;
+    private String package_name , packagekey;
 
     private StorageReference postimagesreference;
-    private DatabaseReference guidesRef, packagesRef;
+    private DatabaseReference guidesRef, packagesRef, usersRef;
     private FirebaseAuth mAuth;
 
     private String saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, current_guide_id;
@@ -83,8 +88,11 @@ public class AddingPackages extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         current_guide_id=mAuth.getCurrentUser().getUid();
 
+        //packagekey= getIntent().getExtras().get("packagekey").toString();
+
          postimagesreference= FirebaseStorage.getInstance().getReference();
          guidesRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        //usersRef= FirebaseDatabase.getInstance().getReference().child("Users").child(current_guide_id);
         packagesRef= FirebaseDatabase.getInstance().getReference().child("Packages");
 
         back_button_for_adding_packages=findViewById(R.id.back_button_for_adding_packages);
@@ -206,9 +214,41 @@ public class AddingPackages extends AppCompatActivity {
         postRandomName = saveCurrentDate + saveCurrentTime;
 
 
-        StorageReference filepath = postimagesreference.child("Package Images").child(ImageUri.getLastPathSegment() + postRandomName + ".jpg");
+       final StorageReference filepath = postimagesreference.child("Package Images").child(ImageUri.getLastPathSegment() + postRandomName + ".jpg");
 
-        filepath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+        filepath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                 filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        final String downloadUrl = uri.toString();
+                        packagesRef.child(current_guide_id + postRandomName).child("packageimage").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    //Toast.makeText(getApplicationContext(),"Image save in Database Successfully...",Toast.LENGTH_SHORT).show();
+                                    //loadingBar.dismiss();
+                                    Toast.makeText(AddingPackages.this, "Package is created successfully", Toast.LENGTH_SHORT).show();
+                                    //loadingBar.dismiss();
+                                    SavingPackageInformationToDatabase();
+                                }
+                                else{
+                                    //String message = task.getException().toString();
+                                    //Toast.makeText(getApplicationContext(),"Error:"+message,Toast.LENGTH_SHORT).show();
+                                    //loadingBar.dismiss();
+                                    String message = task.getException().getMessage();
+                                    Toast.makeText(AddingPackages.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                                    //loadingBar.dismiss();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        /*filepath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
@@ -225,7 +265,7 @@ public class AddingPackages extends AppCompatActivity {
                     Toast.makeText(AddingPackages.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
     }
 
     private void SavingPackageInformationToDatabase() {
@@ -277,7 +317,7 @@ public class AddingPackages extends AppCompatActivity {
                     packagesMap.put("price",price);
                     packagesMap.put("meetpoint",meetpoint);
                     packagesMap.put("groupmembers",group_members);
-                    packagesMap.put("packageimage",downloadUrl);
+                    //packagesMap.put("packageimage",downloadUrl);
                     packagesMap.put("profileimage",guideProfileImage);
                     packagesMap.put("fullname",guideFullName);
                     packagesMap.put("phone", guidePhone);
@@ -334,7 +374,16 @@ public class AddingPackages extends AppCompatActivity {
 
             ImageUri = data.getData();
             addpackage.setImageURI(ImageUri);
+
+            try {
+                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),ImageUri);
+                addpackage.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+
     }
 
 

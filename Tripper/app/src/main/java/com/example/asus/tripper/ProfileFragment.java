@@ -41,7 +41,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
      private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
     private TextView tv_username, tv_fullname, tv_address1, tv_country, tv_phone, numberoftripstext, numberofacceptedtripstext;
-    private DatabaseReference mytripsRef, confirmRef;
+    private DatabaseReference mytripsRef, confirmRef, usersRef;
     private String currentUserId, packagekey;
     private int countMyTrips = 0, getCountMyAcceptedTrips = 0;
 
@@ -58,6 +58,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
          currentUserId = firebaseAuth.getCurrentUser().getUid();
          firebaseDatabase=FirebaseDatabase.getInstance();
          firebaseStorage=FirebaseStorage.getInstance();
+
+         usersRef= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
 
          //packagekey= getIntent().getExtras().get("packagekey").toString();
 
@@ -208,7 +210,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
          final DatabaseReference databaseReference=firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
          StorageReference storageReference=firebaseStorage.getReference();
-         storageReference.child("User Profile Images").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+         storageReference.child("User Profile Images").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() { //before it was this
              @Override
              public void onSuccess(Uri uri) {
                  //propic.setImageURI(uri);
@@ -221,7 +223,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
 
 
-         databaseReference.addValueEventListener(new ValueEventListener() {
+         databaseReference.addValueEventListener(new ValueEventListener() {   //before it was databaseReference
              @Override
              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
