@@ -26,8 +26,8 @@
             android:id="@+id/propic"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:src="@drawable/deeptapic"
-            android:scaleType="centerCrop"/>
+            android:src="@drawable/userpicture"
+            android:scaleType="centerInside"/>
 
         <!-- <RelativeLayout
              android:id="@+id/imgUser"

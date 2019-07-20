@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.asus.tripper.RegisterAndLogin.LoginUser;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseError;
@@ -212,7 +213,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
              public void onSuccess(Uri uri) {
                  //propic.setImageURI(uri);
                  //Picasso.get().load(uri).fit().centerCrop().into(propic);
-                 Picasso.with(getActivity()).load(uri).fit().centerCrop().into(propic);
+                 //Picasso.with(getActivity()).load(uri).fit().centerCrop().into(propic);
+                 //Glide.with(getActivity()).load(uri).into(propic);
+                 Glide.with(getActivity()).load(uri).placeholder(R.drawable.userpicture).into(propic);
              }
          });
 

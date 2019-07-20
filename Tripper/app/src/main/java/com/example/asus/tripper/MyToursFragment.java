@@ -162,8 +162,8 @@ public class MyToursFragment extends Fragment  {
                         //Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
                         //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
 
-                        Picasso.with(getActivity()).load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
-                        Picasso.with(getActivity()).load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+                        Glide.with(getActivity()).load(model.getPackageimage()).placeholder(R.drawable.hill).centerCrop().into(holder.package_image);
+                        Glide.with(getActivity()).load(model.getProfileimage()).placeholder(R.drawable.userpic).into(holder.package_profile_image);
 
                         holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
                             @Override
