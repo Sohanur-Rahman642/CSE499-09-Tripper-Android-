@@ -30,7 +30,7 @@
             android:id="@+id/profilepic"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/userpic"
+            android:src="@drawable/deeptapic"
             android:background="@drawable/circle_background"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"/>
@@ -107,7 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:gravity="center"
-            android:background="@color/SeaGreen"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <TextView
@@ -115,16 +115,20 @@
                 android:layout_height="wrap_content"
                 android:text="Ratings"
                 android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/ratings"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4.5"
-                android:drawableRight="@drawable/ic_star_black_24dp"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:src="@drawable/great_color"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
 
 
         </LinearLayout>
@@ -191,6 +195,7 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/ic_chat_black_24dp"
         android:backgroundTint="@color/DodgerBlue"/>
+
 
     </LinearLayout>
 

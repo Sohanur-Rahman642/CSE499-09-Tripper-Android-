@@ -303,7 +303,7 @@ public class TouristsFragment extends Fragment {
         public void setPackageimage(Context ctx1, String packageimage){
 
             ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
-            Picasso.with(ctx1).load(packageimage).placeholder(R.drawable.hill).fit().centerCrop().into(postimage);
+            Picasso.with(ctx1).load(packageimage).placeholder(R.drawable.hill).into(postimage);
         }
 
         public void setConfirm_type_user(String confirm_type_user){

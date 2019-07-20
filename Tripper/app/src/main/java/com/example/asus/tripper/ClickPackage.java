@@ -65,7 +65,7 @@ public class ClickPackage extends AppCompatActivity {
 
         //databaseUserId = getIntent().getExtras().get("packagekey").toString(); //this is new
 
-       // userkey= getIntent().getExtras().get("userkey").toString();
+        //userkey= getIntent().getExtras().get("userkey").toString();
 
         packagekey= getIntent().getExtras().get("packagekey").toString();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Packages").child(packagekey);
@@ -198,10 +198,10 @@ public class ClickPackage extends AppCompatActivity {
 
                                     ViewProfile();
                                 }
-                                if (CURRENT_STATE.equals("confirmation_receive")){
+                               /* if (CURRENT_STATE.equals("confirmation_receive")){
 
                                     AcceptTrip();
-                                }
+                                }*/
                             }
                         });
                     }                                                                            // new up to this
@@ -268,7 +268,7 @@ public class ClickPackage extends AppCompatActivity {
         });
     }
 
-    private void AcceptTrip() {      //this is new
+   /* private void AcceptTrip() {      //this is new
 
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
@@ -331,7 +331,7 @@ public class ClickPackage extends AppCompatActivity {
                         }
                     }
                 });
-    }                                                                                     //up to this
+    }*/                                                                                     //up to this
 
 
 
@@ -481,7 +481,7 @@ public class ClickPackage extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             confirmRef.child(databaseUserId).child(packagekey)
-                                    .child("confirm_type_user").setValue("requested by "+currentUserId)
+                                    .child("confirm_type_user").setValue("requested by "+currentUserId)    //before currentUserId
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
@@ -490,7 +490,7 @@ public class ClickPackage extends AppCompatActivity {
 
                                                 confirm_package_btn.setEnabled(true);
                                                 CURRENT_STATE = "confirmation_sent";
-                                                confirm_package_btn.setText("View Profile");    //it was cancel trip
+                                                confirm_package_btn.setText("Visit guide's profile on Trip History");    //it was cancel trip
 
                                                /* cancel_package_btn.setEnabled(true);
                                                 cancel_package_btn.setVisibility(View.VISIBLE);

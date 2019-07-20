@@ -69,7 +69,7 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
         username1 = findViewById(R.id.username);
         country1 = findViewById(R.id.country);
         phone1 = findViewById(R.id.phone);
-        ratings1 = findViewById(R.id.ratings);
+        //ratings1 = findViewById(R.id.ratings);
         trips1 = findViewById(R.id.trips);
         cross_btn1 = findViewById(R.id.cross_btn);
 
@@ -118,7 +118,7 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
                     phone1.setText(phone);
                     country1.setText(country);
                     //Picasso.get().load(profileimage).into(profilepic1);
-                    Picasso.with(SeeGuidesProfileAfterConfirmingTrip.this).load(profileimage).into(profilepic1);
+                    Picasso.with(SeeGuidesProfileAfterConfirmingTrip.this).load(profileimage).placeholder(R.drawable.deeptapic).into(profilepic1);
 
 
 
