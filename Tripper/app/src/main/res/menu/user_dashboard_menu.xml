@@ -6,7 +6,7 @@
     <item
         android:id="@+id/home"
         android:title="Home"
-        android:icon="@drawable/home_darken"
+        android:icon="@drawable/home_green"
 
         >
 
@@ -16,7 +16,7 @@
     <item
         android:id="@+id/search_packages"
         android:title="Search"
-        android:icon="@drawable/search_darken"
+        android:icon="@drawable/search_green"
         >
 
     </item>
@@ -24,7 +24,7 @@
     <item
         android:id="@+id/explore_nearby"
         android:title="Nearby"
-        android:icon="@drawable/explore_darken"
+        android:icon="@drawable/explore_green"
         >
 
     </item>
@@ -32,11 +32,12 @@
     <item
         android:id="@+id/profile"
         android:title="Profile"
-        android:icon="@drawable/profile_darken"
+        android:icon="@drawable/profile_green"
         >
 
     </item>
 
+<!--
     <item
         android:id="@+id/settings"
         android:title="Settings"
@@ -44,5 +45,6 @@
         >
 
     </item>
+-->
 
 </menu>

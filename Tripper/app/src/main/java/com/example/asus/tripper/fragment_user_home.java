@@ -1,157 +1,248 @@
 package com.example.asus.tripper;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
 
-public class fragment_user_home extends Fragment {
+import de.hdodenhof.circleimageview.CircleImageView;
 
-    List<Package> packageList;
+public class fragment_user_home extends Fragment  {
 
-    //the recyclerview
-    RecyclerView recyclerView;
+    private FirebaseAuth mAuth;
 
+    private FloatingActionButton floatingActionButton;
 
+    private RecyclerView packages_recycle;
+
+    private DatabaseReference packagesRef;
+    //private Query query;
 
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_user_home, container, false);
 
 
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.home_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(20);
-        recyclerView.setDrawingCacheEnabled(true);
-        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams
+                .FLAG_FULLSCREEN, WindowManager.LayoutParams
+                .FLAG_FULLSCREEN);
 
-        packageList = new ArrayList<>();
+        View v= inflater.inflate(R.layout.fragment_user_home, container, false);
 
+        mAuth=FirebaseAuth.getInstance();
+        packagesRef = FirebaseDatabase.getInstance().getReference().child("Packages");
+        //query=FirebaseDatabase.getInstance().getReference().child("Packages");
 
-        packageList.add(
-                new Package(1,
-                        R.drawable.saintmartinprofilenew,
-                        "Saint-Martin Trek",
-                        R.drawable.saintmartinnew,
-                        "Saint-Martin in Canada",
-                        "Saint-Martin Trek is one of the most awarded fitness retreat and health spas in Bangladesh."));
+        packages_recycle = (RecyclerView) v.findViewById(R.id.packages_recycle);
+        packages_recycle.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getActivity());
+        linearLayoutManager .setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        packages_recycle.setLayoutManager(linearLayoutManager);
 
-        packageList.add(
-                new Package(2,
-                        R.drawable.bandarbanprofilenew,
-                        "Bandarban",
-                        R.drawable.bandarbannew,
+       /* floatingActionButton = (FloatingActionButton) v.findViewById(R.id.floatformytours);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
 
-                        "Bandarban Trip",
-                        "Bandarban is an Indonesian island known for its forested volcanic mountains"));
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        Intent i = new Intent(getActivity(), AddingPackages.class);
+                                                        startActivity(i);
+                                                    }
+                                                }
+        );*/
 
-
-        packageList.add(
-                new Package(3,
-                        R.drawable.sajekprofile,
-                        "Sajek Trek",
-                        R.drawable.sajek,
-                        "Sajek Trek in Khagrachori",
-                        "Sajek is known for beautiful mountains surrounding with fog."));
-
-        packageList.add(
-                new Package(4,
-                        R.drawable.saintmartinprofilenew,
-                        "Saint-Martin Trek",
-                        R.drawable.saintmartinnew,
-                        "Saint-Martin in Canada",
-                        "Saint-Martin Trek is one of the most awarded fitness retreat and health spas in Bangladesh."));
-
-        packageList.add(
-                new Package(5,
-                        R.drawable.bandarbanprofilenew,
-                        "Bandarban",
-                        R.drawable.bandarbannew,
-
-                        "Bandarban Trip",
-                        "Bandarban is an Indonesian island known for its forested volcanic mountains"));
-
-        packageList.add(
-                new Package(6,
-                        R.drawable.sajekprofile,
-                        "Sajek Trek",
-                        R.drawable.sajek,
-                        "Sajek Trek in Khagrachori",
-                        "Sajek is known for beautiful mountains surrounding with fog."));
-
-        packageList.add(
-                new Package(7,
-                        R.drawable.saintmartinprofilenew,
-                        "Saint-Martin Trek",
-                        R.drawable.saintmartinnew,
-                        "Saint-Martin in Canada",
-                        "Saint-Martin Trek is one of the most awarded fitness retreat and health spas in Bangladesh."));
-
-        packageList.add(
-                new Package(8,
-                        R.drawable.bandarbanprofilenew,
-                        "Bandarban",
-                        R.drawable.bandarbannew,
-
-                        "Bandarban Trip",
-                        "Bandarban is an Indonesian island known for its forested volcanic mountains"));
+        DisplayAllPackages();
 
 
-        packageList.add(
-                new Package(9,
-                        R.drawable.sajekprofile,
-                        "Sajek Trek",
-                        R.drawable.sajek,
-                        "Sajek Trek in Khagrachori",
-                        "Sajek is known for beautiful mountains surrounding with fog."));
-
-        packageList.add(
-                new Package(10,
-                        R.drawable.saintmartinprofilenew,
-                        "Saint-Martin Trek",
-                        R.drawable.saintmartinnew,
-                        "Saint-Martin in Canada",
-                        "Saint-Martin Trek is one of the most awarded fitness retreat and health spas in Bangladesh."));
-
-        packageList.add(
-                new Package(11,
-                        R.drawable.bandarbanprofilenew,
-                        "Bandarban",
-                        R.drawable.bandarbannew,
-
-                        "Bandarban Trip",
-                        "Bandarban is an Indonesian island known for its forested volcanic mountains"));
-
-
-        packageList.add(
-                new Package(12,
-                        R.drawable.sajekprofile,
-                        "Sajek Trek",
-                        R.drawable.sajek,
-                        "Sajek Trek in Khagrachori",
-                        "Sajek is known for beautiful mountains surrounding with fog."));
+        return v;
 
 
 
-        PackageAdapter adapter = new PackageAdapter(getContext(), packageList);
+    }
 
-        //setting adapter to recyclerview
-        recyclerView.setAdapter(adapter);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    private void DisplayAllPackages() {
 
-        return rootView;
+        FirebaseRecyclerOptions<PackagesModel> options =
+                new FirebaseRecyclerOptions.Builder<PackagesModel>()
+                        .setQuery(packagesRef, PackagesModel.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<PackagesModel, PackageViewHolder> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<PackagesModel, PackageViewHolder>(options)
+
+                {
+                    @Override
+                    protected void onBindViewHolder(@NonNull PackageViewHolder holder, int position, @NonNull PackagesModel model) {
+
+                        /*holder.setFullname(model.getFullname());
+                        holder.setProfileimage(getActivity().getApplicationContext(),model.getProfileimage());
+                        holder.setPackageimage(getActivity().getApplicationContext(),model.getPackageimage());
+                        holder.setDate(model.getDate());
+                        holder.setTime(model.getTime());
+                        holder.setPackagename(model.getPackagename());
+                        holder.setPrice(model.getPrice());
+                        holder.setGroupmembers(model.getGroupmembers());*/
+
+                        final String packagekey = getRef(position).getKey();
+
+
+
+
+                        holder.package_user_name.setText(model.getFullname());
+                        holder.package_name.setText(model.getPackagename());
+                        holder.package_date.setText(model.getDate());
+                        holder.package_time.setText(model.getTime());
+                        holder.package_price.setText(model.getPrice());
+                        holder.package_group_members.setText(model.getGroupmembers());
+                        Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
+                        Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+
+                        holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent clickpackageIntent = new Intent(getActivity(), ClickPackage.class);
+                                clickpackageIntent.putExtra("packagekey", packagekey);
+                                startActivity(clickpackageIntent);
+                            }
+                        });
+                    }
+
+                    @NonNull
+                    @Override
+                    public PackageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+                        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_packages_layout,viewGroup,false);
+
+                        PackageViewHolder viewHolder = new PackageViewHolder(view);
+                        return viewHolder;
+                    }
+                };
+
+
+        firebaseRecyclerAdapter.startListening();
+        packages_recycle.setAdapter(firebaseRecyclerAdapter);
+
+
+
+
+
+    }
+
+
+    public static class PackageViewHolder extends RecyclerView.ViewHolder{
+
+        View mView;
+
+        TextView package_user_name, package_date, package_time, package_name, package_price, package_group_members;
+        CircleImageView package_profile_image;
+        ImageView package_image;
+
+
+        public PackageViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            mView = itemView;
+
+            package_user_name = itemView.findViewById(R.id.package_user_name);
+            package_date = itemView.findViewById(R.id.package_date);
+            package_time = itemView.findViewById(R.id.package_time);
+            package_name = itemView.findViewById(R.id.package_name);
+            package_price = itemView.findViewById(R.id.package_price);
+            package_group_members = itemView.findViewById(R.id.package_group_members);
+            package_profile_image = itemView.findViewById(R.id.package_profile_image);
+            package_image = itemView.findViewById(R.id.package_image);
+        }
+
+      /*  public void setFullname(String fullname){
+            TextView name = (TextView)mView.findViewById(R.id.package_user_name);
+            name.setText(fullname);
+        }
+
+        public void setProfileimage(Context ctx, String profileimage){
+
+            CircleImageView image = (CircleImageView) mView.findViewById(R.id.package_profile_image);
+            Picasso.get().load(profileimage).into(image);
+        }
+
+        public void setPackageimage(Context ctx1, String packageimage){
+
+            ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
+            Picasso.get().load(packageimage).into(postimage);
+        }
+
+        public void setTime(String time){
+
+            TextView posttime=(TextView) mView.findViewById(R.id.package_time);
+            posttime.setText(" "+time);
+        }
+
+        public void setDate(String date){
+
+            TextView postdate = (TextView) mView.findViewById(R.id.package_date);
+            postdate.setText(" "+date);
+        }
+
+        public void setPackagename(String packagename){
+
+            TextView postname = (TextView) mView.findViewById(R.id.package_name);
+            postname.setText(packagename);
+        }
+
+        public void setPrice(String price){
+
+            TextView postprice = (TextView) mView.findViewById(R.id.package_price);
+            postprice.setText(price);
+        }
+
+        public void setGroupmembers(String groupmembers){
+
+            TextView postgroup = (TextView) mView.findViewById(R.id.package_group_members);
+            postgroup.setText(groupmembers);
+        }*/
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        FirebaseUser currentGuide= mAuth.getCurrentUser();
+
+        if(currentGuide==null){
+
+            sendGuideToLoginActivity();
+        }
+    }
+
+    private void sendGuideToLoginActivity() {
+
+        Intent loginIntent= new Intent(getActivity(), MainDashBoard.class);
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(loginIntent);
+        getActivity().finish();
     }
 }
+
