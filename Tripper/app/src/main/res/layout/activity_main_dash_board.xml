@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<HorizontalScrollView
+
+<FrameLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,91 +14,211 @@
 
     tools:context=".MainDashBoard"
 
-
-
     >
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tripper"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_horizontal"
+
+        />
 
 
+    <HorizontalScrollView
 
 
-
-
-
-    <android.support.constraint.ConstraintLayout
-
-        android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
-
+        android:scrollbars="none"
 
         >
+        
 
-        <TextView
+        <android.support.constraint.ConstraintLayout
+
+            android:id="@+id/gridLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tripper"
-            android:textColor="@color/white"
-            android:textSize="45sp"
-            android:fontFamily="cursive"
-            android:textStyle="bold"
-            android:gravity="center"
+            android:layout_height="match_parent"
 
-            app:layout_constraintTop_toTopOf="@id/gridLayout"
-            app:layout_constraintStart_toStartOf="@id/gridLayout"
-            app:layout_constraintEnd_toEndOf="@id/gridLayout"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="100dp"
-
-            />
-
-
-
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/layout_explore"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/button_background_layout"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
 
 
 
             >
 
-            <ImageView
-                android:id="@+id/imageOfc"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/mapofc"
-                app:layout_constraintTop_toTopOf="@id/layout_explore"
-                app:layout_constraintStart_toStartOf="@id/layout_explore"
-                app:layout_constraintEnd_toEndOf="@id/layout_explore"
-                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Explore!"
-                android:textAllCaps="false"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/imageOfc"
-                app:layout_constraintStart_toStartOf="@id/layout_explore"
-                app:layout_constraintEnd_toEndOf="@id/layout_explore"
-                android:textSize="14sp"
 
-                />
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_explore"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="400dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_background_layout"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/imageOfc"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/mapofc"
+                    app:layout_constraintTop_toTopOf="@id/layout_explore"
+                    app:layout_constraintStart_toStartOf="@id/layout_explore"
+                    app:layout_constraintEnd_toEndOf="@id/layout_explore"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Explore!"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/imageOfc"
+                    app:layout_constraintStart_toStartOf="@id/layout_explore"
+                    app:layout_constraintEnd_toEndOf="@id/layout_explore"
+                    android:textSize="14sp"
+
+                    />
+
+
+
+
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            // layout guide
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_guide"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="400dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_background_layout"
+                android:backgroundTint="#27DD88"
+
+                app:layout_constraintStart_toEndOf="@id/layout_explore"
+                app:layout_constraintTop_toTopOf="parent"
+
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/imageBag"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/journey"
+                    app:layout_constraintTop_toTopOf="@id/layout_guide"
+                    app:layout_constraintStart_toStartOf="@id/layout_guide"
+                    app:layout_constraintEnd_toEndOf="@id/layout_guide"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Show!"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/imageBag"
+                    app:layout_constraintStart_toStartOf="@id/imageBag"
+                    app:layout_constraintEnd_toEndOf="@id/imageBag"
+                    android:textSize="14sp"
+
+                    />
+
+
+
+
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            // layout channel
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_channel"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="400dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_background_layout"
+                android:backgroundTint="#FF5722"
+
+
+                app:layout_constraintStart_toEndOf="@id/layout_guide"
+                app:layout_constraintTop_toTopOf="parent"
+
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/imageOac"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/team"
+                    app:layout_constraintTop_toTopOf="@id/layout_channel"
+                    app:layout_constraintStart_toStartOf="@id/layout_channel"
+                    app:layout_constraintEnd_toEndOf="@id/layout_channel"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Channel!"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/imageOac"
+                    app:layout_constraintStart_toStartOf="@id/imageOac"
+                    app:layout_constraintEnd_toEndOf="@id/imageOac"
+                    android:textSize="14sp"
+
+                    />
+
+
+
+
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+
 
 
 
@@ -106,123 +228,13 @@
         </android.support.constraint.ConstraintLayout>
 
 
-        // layout guide
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/layout_guide"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/button_background_layout"
-            android:backgroundTint="#27DD88"
-
-            app:layout_constraintStart_toEndOf="@id/layout_explore"
-            app:layout_constraintTop_toTopOf="parent"
-
-
-
-            >
-
-            <ImageView
-                android:id="@+id/imageBag"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/journey"
-                app:layout_constraintTop_toTopOf="@id/layout_guide"
-                app:layout_constraintStart_toStartOf="@id/layout_guide"
-                app:layout_constraintEnd_toEndOf="@id/layout_guide"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Show!"
-                android:textAllCaps="false"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/imageBag"
-                app:layout_constraintStart_toStartOf="@id/imageBag"
-                app:layout_constraintEnd_toEndOf="@id/imageBag"
-                android:textSize="14sp"
-
-                />
+    </HorizontalScrollView>
 
 
 
 
 
-
-        </android.support.constraint.ConstraintLayout>
-
-
-        // layout channel
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/layout_channel"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/button_background_layout"
-            android:backgroundTint="#FF5722"
+</FrameLayout>
 
 
-            app:layout_constraintStart_toEndOf="@id/layout_guide"
-            app:layout_constraintTop_toTopOf="parent"
-
-
-
-            >
-
-            <ImageView
-                android:id="@+id/imageOac"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/team"
-                app:layout_constraintTop_toTopOf="@id/layout_channel"
-                app:layout_constraintStart_toStartOf="@id/layout_channel"
-                app:layout_constraintEnd_toEndOf="@id/layout_channel"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Channel!"
-                android:textAllCaps="false"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/imageOac"
-                app:layout_constraintStart_toStartOf="@id/imageOac"
-                app:layout_constraintEnd_toEndOf="@id/imageOac"
-                android:textSize="14sp"
-
-                />
-
-
-
-
-
-
-        </android.support.constraint.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
-    </android.support.constraint.ConstraintLayout>
-
-
-
-</HorizontalScrollView>
