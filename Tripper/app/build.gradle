@@ -59,16 +59,29 @@ dependencies {
 
     implementation 'com.firebaseui:firebase-ui-database:4.3.2'
 
-
     //Google Map & Places
 
-    implementation 'com.google.android.gms:play-services-maps:16.0.0'
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+
     implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+    implementation 'com.google.android.libraries.places:places:1.1.0'
+
+    //SearchView
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
+
+    //Ripple background
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+
+    //Dexter permission
+    implementation 'com.karumi:dexter:5.0.0'
+
+    //bottom sheet
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //play-vision
     implementation 'com.google.android.gms:play-services-vision:15.0.2'
-
 
 
 }
