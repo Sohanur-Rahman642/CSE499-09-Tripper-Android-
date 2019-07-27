@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+
+    <color name="appPrimary">#35b64f</color>
+    <color name="appPrimaryDark">#289b35</color>
+    <color name="appAccent">#FF4081</color>
+
     <color name="lightblue">#7F8AC2</color>
     <color name="grey">#666565</color>
     <color name="litegrey">#A09C9C</color>

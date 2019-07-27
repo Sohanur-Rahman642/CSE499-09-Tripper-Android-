@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_explore_nearby"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="60dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:background="@drawable/explore_nearby_bg"
+
+    android:foregroundGravity="center"
+
+    >
+
+
+    <TextView
+        android:id="@+id/textview_explore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="30dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+
+
+        android:fontFamily="sans-serif-condensed-medium"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Explore Nearby"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+
+
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/rootlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="2dp"
+        android:foregroundGravity="center"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_explore">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_restaurant"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_marginEnd="10dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rootlayout"
+
+            >
+
+
+            <ImageView
+                android:id="@+id/restaurant_image"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/restaurent_bg"
+                android:foregroundGravity="center"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/ic_restaurant_white_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="@id/layout_restaurant"
+
+                />
+
+            <View
+                android:id="@+id/view_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/restaurant_image"></View>
+
+            <TextView
+                android:id="@+id/textview_restaurant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-condensed"
+                android:foregroundGravity="center"
+                android:text="Restaurants"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/view_restaurant"
+
+
+                />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        // Hospitals Layout
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_hospital"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_marginEnd="10dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/layout_restaurant"
+            app:layout_constraintTop_toTopOf="@id/rootlayout">
+
+
+            <ImageView
+                android:id="@+id/hospital_image"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/hospital_bg"
+                android:foregroundGravity="center"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/ic_local_hospital_white_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/layout_hospital"
+
+                />
+
+            <View
+                android:id="@+id/view_hospital"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hospital_image"></View>
+
+            <TextView
+                android:id="@+id/textview_hospital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-condensed"
+                android:foregroundGravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+
+
+                android:text="Hospitals"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_hospital"
+
+
+                />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        //Hotels Layout
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_hotel"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_marginEnd="10dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/layout_hospital"
+            app:layout_constraintTop_toTopOf="@id/rootlayout">
+
+
+            <ImageView
+                android:id="@+id/hotel_image"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/hotels_bg"
+                android:foregroundGravity="center"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/ic_local_hotel_white_24dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="@id/layout_hotel" />
+
+            <View
+                android:id="@+id/view_hotel"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hotel_image"></View>
+
+            <TextView
+                android:id="@+id/textview_hotel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-condensed"
+                android:foregroundGravity="center"
+                android:paddingLeft="20dp"
+
+
+                android:paddingRight="20dp"
+                android:text="Hotels"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/view_hotel" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        //More Layout
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_more"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_marginEnd="10dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/layout_hotel"
+            app:layout_constraintTop_toTopOf="@id/rootlayout">
+
+
+            <ImageView
+                android:id="@+id/more_image"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/more_bg"
+                android:foregroundGravity="center"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/ic_more_horiz_white_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="@id/layout_more" />
+
+            <View
+                android:id="@+id/view_more"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/more_image"></View>
+
+            <TextView
+                android:id="@+id/textview_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="sans-serif-condensed"
+                android:foregroundGravity="center"
+
+
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="More"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_more" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
