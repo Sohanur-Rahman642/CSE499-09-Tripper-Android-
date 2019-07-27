@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.asus.tripper.RegisterAndLogin.LoginUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +33,7 @@ import java.util.Calendar;
 
 public class ClickPackage extends AppCompatActivity {
 
-    private ImageView clickaddpackagepic, editpackagebtn;
+    private ImageView clickaddpackagepic;
     private ImageButton back_button_for_adding_packages1;
     private TextView clickpackagename, clickdetail, clickstartdate, clickenddate, clickstarttime, clickendtime, clicklocation, clickmeetpoint, clickprice, clickmembers;
     private Button  deletepackagebtn, confirm_package_btn, cancel_package_btn;
@@ -84,7 +85,7 @@ public class ClickPackage extends AppCompatActivity {
         clickmeetpoint=findViewById(R.id.clickmeetpoint);
         clickprice=findViewById(R.id.clickprice);
         clickmembers=findViewById(R.id.clickmembers);
-        editpackagebtn=findViewById(R.id.editpackagebtn);
+        //editpackagebtn=findViewById(R.id.editpackagebtn);
         deletepackagebtn=findViewById(R.id.deletepackagebtn);
         confirm_package_btn=findViewById(R.id.confirm_package_btn);
         cancel_package_btn=findViewById(R.id.cancel_package_btn);
@@ -93,7 +94,7 @@ public class ClickPackage extends AppCompatActivity {
         CURRENT_STATE = "not_confirm";   //this is new
 
         deletepackagebtn.setVisibility(View.INVISIBLE);
-        editpackagebtn.setVisibility(View.INVISIBLE);
+        //editpackagebtn.setVisibility(View.INVISIBLE);
         //cancel_package_btn.setVisibility(View.INVISIBLE);     // implemented after commenting it in the if condition
         //confirm_package_btn.setVisibility(View.INVISIBLE);  // same as before
 
@@ -131,7 +132,7 @@ public class ClickPackage extends AppCompatActivity {
                     clickprice.setText(price);
                     clickmembers.setText(groupmembers);
                     //Picasso.get().load(packageimage).placeholder(R.drawable.hill).into(clickaddpackagepic);
-                    Picasso.with(ClickPackage.this).load(packageimage).placeholder(R.drawable.hill).into(clickaddpackagepic);
+                    Glide.with(ClickPackage.this).load(packageimage).placeholder(R.drawable.hill).centerCrop().into(clickaddpackagepic);
 
                     MaintenanceOfButtons();   //this is new
 
@@ -140,7 +141,7 @@ public class ClickPackage extends AppCompatActivity {
 
                         deletepackagebtn.setVisibility(View.VISIBLE);
                         deletepackagebtn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                        editpackagebtn.setVisibility(View.VISIBLE);
+                        //editpackagebtn.setVisibility(View.VISIBLE);
                         confirm_package_btn.setVisibility(View.INVISIBLE);
                         cancel_package_btn.setVisibility(View.INVISIBLE);
 
@@ -206,14 +207,14 @@ public class ClickPackage extends AppCompatActivity {
                         });
                     }                                                                            // new up to this
 
-                    editpackagebtn.setOnClickListener(new View.OnClickListener() {
+                   /* editpackagebtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
                             Intent i= new Intent(ClickPackage.this, UpdatePackage.class);
                             startActivity(i);
                         }
-                    });
+                    });*/
                 }
             }
 

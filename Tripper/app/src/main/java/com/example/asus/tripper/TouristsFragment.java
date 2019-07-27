@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -297,13 +298,13 @@ public class TouristsFragment extends Fragment {
         public void setProfileimage(Context ctx, String profileimage){
 
             CircleImageView image = (CircleImageView) mView.findViewById(R.id.package_profile_image);
-            Picasso.with(ctx).load(profileimage).placeholder(R.drawable.userpic).fit().centerCrop().into(image);
+            Glide.with(ctx).load(profileimage).placeholder(R.drawable.userpic).centerCrop().into(image);
         }
 
         public void setPackageimage(Context ctx1, String packageimage){
 
             ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
-            Picasso.with(ctx1).load(packageimage).placeholder(R.drawable.hill).into(postimage);
+            Glide.with(ctx1).load(packageimage).placeholder(R.drawable.loadingpic).into(postimage);
         }
 
         public void setConfirm_type_user(String confirm_type_user){

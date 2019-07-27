@@ -67,7 +67,7 @@
                         android:id="@+id/clickaddpackagepic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/hill"
+                        android:src="@drawable/loadingpic"
                         android:scaleType="centerCrop"/>
 
                     <ImageButton
@@ -111,14 +111,14 @@
 
                 />
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/editpackagebtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_edit_black_24dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="94dp"
-                    />
+                    />-->
             </RelativeLayout>
 
             <RelativeLayout
@@ -149,6 +149,7 @@
                 android:layout_margin="12dp"
                 android:background="@color/colorPrimary"
                 android:layout_below="@+id/cv1"
+                app:cardBackgroundColor="#B0B5E9"
                 app:cardCornerRadius="5dp">
 
 
@@ -291,6 +292,7 @@
                 android:layout_margin="12dp"
                 android:background="@color/colorPrimary"
                 android:layout_below="@+id/cv2"
+                app:cardBackgroundColor="#6DD7E2"
                 app:cardCornerRadius="5dp">
 
                 <LinearLayout
@@ -364,6 +366,7 @@
                 android:layout_margin="12dp"
                 android:background="@color/colorPrimary"
                 android:layout_below="@+id/cv3"
+                app:cardBackgroundColor="#6DBE71"
                 app:cardCornerRadius="5dp">
 
                 <LinearLayout
