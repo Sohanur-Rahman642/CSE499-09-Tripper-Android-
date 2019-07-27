@@ -76,15 +76,13 @@
 
             <ImageView
                 android:id="@+id/restaurant_image"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/restaurent_bg"
-                android:foregroundGravity="center"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp"
-                android:paddingRight="20dp"
+                android:foregroundGravity="center_horizontal"
+                android:padding="14dp"
                 android:src="@drawable/ic_restaurant_white_24dp"
                 app:layout_constraintStart_toStartOf="parent"
 
@@ -103,13 +101,13 @@
             <TextView
                 android:id="@+id/textview_restaurant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:layout_margin="5dp"
                 android:fontFamily="sans-serif-condensed"
                 android:foregroundGravity="center"
                 android:text="Restaurants"
                 android:textAllCaps="false"
-                android:textSize="14sp"
+                android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="parent"
 
                 app:layout_constraintTop_toBottomOf="@+id/view_restaurant"
@@ -142,15 +140,13 @@
 
             <ImageView
                 android:id="@+id/hospital_image"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/hospital_bg"
-                android:foregroundGravity="center"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp"
-                android:paddingRight="20dp"
+                android:foregroundGravity="center_horizontal"
+                android:padding="14dp"
                 android:src="@drawable/ic_local_hospital_white_24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/layout_hospital"
@@ -178,7 +174,7 @@
 
                 android:text="Hospitals"
                 android:textAllCaps="false"
-                android:textSize="14sp"
+                android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_hospital"
 
@@ -209,15 +205,14 @@
 
             <ImageView
                 android:id="@+id/hotel_image"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/hotels_bg"
-                android:foregroundGravity="center"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp"
-                android:paddingRight="20dp"
+                android:foregroundGravity="center_horizontal"
+                android:padding="14dp"
                 android:src="@drawable/ic_local_hotel_white_24dp"
 
                 app:layout_constraintStart_toStartOf="parent"
@@ -246,7 +241,7 @@
                 android:paddingRight="20dp"
                 android:text="Hotels"
                 android:textAllCaps="false"
-                android:textSize="14sp"
+                android:textSize="11sp"
 
                 app:layout_constraintStart_toStartOf="parent"
 
@@ -277,15 +272,13 @@
 
             <ImageView
                 android:id="@+id/more_image"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/more_bg"
-                android:foregroundGravity="center"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp"
-                android:paddingRight="20dp"
+                android:foregroundGravity="center_horizontal"
+                android:padding="14dp"
                 android:src="@drawable/ic_more_horiz_white_24dp"
                 app:layout_constraintStart_toStartOf="parent"
 
@@ -314,7 +307,7 @@
                 android:paddingRight="20dp"
                 android:text="More"
                 android:textAllCaps="false"
-                android:textSize="14sp"
+                android:textSize="11sp"
 
 
                 app:layout_constraintEnd_toEndOf="parent"

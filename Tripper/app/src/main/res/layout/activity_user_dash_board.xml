@@ -25,14 +25,22 @@
         </FrameLayout>
 
         <android.support.design.widget.BottomNavigationView
+
+
             android:id="@+id/user_dashboard_bnav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:itemIconTint="@color/Darken"
+            app:labelVisibilityMode="unlabeled"
 
-            app:itemTextColor="@color/Darken"
             app:menu="@menu/user_dashboard_menu"
+            android:background="@color/Darken"
+
+
+            app:itemIconSize="32dp"
+            app:itemIconTint="@drawable/bottom_navigation_selector"
+
+
 
 
             ></android.support.design.widget.BottomNavigationView>

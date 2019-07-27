@@ -127,7 +127,7 @@ public class fragment_explore_nearby extends Fragment implements OnMapReadyCallb
     private View mapView;
     private Button btnFind;
 
-    private final float DEFAULT_ZOOM = 20;
+    private final float DEFAULT_ZOOM = 18;
 
     private RippleBackground rippleBackground;
 

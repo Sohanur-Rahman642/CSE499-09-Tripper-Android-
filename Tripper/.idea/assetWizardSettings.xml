@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/H:/Android%20WorkStations/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_person_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/H:/Android%20WorkStations/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_home_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,9 +33,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="008577" />
-                            <entry key="outputName" value="profile_green" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="height" value="32" />
+                            <entry key="outputName" value="home_white" />
+                            <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\ASUS" />
+                            <entry key="width" value="32" />
                           </map>
                         </option>
                       </PersistentState>
