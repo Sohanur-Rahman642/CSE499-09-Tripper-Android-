@@ -38,8 +38,15 @@ public class UserDashBoard extends AppCompatActivity {
        /* mAuth=FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");*/
 
+
+
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.user_dashboard_bnav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
+        if (savedInstanceState == null) {
+            bottomNavigationView.setSelectedItemId(R.id.home); // change to whichever id should be default
+        }
     }
 /*
 
@@ -134,6 +141,8 @@ public class UserDashBoard extends AppCompatActivity {
 
 
             }
+
+
 
             getSupportFragmentManager().beginTransaction().
                     replace(R.id.user_dashboard_fragment_container,

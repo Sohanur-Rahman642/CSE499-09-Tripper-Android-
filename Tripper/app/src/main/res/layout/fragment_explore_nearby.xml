@@ -63,7 +63,13 @@
 
 
 
+
+
+
+
+
     <!-- Adding bottom sheet after main content -->
+
     <include layout="@layout/explore_nearby_layout" />
 
 
