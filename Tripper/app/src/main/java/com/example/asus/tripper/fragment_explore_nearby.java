@@ -22,6 +22,7 @@ import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
 
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -132,9 +133,13 @@ public class fragment_explore_nearby extends Fragment implements OnMapReadyCallb
     private RippleBackground rippleBackground;
 
 
+
+
+
     //Bottom Sheet instances
     @BindView(R.id.textview_explore)
     TextView textView_explorer;
+
 
     @SuppressLint("ResourceType")
     @BindView(R.id.layout_explore_nearby)
@@ -209,19 +214,33 @@ public class fragment_explore_nearby extends Fragment implements OnMapReadyCallb
         });
 
 
+
+
+
+
+
+
         textView_explorer = (TextView) rootView.findViewById(R.id.textview_explore);
-        textView_explorer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+               textView_explorer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
 
-                } else {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        } else {
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
-                }
-            }
-        });
+                        }
+                    }
+                });
+
+
+
+
+
+
+
+
 
 
         final SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
