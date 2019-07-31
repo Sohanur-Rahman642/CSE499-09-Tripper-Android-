@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,8 +93,8 @@ public class MyTrips extends AppCompatActivity {
                 //Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
                 //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
 
-                Picasso.with(MyTrips.this).load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
-                Picasso.with(MyTrips.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+                Glide.with(MyTrips.this).load(model.getPackageimage()).placeholder(R.drawable.loadingpic).centerCrop().into(holder.package_image);
+                Glide.with(MyTrips.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).centerCrop().into(holder.package_profile_image);
 
 
                 holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView

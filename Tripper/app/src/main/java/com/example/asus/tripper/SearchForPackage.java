@@ -10,12 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -115,6 +117,8 @@ public class SearchForPackage extends AppCompatActivity {
                         holder.setPrice(model.getPrice());
                         holder.setGroupmembers(model.getGroupmembers());*/
 
+                        holder.confirmed_text.setVisibility(View.INVISIBLE);
+
                         final String packagekey = getRef(position).getKey();
 
 
@@ -129,8 +133,8 @@ public class SearchForPackage extends AppCompatActivity {
                         //Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
                         //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
 
-                        Picasso.with(SearchForPackage.this).load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
-                        Picasso.with(SearchForPackage.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+                        Glide.with(SearchForPackage.this).load(model.getPackageimage()).placeholder(R.drawable.loadingpic).centerCrop().into(holder.package_image);
+                        Glide.with(SearchForPackage.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).centerCrop().into(holder.package_profile_image);
 
                         holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
                             @Override
@@ -172,6 +176,7 @@ public class SearchForPackage extends AppCompatActivity {
         TextView package_user_name, package_date, package_time, package_name, package_price, package_group_members;
         CircleImageView package_profile_image;
         ImageView package_image;
+        Button confirmed_text;
 
 
         public PackageViewHolder(@NonNull View itemView) {
@@ -187,6 +192,7 @@ public class SearchForPackage extends AppCompatActivity {
             package_group_members = itemView.findViewById(R.id.package_group_members);
             package_profile_image = itemView.findViewById(R.id.package_profile_image);
             package_image = itemView.findViewById(R.id.package_image);
+            confirmed_text = itemView.findViewById(R.id.confirmed_text);
         }
     }
 }

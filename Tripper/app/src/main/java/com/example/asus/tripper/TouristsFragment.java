@@ -150,6 +150,8 @@ public class TouristsFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull final confirmedTripsViewHolder holder, int position, @NonNull ConfirmedTripsModel model) {
 
+                final String packagekey = getRef(position).getKey();  //new
+
                 holder.setConfirm_type_user(model.getConfirm_type_user());
 
                 final String usersId = getRef(position).getKey();
@@ -190,7 +192,15 @@ public class TouristsFragment extends Fragment {
                            holder.setLocation(packageLocation);*/
                            holder.setProfileimage(getActivity().getApplicationContext(), packageProfileImage);
 
+                            holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView   //new
+                                @Override
+                                public void onClick(View v) {
 
+                                    Intent clickpackageIntent = new Intent(getActivity(), ClickPackage.class);
+                                    clickpackageIntent.putExtra("packagekey", packagekey);
+                                    startActivity(clickpackageIntent);
+                                }
+                            });
 
 
                         }
@@ -272,6 +282,7 @@ public class TouristsFragment extends Fragment {
         /*TextView package_user_name, package_date, confirm_type, package_name, package_price, package_group_members;
         CircleImageView package_profile_image;
         ImageView package_image;*/
+        ImageView package_image;  //new
 
         public confirmedTripsViewHolder(@NonNull View itemView) {
 
@@ -287,6 +298,7 @@ public class TouristsFragment extends Fragment {
             package_group_members = itemView.findViewById(R.id.package_group_members);
             package_profile_image = itemView.findViewById(R.id.package_profile_image);
             package_image = itemView.findViewById(R.id.package_image);*/
+            package_image = itemView.findViewById(R.id.package_image);    //new
         }
 
 
@@ -305,6 +317,7 @@ public class TouristsFragment extends Fragment {
 
             ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
             Glide.with(ctx1).load(packageimage).placeholder(R.drawable.loadingpic).into(postimage);
+
         }
 
         public void setConfirm_type_user(String confirm_type_user){
