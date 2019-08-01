@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -196,7 +197,7 @@ public class Message extends AppCompatActivity {
                     receiverName.setText(username1);
 
                     final String profileImage = dataSnapshot.child("profileimage").getValue().toString();
-                    Picasso.with(Message.this).load(profileImage).placeholder(R.drawable.userpic).into(receiverProfileImage);
+                    Glide.with(Message.this).load(profileImage).placeholder(R.drawable.userpic).into(receiverProfileImage);
                     //Picasso.get().load(profileImage).resize(5,5).centerCrop().into(receiverProfileImage);
                 }
             }

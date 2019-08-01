@@ -10,7 +10,7 @@
     android:layout_gravity="center"
     tools:context=".SeeGuidesProfileAfterConfirmingTrip">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/cross_btn"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -19,7 +19,7 @@
         android:textStyle="bold"
         android:layout_gravity="end"
         android:gravity="center"
-        android:background="@drawable/circle_background"/>
+        android:background="@drawable/circle_background"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:id="@+id/profilepic"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/deeptapic"
+
             android:background="@drawable/circle_background"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"/>
@@ -39,7 +39,7 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="Loading..."
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
@@ -49,12 +49,21 @@
             android:id="@+id/country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country"
+            android:text="Loading..."
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"/>
 
-        <Button
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading..."
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"/>
+
+        <!--<Button
             android:id="@+id/btn_ratings"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -63,7 +72,7 @@
             android:background="@drawable/button_delete_packages"
             android:text="Ratings"
             android:textColor="@color/white"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"/>-->
 
 
     </LinearLayout>
@@ -75,7 +84,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="15dp">
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="100dp"
@@ -99,6 +108,39 @@
                 android:textColor="@color/white"/>
 
 
+        </LinearLayout>-->
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Great"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/great_color"/>
+
+
+            <TextView
+                android:id="@+id/great_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+
         </LinearLayout>
 
 
@@ -113,27 +155,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ratings"
+                android:text="Good"
                 android:textSize="18sp"
                 android:textColor="@color/black"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/great_color"/>
+                android:src="@drawable/good_color"/>
 
 
             <TextView
+                android:id="@+id/good_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50"
+                android:text="Loading..."
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
 
 
         </LinearLayout>
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="100dp"
@@ -157,10 +200,61 @@
                 android:textColor="@color/white"/>
 
 
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poor"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bad_color"/>
+
+
+            <TextView
+                android:id="@+id/poor_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+
         </LinearLayout>
 
 
     </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_delete_packages"
+        android:text="Ratings"
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
+
+
+    </LinearLayout>-->
 
     <!--<ImageView
         android:layout_width="wrap_content"
@@ -195,6 +289,17 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/ic_chat_black_24dp"
         android:backgroundTint="@color/DodgerBlue"/>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_ratings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_star_black_24dp"
+            android:backgroundTint="@color/DarkOrange"/>
 
 
     </LinearLayout>

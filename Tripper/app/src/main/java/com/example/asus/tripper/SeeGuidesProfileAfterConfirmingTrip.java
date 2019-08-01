@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,13 +29,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
 
 
-    private FloatingActionButton message_float1;
+    private FloatingActionButton message_float1, btn_ratings;
     private CircleImageView profilepic1;
     private TextView username1, country1 , phone1, ratings1, trips1, cross_btn1;
-    private DatabaseReference databaseReference, UsersRef, tripsRef ;
+    private DatabaseReference databaseReference, UsersRef, tripsRef, RatingsRef, RatingsRef2, RatingsRef3 ;
     private FirebaseAuth mAuth;
     private int countConfirmedTrips = 0;
-    private Button btn_ratings;
+    //private Button btn_ratings;
+
+    private TextView great_no, good_no, poor_no;
+    private int countRatings;
 
     private String username, fullname, userkey, phone, country, profileimage,  packagekey , currentUserId, receiverUserId, CURRENT_STATE, databaseUserId, saveCurrentDate  ;  //userid who is online
 
@@ -64,20 +68,28 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userkey);
         tripsRef = FirebaseDatabase.getInstance().getReference().child("ConfirmedPackages");
 
+        RatingsRef = FirebaseDatabase.getInstance().getReference().child("Ratings");
+        RatingsRef2 = FirebaseDatabase.getInstance().getReference().child("Ratings2");
+        RatingsRef3 = FirebaseDatabase.getInstance().getReference().child("Ratings3");
+
+        great_no = findViewById(R.id.great_no);
+        good_no = findViewById(R.id.good_no);
+        poor_no = findViewById(R.id.poor_no);
+
         message_float1 = findViewById(R.id.message_float);
         profilepic1 = findViewById(R.id.profilepic);
         username1 = findViewById(R.id.username);
         country1 = findViewById(R.id.country);
         phone1 = findViewById(R.id.phone);
         //ratings1 = findViewById(R.id.ratings);
-        trips1 = findViewById(R.id.trips);
-        cross_btn1 = findViewById(R.id.cross_btn);
+        //trips1 = findViewById(R.id.trips);
+        //cross_btn1 = findViewById(R.id.cross_btn);
 
         btn_ratings = findViewById(R.id.btn_ratings);
 
 
 
-        tripsRef.child(currentUserId).addValueEventListener(new ValueEventListener() {    //at first only child(currentUserId)
+       /* tripsRef.child(currentUserId).addValueEventListener(new ValueEventListener() {    //at first only child(currentUserId)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -97,7 +109,12 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
+
+
+        setRatingButtonStatus(userkey);
+        setRatingButtonStatus2(userkey);
+        setRatingButtonStatus3(userkey);
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -118,7 +135,7 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
                     phone1.setText(phone);
                     country1.setText(country);
                     //Picasso.get().load(profileimage).into(profilepic1);
-                    Picasso.with(SeeGuidesProfileAfterConfirmingTrip.this).load(profileimage).placeholder(R.drawable.deeptapic).into(profilepic1);
+                    Glide.with(SeeGuidesProfileAfterConfirmingTrip.this).load(profileimage).placeholder(R.drawable.userpic).into(profilepic1);
 
 
 
@@ -187,4 +204,112 @@ public class SeeGuidesProfileAfterConfirmingTrip extends AppCompatActivity {
             }
         });
     }
+
+
+    public void setRatingButtonStatus(final String userkey) {
+
+        RatingsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.child(userkey).hasChild(currentUserId)){
+
+                    countRatings = (int) dataSnapshot.child(userkey).getChildrenCount();
+                    //great_btn.setImageResource(R.drawable.great_color);
+                    great_no.setText(Integer.toString(countRatings));
+                   /* good_btn.setImageResource(R.drawable.good_color);
+                    good_number.setText(Integer.toString(countRatings));
+                    poor_btn.setImageResource(R.drawable.bad_color);
+                    poor_number.setText(Integer.toString(countRatings));*/
+                }
+                else {
+
+                    countRatings = (int) dataSnapshot.child(userkey).getChildrenCount();
+                    //great_btn.setImageResource(R.drawable.great_colorless);
+                    great_no.setText(Integer.toString(countRatings));
+                    //good_btn.setImageResource(R.drawable.good_colorless);
+                   // good_number.setText(Integer.toString(countRatings));
+                    //poor_btn.setImageResource(R.drawable.bad_colorless);
+                    //poor_number.setText(Integer.toString(countRatings));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    public void setRatingButtonStatus2(final String userkey) {
+
+        RatingsRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.child(userkey).hasChild(currentUserId)){
+
+                    countRatings = (int) dataSnapshot.child(userkey).getChildrenCount();
+                   /* great_btn.setImageResource(R.drawable.great_color);
+                    great_number.setText(Integer.toString(countRatings));*/
+                    //good_btn.setImageResource(R.drawable.good_color);
+                    good_no.setText(Integer.toString(countRatings));
+                    /*poor_btn.setImageResource(R.drawable.bad_color);
+                    poor_number.setText(Integer.toString(countRatings));*/
+                }
+                else {
+
+                    countRatings = (int) dataSnapshot.child(userkey).getChildrenCount();
+                    //great_btn.setImageResource(R.drawable.great_colorless);
+                    //great_number.setText(Integer.toString(countRatings));
+                    //good_btn.setImageResource(R.drawable.good_colorless);
+                    good_no.setText(Integer.toString(countRatings));
+                    //poor_btn.setImageResource(R.drawable.bad_colorless);
+                    //poor_no.setText(Integer.toString(countRatings));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void setRatingButtonStatus3(final String userkey) {
+
+        RatingsRef3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.child(userkey).hasChild(currentUserId)){
+
+                    countRatings = (int) dataSnapshot.child(userkey).getChildrenCount();
+                   /* great_btn.setImageResource(R.drawable.great_color);
+                    great_number.setText(Integer.toString(countRatings));*/
+                   /* good_btn.setImageResource(R.drawable.good_color);
+                    good_number.setText(Integer.toString(countRatings));*/
+                    //poor_btn.setImageResource(R.drawable.bad_color);
+                    poor_no.setText(Integer.toString(countRatings));
+                }
+                else {
+
+                    countRatings = (int) dataSnapshot.child(userkey).getChildrenCount();
+                   /* great_btn.setImageResource(R.drawable.great_colorless);
+                    great_number.setText(Integer.toString(countRatings));*/
+                    /*good_btn.setImageResource(R.drawable.good_colorless);
+                    good_number.setText(Integer.toString(countRatings));*/
+                    //poor_btn.setImageResource(R.drawable.bad_colorless);
+                    poor_no.setText(Integer.toString(countRatings));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }

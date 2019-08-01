@@ -47,6 +47,8 @@ public class MyToursFragment extends Fragment  {
     private Button confirmed_text;
     //private Query query;
 
+    //private String userkey;
+
 
 
     @Nullable
@@ -58,6 +60,7 @@ public class MyToursFragment extends Fragment  {
         packagesRef = FirebaseDatabase.getInstance().getReference().child("Packages");
 
         //userkey= getIntent().getExtras().get("userkey").toString();
+
 
         //packagesRef = FirebaseDatabase.getInstance().getReference().child("Users");     //newly added
         //query=FirebaseDatabase.getInstance().getReference().child("Packages");

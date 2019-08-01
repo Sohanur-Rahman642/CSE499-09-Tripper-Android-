@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -80,7 +81,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
 
                     String image = dataSnapshot.child("profileimage").getValue().toString();
 
-                    Picasso.with(messageViewHolder.receiverProfileImage.getContext()).load(image).placeholder(R.drawable.userpic)
+                    Glide.with(messageViewHolder.receiverProfileImage.getContext()).load(image).placeholder(R.drawable.userpic)
                             .into(messageViewHolder.receiverProfileImage);
                 }
             }

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -91,7 +92,7 @@ public class FindGuide extends AppCompatActivity {
                 holder.phone.setText(model.getPhone());
                 holder.country.setText(model.getCountry());
                 //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.profileimage);
-                Picasso.with(FindGuide.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.profileimage);
+                Glide.with(FindGuide.this).load(model.getProfileimage()).placeholder(R.drawable.userpic).centerCrop().into(holder.profileimage);
 
                /* holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
                     @Override
