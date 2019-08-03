@@ -334,7 +334,7 @@ public class SetupUser extends AppCompatActivity {
 
     private void SendUserToHome() {
 
-        Intent intent = new Intent(SetupUser.this, MyToursForGuide.class);
+        Intent intent = new Intent(SetupUser.this, MyToursForGuide.class);      //before mytoursforguide
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

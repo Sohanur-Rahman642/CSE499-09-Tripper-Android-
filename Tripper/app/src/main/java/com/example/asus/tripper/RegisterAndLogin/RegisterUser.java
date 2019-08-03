@@ -120,9 +120,11 @@ public class RegisterUser extends AppCompatActivity {
 
                     if(task.isSuccessful()){
 
-                        SendUserToHome();
+                        SendEmailVerificationMessage();
 
-                        Toast.makeText(RegisterUser.this, "Account is created successfully! ", Toast.LENGTH_SHORT).show();
+                        //SendUserToHome();
+
+                        //Toast.makeText(RegisterUser.this, "Account is created successfully! ", Toast.LENGTH_SHORT).show();
                         loadingbar.dismiss();
                     }
                     else {
@@ -137,9 +139,39 @@ public class RegisterUser extends AppCompatActivity {
 
     }
 
+
+    private void SendEmailVerificationMessage(){
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if (user!= null){
+
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    if (task.isSuccessful()){
+
+                        Toast.makeText(RegisterUser.this, "Registration successful. Please check your mail and verify your account", Toast.LENGTH_SHORT).show();
+                        SendUserToHome();
+                        mAuth.signOut();
+                    }
+
+                    else {
+
+                        String error = task.getException().getMessage();
+                        Toast.makeText(RegisterUser.this, "Error: "+ error, Toast.LENGTH_SHORT).show();
+                        mAuth.signOut();
+                    }
+
+                }
+            });
+        }
+    }
+
     private void SendUserToHome() {
 
-        Intent intent = new Intent(RegisterUser.this, MyToursForGuide.class);
+        Intent intent = new Intent(RegisterUser.this, LoginUser.class);   //it was MytoursForGuide.class before
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

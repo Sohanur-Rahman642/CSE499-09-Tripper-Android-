@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.asus.tripper.RegisterAndLogin.LoginUser;
 import com.example.asus.tripper.RegisterAndLogin.SetupUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -75,7 +76,7 @@ public class UserDashBoard extends AppCompatActivity {
 
     private void SendUserToSetupActivity() {
 
-        Intent setupIntent= new Intent(UserDashBoard.this, SetupUser.class);
+        Intent setupIntent= new Intent(UserDashBoard.this, SetupUser.class);   //before it was SetupUser
         setupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(setupIntent);
         finish();
@@ -83,7 +84,7 @@ public class UserDashBoard extends AppCompatActivity {
 
     private void sendUserToLoginActivity() {
 
-        Intent loginIntent= new Intent(UserDashBoard.this, MainDashBoard.class);
+        Intent loginIntent= new Intent(UserDashBoard.this, MainDashBoard.class);   //it was maindashboard before
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
         finish();
