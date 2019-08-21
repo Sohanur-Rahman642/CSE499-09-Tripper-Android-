@@ -107,28 +107,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">-->
-        <ImageView
+        <ImageButton
             android:id="@+id/editimage"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             app:srcCompat="@drawable/edit"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"
+            android:background="@drawable/circle_black"/>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/signout"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginLeft="320dp"
             app:srcCompat="@drawable/ic_exit_to_app_black_24dp"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:layout_marginTop="15dp"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"
+            android:background="@drawable/circle_black"/>
 
         <!--</LinearLayout>-->
 
@@ -147,325 +149,492 @@
     </LinearLayout>-->
 
 
-     <ScrollView
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:layout_below="@id/relativelayout1">
-
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="410dp"
-        android:background="@drawable/bg_fragment_confirmed"
-        android:layout_below="@+id/relativelayout1">
+        android:layout_height="match_parent"
+        android:layout_below="@id/relativelayout1">
 
-        <!--<View
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="0dp"
-            android:background="@color/grey"/>-->
+            android:layout_height="410dp"
+            android:background="@drawable/bg_fragment_confirmed"
+            android:layout_below="@+id/relativelayout1">
 
-        <TextView
-            android:id="@+id/tv_fullname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:layout_marginTop="6sp"
-            android:layout_marginLeft="25dp"
-            android:text="Loading...please wait"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            />
+            <!--<View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/grey"/>-->
+
+            <TextView
+                android:id="@+id/tv_fullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="6sp"
+                android:layout_marginLeft="25dp"
+                android:text="Loading...please wait"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
 
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="25dp"
-            android:orientation="vertical"
-            android:layout_below="@id/tv_fullname"
-            android:layout_centerInParent="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Username"
-                     android:textColor="@color/lightviolet"
-                     android:textSize="13sp"/>-->
-
-                <TextView
-                    android:id="@+id/tv_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:textSize="15sp"
-                    android:textColor="#000000"
-                    android:text="Loading...please wait"
-                    android:drawableLeft="@drawable/ic_person_black_24dp"/>
-                <!--<View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/litegrey"/>-->
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <!--<TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address"
-                    android:textColor="@color/lightviolet"
-                    android:textSize="13sp"/>-->
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:orientation="vertical"
+                android:layout_below="@id/tv_fullname"
+                android:layout_centerInParent="false">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+
+                    <!-- <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="Username"
+                         android:textColor="@color/lightviolet"
+                         android:textSize="13sp"/>-->
 
                     <TextView
-                        android:id="@+id/tv_address1"
+                        android:id="@+id/tv_username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:textSize="15sp"
-                        android:text="Loading..please wait"
-                        android:textColor="#000000"
-                        android:drawableLeft="@drawable/ic_location_on_black_24dp"/>
+                        android:textColor="@color/white"
+                        android:text="Loading...please wait"
+                        android:drawableLeft="@drawable/ic_person_black_24dp"/>
                     <!--<View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="8dp"
                         android:background="@color/litegrey"/>-->
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=", "
-                        android:textSize="15sp"
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:id="@+id/tv_country"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:textSize="15sp"
-                        android:textColor="#000000"/>
-
                 </LinearLayout>
-            </LinearLayout>
 
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp">-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
 
-            <!--<TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Country"
-                android:textColor="@color/lightviolet"
-                android:textSize="13sp"/>-->
+                    <!--<TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:textColor="@color/lightviolet"
+                        android:textSize="13sp"/>-->
 
-            <!-- <TextView
-                 android:id="@+id/tv_country"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:fontFamily="sans-serif-light"
-                 android:textSize="18sp"
-                 android:textColor="#000000"/>-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <!--<View
-               android:layout_width="match_parent"
-               android:layout_height="1dp"
-               android:layout_marginTop="8dp"
-               android:background="@color/litegrey"/>-->
-            <!--</LinearLayout>-->
+                        <TextView
+                            android:id="@+id/tv_address1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:textSize="15sp"
+                            android:text="Loading..please wait"
+                            android:textColor="@color/white"
+                            android:drawableLeft="@drawable/ic_location_on_black_24dp"/>
+                        <!--<View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/litegrey"/>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=", "
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#000000"/>
+
+                        <TextView
+                            android:id="@+id/tv_country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:textSize="15sp"
+                            android:textColor="#000000"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">-->
 
                 <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone"
+                    android:text="Country"
                     android:textColor="@color/lightviolet"
                     android:textSize="13sp"/>-->
 
+                <!-- <TextView
+                     android:id="@+id/tv_country"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="sans-serif-light"
+                     android:textSize="18sp"
+                     android:textColor="#000000"/>-->
+
+                <!--<View
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:layout_marginTop="8dp"
+                   android:background="@color/litegrey"/>-->
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp">
+
+                    <!--<TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone"
+                        android:textColor="@color/lightviolet"
+                        android:textSize="13sp"/>-->
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:textSize="15sp"
+                        android:text="Loading...please wait"
+                        android:textColor="@color/white"
+                        android:drawableLeft="@drawable/ic_phone_iphone_black_24dp"/>
+                    <!-- <View
+                         android:layout_width="match_parent"
+                         android:layout_height="1dp"
+                         android:layout_marginTop="8dp"
+                         android:background="@color/litegrey"/>-->
+                </LinearLayout>
+
+               <!-- <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/litegrey"/>
+
+
+                <LinearLayout
+
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp">
+
+                    &lt;!&ndash; <LinearLayout
+                         android:layout_weight="1"
+                         android:layout_width="0dp"
+                         android:layout_height="100dp"
+                         android:gravity="center"
+                         android:background="@color/CadetBlue"
+                         android:orientation="vertical">
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="Phone"
+                             android:textSize="18sp"
+                             android:textColor="@color/white"/>
+
+                         <TextView
+                             android:id="@+id/phone"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="01777777777"
+                             android:textSize="16sp"
+                             android:textColor="@color/white"/>
+
+
+                     </LinearLayout>&ndash;&gt;
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:gravity="center"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Great"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/great_color"/>
+
+
+                        <TextView
+                            android:id="@+id/great_numb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading..."
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:gravity="center"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Good"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/good_color"/>
+
+
+                        <TextView
+                            android:id="@+id/good_numb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading..."
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+
+
+                    </LinearLayout>
+
+                    &lt;!&ndash; <LinearLayout
+                         android:layout_weight="1"
+                         android:layout_width="0dp"
+                         android:layout_height="100dp"
+                         android:gravity="center"
+                         android:background="@color/DarkOrange"
+                         android:orientation="vertical">
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="Trips"
+                             android:textSize="18sp"
+                             android:textColor="@color/white"/>
+
+                         <TextView
+                             android:id="@+id/trips"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="25"
+                             android:textSize="18sp"
+                             android:textColor="@color/white"/>
+
+
+                     </LinearLayout>&ndash;&gt;
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:gravity="center"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Poor"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/bad_color"/>
+
+
+                        <TextView
+                            android:id="@+id/poor_numb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading..."
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/litegrey"/>
+
+
+
+                <Button
+                    android:id="@+id/button_mytrips"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/button_white"
+                    android:layout_marginTop="20dp"
+                    android:text="My Trips"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:fontFamily="serif-monospace"
+                    android:textSize="18sp"
+                    android:textColor="#464646"
+                    android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                    android:drawableLeft="@drawable/ic_terrain_black_24dp"
+                    />
+
+
                 <TextView
-                    android:id="@+id/tv_phone"
+                    android:id="@+id/numberoftripstext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:textSize="15sp"
-                    android:text="Loading...please wait"
-                    android:textColor="#000000"
-                    android:drawableLeft="@drawable/ic_phone_iphone_black_24dp"/>
-                <!-- <View
-                     android:layout_width="match_parent"
-                     android:layout_height="1dp"
-                     android:layout_marginTop="8dp"
-                     android:background="@color/litegrey"/>-->
+                    android:text="Loading..."
+                    android:layout_marginLeft="270dp"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"/>
+
+                <!-- <Button
+                     android:id="@+id/button_acceptedtrips"
+                     android:layout_width="330dp"
+                     android:layout_height="45dp"
+                     android:background="@drawable/button_white"
+                     android:layout_marginTop="10dp"
+                     android:text="Accepted Trips"
+                     android:textAlignment="textStart"
+                     android:textAllCaps="false"
+                     android:fontFamily="serif-monospace"
+                     android:textSize="18sp"
+                     android:textColor="#464646"
+                     android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                     android:drawableLeft="@drawable/ic_playlist_add_check_black_24dp"
+                     />-->
+
+                <!-- <TextView
+                     android:id="@+id/numberofacceptedtripstext"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Loading..."
+                     android:layout_marginLeft="270dp"
+                     android:textSize="13sp"/>-->
+
+
+                <!--<Button
+                    android:id="@+id/button_settings"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/button_white"
+                    android:layout_marginTop="10dp"
+                    android:text="Settings"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:fontFamily="serif-monospace"
+                    android:textSize="18sp"
+                    android:textColor="#464646"
+                    android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                    android:drawableLeft="@drawable/ic_settings_black_24dp"
+                    />-->
+
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="15dp"
+                    android:text="My Trips"
+                    android:textColor="#464646"
+                    android:textSize="18sp"
+                    android:fontFamily="serif-monospace"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chevron_right_black_24dp"
+                    android:layout_marginVertical="15dp"
+                    android:layout_marginLeft="310dp"/>
+
+
+
+            </Button>-->
+
+                <!-- <android.support.v7.widget.CardView
+                     android:id="@+id/cardview_acceptedtrips"
+                     android:layout_width="350dp"
+                     android:layout_height="55dp"
+                     app:cardCornerRadius="10dp"
+                     android:layout_marginTop="20dp">
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginVertical="15dp"
+                         android:text="Accepted Trips"
+                         android:textColor="#464646"
+                         android:textSize="18sp"
+                         android:fontFamily="serif-monospace"
+                         android:layout_marginLeft="10dp"/>
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/ic_chevron_right_black_24dp"
+                         android:layout_marginVertical="15dp"
+                         android:layout_marginLeft="310dp"/>
+
+
+
+                 </android.support.v7.widget.CardView>-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/litegrey"/>
+
+
+
+
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/litegrey"/>
 
 
 
-            <Button
-                android:id="@+id/button_mytrips"
-                android:layout_width="330dp"
-                android:layout_height="45dp"
-                android:background="@drawable/button_white"
-                android:layout_marginTop="20dp"
-                android:text="My Trips"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:fontFamily="serif-monospace"
-                android:textSize="18sp"
-                android:textColor="#464646"
-                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
-                android:drawableLeft="@drawable/ic_terrain_black_24dp"
-                />
+        </RelativeLayout>
 
-
-            <TextView
-                android:id="@+id/numberoftripstext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Loading..."
-                android:layout_marginLeft="270dp"
-                android:textSize="13sp"/>
-
-           <!-- <Button
-                android:id="@+id/button_acceptedtrips"
-                android:layout_width="330dp"
-                android:layout_height="45dp"
-                android:background="@drawable/button_white"
-                android:layout_marginTop="10dp"
-                android:text="Accepted Trips"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:fontFamily="serif-monospace"
-                android:textSize="18sp"
-                android:textColor="#464646"
-                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
-                android:drawableLeft="@drawable/ic_playlist_add_check_black_24dp"
-                />-->
-
-           <!-- <TextView
-                android:id="@+id/numberofacceptedtripstext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Loading..."
-                android:layout_marginLeft="270dp"
-                android:textSize="13sp"/>-->
-
-
-            <Button
-                android:id="@+id/button_settings"
-                android:layout_width="330dp"
-                android:layout_height="45dp"
-                android:background="@drawable/button_white"
-                android:layout_marginTop="10dp"
-                android:text="Settings"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:fontFamily="serif-monospace"
-                android:textSize="18sp"
-                android:textColor="#464646"
-                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
-                android:drawableLeft="@drawable/ic_settings_black_24dp"
-                />
-
-            <!--<TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
-                android:text="My Trips"
-                android:textColor="#464646"
-                android:textSize="18sp"
-                android:fontFamily="serif-monospace"
-                android:layout_marginLeft="10dp"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_chevron_right_black_24dp"
-                android:layout_marginVertical="15dp"
-                android:layout_marginLeft="310dp"/>
-
-
-
-        </Button>-->
-
-            <!-- <android.support.v7.widget.CardView
-                 android:id="@+id/cardview_acceptedtrips"
-                 android:layout_width="350dp"
-                 android:layout_height="55dp"
-                 app:cardCornerRadius="10dp"
-                 android:layout_marginTop="20dp">
-
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginVertical="15dp"
-                     android:text="Accepted Trips"
-                     android:textColor="#464646"
-                     android:textSize="18sp"
-                     android:fontFamily="serif-monospace"
-                     android:layout_marginLeft="10dp"/>
-
-                 <ImageView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:src="@drawable/ic_chevron_right_black_24dp"
-                     android:layout_marginVertical="15dp"
-                     android:layout_marginLeft="310dp"/>
-
-
-
-             </android.support.v7.widget.CardView>-->
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/litegrey"/>
-
-
-
-
-        </LinearLayout>
-
-
-
-
-    </RelativeLayout>
-
-     </ScrollView>
+    </ScrollView>
 
 </RelativeLayout>

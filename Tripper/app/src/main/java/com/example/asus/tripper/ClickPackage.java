@@ -262,7 +262,7 @@ public class ClickPackage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                Intent i = new Intent(ClickPackage.this, FindGuide.class);
                 //i.putExtra("userkey", userkey);
                 startActivity(i);
             }
@@ -390,19 +390,19 @@ public class ClickPackage extends AppCompatActivity {
 
                                 CURRENT_STATE = "confirmation_sent";
                                 confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
-                                confirm_package_btn.setText("View Profile");   //it was cancel trip
+                                confirm_package_btn.setText("Search for the Guide");   //it was cancel trip
                                 confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
 
-                               /* cancel_package_btn.setEnabled(true);   // before it was false
+                                cancel_package_btn.setEnabled(true);   // before it was false
                                 cancel_package_btn.setVisibility(View.VISIBLE);    //before it was visible
-                                cancel_package_btn.setText("View Profile");  // it was not here
-                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white)); //it was not here before*/
-
+                                /*cancel_package_btn.setText("View Profile");  // it was not here
+                                cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white)); //it was not here before
+*/
                                 confirm_package_btn.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
 
-                                        Intent i =new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                                        Intent i =new Intent(ClickPackage.this, FindGuide.class);
                                         startActivity(i);
                                     }
                                 });
@@ -491,7 +491,7 @@ public class ClickPackage extends AppCompatActivity {
 
                                                 confirm_package_btn.setEnabled(true);
                                                 CURRENT_STATE = "confirmation_sent";
-                                                confirm_package_btn.setText("Visit guide's profile on Trip History");    //it was cancel trip
+                                                confirm_package_btn.setText("Search for the Guide");    //it was cancel trip
 
                                                /* cancel_package_btn.setEnabled(true);
                                                 cancel_package_btn.setVisibility(View.VISIBLE);

@@ -21,7 +21,8 @@ public class Ratings extends AppCompatActivity {
     TextView great_number, good_number, poor_number;
 
     private DatabaseReference RatingsRef, RatingsRef2, RatingsRef3;
-    Boolean RatingChecker = false;
+    //Boolean RatingChecker = false;
+    private String RatingChecker = "0";
     private String userkey, currentUserId;
     private FirebaseAuth mAuth;
     int countRatings;
@@ -59,27 +60,27 @@ public class Ratings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                RatingChecker = true;
+                RatingChecker = "1";     //true
 
                 RatingsRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                       if (RatingChecker.equals(true)){
+                       if (RatingChecker.equals("1")){       //true
 
                            if (dataSnapshot.child(userkey).hasChild(currentUserId)){
 
                                RatingsRef.child(userkey).child(currentUserId).removeValue();
-                               RatingChecker = false;
+                               RatingChecker = "0";     //false
                            }
                            else {
 
-                               RatingsRef.child(userkey).child(currentUserId).setValue(true);
-                               RatingChecker = false;
+                               RatingsRef.child(userkey).child(currentUserId).setValue("1");    //true
+                               RatingChecker = "0";     //false
                                RatingsRef2.child(userkey).child(currentUserId).removeValue();
-                               RatingChecker = false;
+                               RatingChecker = "0";     //false
                                RatingsRef3.child(userkey).child(currentUserId).removeValue();
-                               RatingChecker = false;
+                               RatingChecker = "0";    //false
                            }
                        }
                     }
@@ -98,27 +99,27 @@ public class Ratings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                RatingChecker = true;
+                RatingChecker = "1";
 
                 RatingsRef2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        if (RatingChecker.equals(true)){
+                        if (RatingChecker.equals("1")){
 
                             if (dataSnapshot.child(userkey).hasChild(currentUserId)){
 
                                 RatingsRef2.child(userkey).child(currentUserId).removeValue();
-                                RatingChecker = false;
+                                RatingChecker = "0";
                             }
                             else {
 
-                                RatingsRef2.child(userkey).child(currentUserId).setValue(true);
-                                RatingChecker = false;
+                                RatingsRef2.child(userkey).child(currentUserId).setValue("1");
+                                RatingChecker = "0";
                                 RatingsRef.child(userkey).child(currentUserId).removeValue();
-                                RatingChecker = false;
+                                RatingChecker = "0";
                                 RatingsRef3.child(userkey).child(currentUserId).removeValue();
-                                RatingChecker = false;
+                                RatingChecker = "0";
                             }
                         }
                     }
@@ -137,27 +138,27 @@ public class Ratings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                RatingChecker = true;
+                RatingChecker = "1";
 
                 RatingsRef3.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        if (RatingChecker.equals(true)){
+                        if (RatingChecker.equals("1")){
 
                             if (dataSnapshot.child(userkey).hasChild(currentUserId)){
 
                                 RatingsRef3.child(userkey).child(currentUserId).removeValue();
-                                RatingChecker = false;
+                                RatingChecker = "0";
                             }
                             else {
 
-                                RatingsRef3.child(userkey).child(currentUserId).setValue(true);
-                                RatingChecker = false;
+                                RatingsRef3.child(userkey).child(currentUserId).setValue("1");
+                                RatingChecker = "0";
                                 RatingsRef2.child(userkey).child(currentUserId).removeValue();
-                                RatingChecker = false;
+                                RatingChecker = "0";
                                 RatingsRef.child(userkey).child(currentUserId).removeValue();
-                                RatingChecker = false;
+                                RatingChecker = "0";
                             }
                         }
                     }
