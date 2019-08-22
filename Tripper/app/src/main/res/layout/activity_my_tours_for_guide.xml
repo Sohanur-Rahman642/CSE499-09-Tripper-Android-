@@ -15,11 +15,11 @@
 
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </ScrollView>
+        </ScrollView>
 
         <!--<android.support.design.widget.FloatingActionButton
             android:id="@+id/floatformytours"
@@ -47,7 +47,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_for_guide"
-        android:background="?android:attr/windowBackground"></android.support.design.widget.BottomNavigationView>
+
+        android:background="@color/Darken"
+
+
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="32dp"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+
+
+        >
+
+
+
+    </android.support.design.widget.BottomNavigationView>
 
 
 </RelativeLayout>

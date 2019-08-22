@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/nav_mytours"
-        android:icon="@drawable/ic_pin_drop_black_24dp"
-        android:title="My Tours"/>
+        android:id="@+id/user_home_bnav"
+
+        android:icon="@drawable/home_white"
+
+
+        tools:ignore="MenuTitle">
+
+    </item>
+    <item
+        android:id="@+id/trip_history_bnav"
+
+        android:icon="@drawable/history_white"
+
+        tools:ignore="MenuTitle">
+
+    </item>
 
     <item
-        android:id="@+id/nav_tourists"
-        android:icon="@drawable/ic_people_black_24dp"
-        android:title="Tourists"/>
+        android:id="@+id/explore_nearby_bnav"
+
+        android:icon="@drawable/explore_white"
+
+        tools:ignore="MenuTitle">
+
+    </item>
 
     <item
-        android:id="@+id/nav_inbox"
-        android:icon="@drawable/ic_email_black_24dp"
-        android:title="Inbox"/>
+        android:id="@+id/profile_bnav"
 
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="Profile"/>
+        android:icon="@drawable/profile_white"
+
+        tools:ignore="MenuTitle">
+
+    </item>
 
 </menu>

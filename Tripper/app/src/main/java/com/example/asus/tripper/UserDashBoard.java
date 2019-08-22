@@ -7,7 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.example.asus.tripper.RegisterAndLogin.LoginUser;
+
 import android.view.WindowManager;
+
 
 import com.example.asus.tripper.RegisterAndLogin.SetupUser;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,88 +30,24 @@ public class UserDashBoard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dash_board);
 
+        mAuth=FirebaseAuth.getInstance();
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        getWindow().setFlags(WindowManager.LayoutParams
-                .FLAG_FULLSCREEN,WindowManager.LayoutParams
-                .FLAG_FULLSCREEN);
-
-       /* mAuth=FirebaseAuth.getInstance();
-        userRef = FirebaseDatabase.getInstance().getReference().child("Users");*/
-
-
-
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.user_dashboard_bnav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-
-        if (savedInstanceState == null) {
-            bottomNavigationView.setSelectedItemId(R.id.home); // change to whichever id should be default
-        }
-    }
-/*
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        FirebaseUser currentUser= mAuth.getCurrentUser();
-
-        if(currentUser==null){
-
-            sendUserToLoginActivity();
-        }
-        else {
-
-            CheckUserExistence();
-        }
+/*        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.user_dashboard_bnav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);*/
     }
 
-    private void CheckUserExistence() {
-
-        final String current_user_id = mAuth.getCurrentUser().getUid();
-
-        userRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if(!dataSnapshot.hasChild(current_user_id)){
-
-                    SendUserToSetupActivity();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
-    }
-
-    private void SendUserToSetupActivity() {
-
-        Intent setupIntent= new Intent(UserDashBoard.this, SetupUser.class);
-        setupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(setupIntent);
-        finish();
-    }
-
-    private void sendUserToLoginActivity() {
-
-        Intent loginIntent= new Intent(UserDashBoard.this, MainDashBoard.class);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(loginIntent);
-        finish();
-    }
-*/
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+
+    /*private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -129,19 +69,11 @@ public class UserDashBoard extends AppCompatActivity {
                     selectedFragment = new fragment_user_profile();
                     break;
 
-             /*   case R.id.settings:
-                    selectedFragment = new fragment_user_settings();
-                    break;*/
 
 
-
-               /* case R.id.add_package:
-                    selectedFragment = new AddPackagesFragment();
-                    break;*/
 
 
             }
-
 
 
             getSupportFragmentManager().beginTransaction().
@@ -154,5 +86,5 @@ public class UserDashBoard extends AppCompatActivity {
 
         }
 
-    };
+    };*/
 }

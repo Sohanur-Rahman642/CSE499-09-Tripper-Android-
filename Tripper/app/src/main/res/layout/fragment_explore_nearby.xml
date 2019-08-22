@@ -1,80 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:padding="32dp"
     >
 
 
-    <com.mancj.materialsearchbar.MaterialSearchBar
-
-        style="@style/MaterialSearchBarLight"
-        app:mt_speechMode="false"
-        app:mt_hint="Search any place"
-        app:mt_maxSuggestionsCount="10"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/searchBar"
-        android:layout_margin="16dp"
-        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
 
-
-
-        app:mt_navIconEnabled="true"
-        app:mt_placeholder="Search a place "
-        android:elevation="5dp"
-        android:outlineProvider="bounds"
-        />
-
-    <fragment
-        android:id="@+id/map"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
-
-    <com.skyfishjy.library.RippleBackground
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ripple_bg"
-        app:rb_color="#0099CC"
-        app:rb_radius="32dp"
-        app:rb_rippleAmount="4"
-        app:rb_duration="3000"
-        app:rb_scale="6">
+        >
 
         <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_lock_open_black_24dp"
+            />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:transformPivotY="-18dp"
-
-            android:src="@drawable/ic_placeholder"
-
-
+            android:text="Permission Request"
+            android:textColor="@color/Darken"
+            android:textSize="24sp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="36dp"
+            android:text="Map needs permission to access device location
+                          to provide required service. Please allow the permission"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/Darken"
+            android:textSize="16sp"
 
 
             />
 
-    </com.skyfishjy.library.RippleBackground>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_grant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/appPrimary"
+        android:textColor="#FFFFFF"
+        android:text="Grant Permission"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAllCaps="false"
+
+        />
 
 
-
-
-
-
-
-
-    <!-- Adding bottom sheet after main content -->
-
-    <include layout="@layout/explore_nearby_layout" />
-
-
-
-
-
-</android.support.design.widget.CoordinatorLayout>
-
+</RelativeLayout>

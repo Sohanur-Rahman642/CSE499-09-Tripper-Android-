@@ -42,14 +42,13 @@
 
     </item>
 
-<!--
-    <item
-        android:id="@+id/settings"
-        android:title="Settings"
-        android:icon="@drawable/settings_darken"
-        >
-
-    </item>
--->
+    <!--
+        <item
+            android:id="@+id/settings"
+            android:title="Settings"
+            android:icon="@drawable/settings_darken"
+            >
+        </item>
+    -->
 
 </menu>

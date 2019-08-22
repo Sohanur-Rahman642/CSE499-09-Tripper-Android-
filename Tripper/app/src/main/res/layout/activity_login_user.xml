@@ -152,17 +152,17 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/login_fb_pic"
-                    android:layout_width="70dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/fbpic" />
+                <!-- <ImageView
+                     android:id="@+id/login_fb_pic"
+                     android:layout_width="70dp"
+                     android:layout_height="60dp"
+                     android:src="@drawable/fbpic" />
 
-                <ImageView
-                    android:id="@+id/login_twitter_pic"
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
-                    android:src="@drawable/twitterpic" />
+                 <ImageView
+                     android:id="@+id/login_twitter_pic"
+                     android:layout_width="50dp"
+                     android:layout_height="45dp"
+                     android:src="@drawable/twitterpic" />-->
 
                 <ImageView
                     android:id="@+id/login_google_pic"

@@ -13,9 +13,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,12 +36,18 @@ public class MyToursFragment extends Fragment  {
 
     private FirebaseAuth mAuth;
 
+    private ImageView SearchButton;
+    // private EditText SearchInputText;
+
     private FloatingActionButton floatingActionButton;
 
     private RecyclerView packages_recycle;
 
-    private DatabaseReference packagesRef;
+    private DatabaseReference packagesRef, usersRef;
+    private Button confirmed_text;
     //private Query query;
+
+    //private String userkey;
 
 
 
@@ -47,6 +58,11 @@ public class MyToursFragment extends Fragment  {
 
         mAuth=FirebaseAuth.getInstance();
         packagesRef = FirebaseDatabase.getInstance().getReference().child("Packages");
+
+        //userkey= getIntent().getExtras().get("userkey").toString();
+
+
+        //packagesRef = FirebaseDatabase.getInstance().getReference().child("Users");     //newly added
         //query=FirebaseDatabase.getInstance().getReference().child("Packages");
 
         packages_recycle = (RecyclerView) v.findViewById(R.id.packages_recycle);
@@ -55,6 +71,12 @@ public class MyToursFragment extends Fragment  {
         linearLayoutManager .setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         packages_recycle.setLayoutManager(linearLayoutManager);
+
+        //confirmed_text=v.findViewById(R.id.confirmed_text);
+        //confirmed_text.setVisibility(View.INVISIBLE);
+
+        SearchButton = (ImageView) v.findViewById(R.id.searchbtn_for_mytours);
+        //SearchInputText = (EditText) v.findViewById(R.id.search_box1);
 
         floatingActionButton = (FloatingActionButton) v.findViewById(R.id.floatformytours);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +89,24 @@ public class MyToursFragment extends Fragment  {
                                                 }
         );
 
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent i = new Intent(getActivity(), SearchForPackage.class);
+                                                startActivity(i);
+                                            }
+                                        }
+        );
+
+       /* SearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchBoxInput = SearchInputText.getText().toString();
+                DisplayAllPackages(searchBoxInput);
+            }
+        });*/
+
         DisplayAllPackages();
 
 
@@ -78,15 +118,21 @@ public class MyToursFragment extends Fragment  {
 
     private void DisplayAllPackages() {
 
+       /* Toast.makeText(getActivity(), "Searching...", Toast.LENGTH_LONG).show();
+        Query searchPackageQuery = packagesRef.orderByChild("packagename")
+                .startAt(searchBoxInput).endAt(searchBoxInput + "\uf8ff");*/
+
+        Query SortPackagesInDescendingOrder = packagesRef.orderByChild("counter");  //neww
+
         FirebaseRecyclerOptions<PackagesModel> options =
                 new FirebaseRecyclerOptions.Builder<PackagesModel>()
-                .setQuery(packagesRef, PackagesModel.class)
-                .build();
+                        .setQuery(SortPackagesInDescendingOrder, PackagesModel.class)
+                        .build();
 
         FirebaseRecyclerAdapter<PackagesModel, PackageViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<PackagesModel, PackageViewHolder>(options)
 
-                         {
+                {
                     @Override
                     protected void onBindViewHolder(@NonNull PackageViewHolder holder, int position, @NonNull PackagesModel model) {
 
@@ -101,8 +147,11 @@ public class MyToursFragment extends Fragment  {
 
                         final String packagekey = getRef(position).getKey();
 
+                        //final String userkey = getRef(position).getKey();
+                        //final String userkey= getIntent().getExtras().get("userkey").toString();
 
 
+                        holder.confirmed_text.setVisibility(View.INVISIBLE);
 
                         holder.package_user_name.setText(model.getFullname());
                         holder.package_name.setText(model.getPackagename());
@@ -110,8 +159,11 @@ public class MyToursFragment extends Fragment  {
                         holder.package_time.setText(model.getTime());
                         holder.package_price.setText(model.getPrice());
                         holder.package_group_members.setText(model.getGroupmembers());
-                        Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
-                        Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+                        //Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
+                        //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
+
+                        Glide.with(getActivity()).load(model.getPackageimage()).placeholder(R.drawable.loadingpic).centerCrop().into(holder.package_image);
+                        Glide.with(getActivity()).load(model.getProfileimage()).placeholder(R.drawable.userpic).into(holder.package_profile_image);
 
                         holder.package_image.setOnClickListener(new View.OnClickListener() {  //it can be holder.mView
                             @Override
@@ -120,6 +172,25 @@ public class MyToursFragment extends Fragment  {
                                 Intent clickpackageIntent = new Intent(getActivity(), ClickPackage.class);
                                 clickpackageIntent.putExtra("packagekey", packagekey);
                                 startActivity(clickpackageIntent);
+                            }
+                        });
+
+                       /* holder.package_user_name.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent clickusernameIntent = new Intent(getActivity(), SeeGuidesProfileAfterConfirmingTrip.class);
+                                clickusernameIntent.putExtra("userkey", userkey);
+                                startActivity(clickusernameIntent);
+                            }
+                        });*/
+
+                        holder.package_name.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent clickpackagenameIntent = new Intent(getActivity(), ClickPackage.class);
+                                clickpackagenameIntent.putExtra("packagekey", packagekey);
+                                startActivity(clickpackagenameIntent);
                             }
                         });
                     }
@@ -153,6 +224,7 @@ public class MyToursFragment extends Fragment  {
         TextView package_user_name, package_date, package_time, package_name, package_price, package_group_members;
         CircleImageView package_profile_image;
         ImageView package_image;
+        Button confirmed_text;
 
 
         public PackageViewHolder(@NonNull View itemView) {
@@ -168,51 +240,38 @@ public class MyToursFragment extends Fragment  {
             package_group_members = itemView.findViewById(R.id.package_group_members);
             package_profile_image = itemView.findViewById(R.id.package_profile_image);
             package_image = itemView.findViewById(R.id.package_image);
+            confirmed_text = itemView.findViewById(R.id.confirmed_text);
         }
 
       /*  public void setFullname(String fullname){
             TextView name = (TextView)mView.findViewById(R.id.package_user_name);
             name.setText(fullname);
         }
-
         public void setProfileimage(Context ctx, String profileimage){
-
             CircleImageView image = (CircleImageView) mView.findViewById(R.id.package_profile_image);
             Picasso.get().load(profileimage).into(image);
         }
-
         public void setPackageimage(Context ctx1, String packageimage){
-
             ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
             Picasso.get().load(packageimage).into(postimage);
         }
-
         public void setTime(String time){
-
             TextView posttime=(TextView) mView.findViewById(R.id.package_time);
             posttime.setText(" "+time);
         }
-
         public void setDate(String date){
-
             TextView postdate = (TextView) mView.findViewById(R.id.package_date);
             postdate.setText(" "+date);
         }
-
         public void setPackagename(String packagename){
-
             TextView postname = (TextView) mView.findViewById(R.id.package_name);
             postname.setText(packagename);
         }
-
         public void setPrice(String price){
-
             TextView postprice = (TextView) mView.findViewById(R.id.package_price);
             postprice.setText(price);
         }
-
         public void setGroupmembers(String groupmembers){
-
             TextView postgroup = (TextView) mView.findViewById(R.id.package_group_members);
             postgroup.setText(groupmembers);
         }*/
@@ -238,4 +297,3 @@ public class MyToursFragment extends Fragment  {
         getActivity().finish();
     }
 }
-

@@ -191,11 +191,11 @@ public class SignupForGuide extends AppCompatActivity {
         return result;
     }
 
-        private void sendUserData () {
-            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-            DatabaseReference myref = firebaseDatabase.getReference("Guides").child(firebaseAuth.getUid());
-            StorageReference imageReference=storageReference.child("Uploaded Profile Pictures For Guides").child(firebaseAuth.getUid()).child("Images for guide").child("Profile pic for guide");
-            UploadTask uploadTask=imageReference.putFile(imagePath);
+    private void sendUserData () {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myref = firebaseDatabase.getReference("Guides").child(firebaseAuth.getUid());
+        StorageReference imageReference=storageReference.child("Uploaded Profile Pictures For Guides").child(firebaseAuth.getUid()).child("Images for guide").child("Profile pic for guide");
+        UploadTask uploadTask=imageReference.putFile(imagePath);
          /*   uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -209,21 +209,21 @@ public class SignupForGuide extends AppCompatActivity {
 
             }
         });*/
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(SignupForGuide.this, "Upload failed", Toast.LENGTH_SHORT).show();
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SignupForGuide.this, "Upload failed", Toast.LENGTH_SHORT).show();
 
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(SignupForGuide.this, "Upload successful", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(SignupForGuide.this, "Upload successful", Toast.LENGTH_SHORT).show();
 
-                }
-            });
-            GuideProfile guideProfile = new GuideProfile(name, addr, email, pho, nid);
-            myref.setValue(guideProfile);
+            }
+        });
+        GuideProfile guideProfile = new GuideProfile(name, addr, email, pho, nid);
+        myref.setValue(guideProfile);
 
 
 

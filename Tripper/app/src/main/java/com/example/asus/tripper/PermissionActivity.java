@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.asus.tripper.R;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -21,9 +22,9 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.security.Permission;
+
 public class PermissionActivity extends AppCompatActivity {
-
-
 
     private Button btnGrant;
 
@@ -34,7 +35,9 @@ public class PermissionActivity extends AppCompatActivity {
 
         if(ContextCompat.checkSelfPermission(PermissionActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED){
+                == PackageManager.PERMISSION_GRANTED &&
+        ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED){
 
             startActivity(new Intent(getApplicationContext(),fragment_explore_nearby.class));
 
@@ -93,5 +96,4 @@ public class PermissionActivity extends AppCompatActivity {
             }
         });
     }
-
 }

@@ -8,7 +8,7 @@ public class PackagesModel {
 
     }
 
-    public PackagesModel(String packagename, String date, String details, String enddate, String endtime, String fullname, String gid, String groupmembers, String location, String meetpoint, String packageimage, String price, String startdate, String starttime, String time, String profileimage) {
+    public PackagesModel(String packagename, String date, String details, String enddate, String endtime, String fullname, String gid,  String groupmembers, String location, String meetpoint, String packageimage, String price, String startdate, String starttime, String time, String profileimage) {
         this.packagename = packagename;
         this.date = date;
         this.details = details;

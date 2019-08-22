@@ -86,6 +86,67 @@ public class RunningFragment extends Fragment {
                         "Bandarban is an Indonesian island known for its forested volcanic mountains"));
 
 
+        packageList.add(
+                new Package(6,
+                        R.drawable.sajekprofile,
+                        "Sajek Trek",
+                        R.drawable.sajek,
+                        "Sajek Trek in Khagrachori",
+                        "Sajek is known for beautiful mountains surrounding with fog."));
+
+        packageList.add(
+                new Package(7,
+                        R.drawable.saintmartinprofilenew,
+                        "Saint-Martin Trek",
+                        R.drawable.saintmartinnew,
+                        "Saint-Martin in Canada",
+                        "Saint-Martin Trek is one of the most awarded fitness retreat and health spas in Bangladesh."));
+
+        packageList.add(
+                new Package(8,
+                        R.drawable.bandarbanprofilenew,
+                        "Bandarban",
+                        R.drawable.bandarbannew,
+
+                        "Bandarban Trip",
+                        "Bandarban is an Indonesian island known for its forested volcanic mountains"));
+
+
+        packageList.add(
+                new Package(9,
+                        R.drawable.sajekprofile,
+                        "Sajek Trek",
+                        R.drawable.sajek,
+                        "Sajek Trek in Khagrachori",
+                        "Sajek is known for beautiful mountains surrounding with fog."));
+
+        packageList.add(
+                new Package(10,
+                        R.drawable.saintmartinprofilenew,
+                        "Saint-Martin Trek",
+                        R.drawable.saintmartinnew,
+                        "Saint-Martin in Canada",
+                        "Saint-Martin Trek is one of the most awarded fitness retreat and health spas in Bangladesh."));
+
+        packageList.add(
+                new Package(11,
+                        R.drawable.bandarbanprofilenew,
+                        "Bandarban",
+                        R.drawable.bandarbannew,
+
+                        "Bandarban Trip",
+                        "Bandarban is an Indonesian island known for its forested volcanic mountains"));
+
+
+        packageList.add(
+                new Package(12,
+                        R.drawable.sajekprofile,
+                        "Sajek Trek",
+                        R.drawable.sajek,
+                        "Sajek Trek in Khagrachori",
+                        "Sajek is known for beautiful mountains surrounding with fog."));
+
+
         PackageAdapter adapter = new PackageAdapter(getContext(), packageList);
 
         //setting adapter to recyclerview

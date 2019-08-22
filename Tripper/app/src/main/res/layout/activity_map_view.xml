@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapView">
+    <!-- <android.support.v7.widget.CardView
+     android:id="@+id/idCardView"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_margin="5dp"
+     android:layout_marginTop="20dp"
+     app:cardCornerRadius="4dp"
+         tools:ignore="MissingConstraints">
+   <fragment android:id="@+id/autocomplete_fragment"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+     />
+
+        &lt;!&ndash; <fragment
+             android:id="@+id/place_autocomplete"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+             />&ndash;&gt;
+     </android.support.v7.widget.CardView>-->
+
+
+    <com.mancj.materialsearchbar.MaterialSearchBar
+
+        style="@style/MaterialSearchBarLight"
+        app:mt_speechMode="false"
+        app:mt_hint="Search any place"
+        app:mt_maxSuggestionsCount="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchBar"
+        android:layout_margin="16dp"
+        android:layout_marginTop="20dp"
+
+
+
+        app:mt_navIconEnabled="true"
+        app:mt_placeholder="Search a place "
+        android:elevation="5dp"
+        android:outlineProvider="bounds"
+        />
+
+    <fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+    <com.skyfishjy.library.RippleBackground
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ripple_bg"
+        app:rb_color="#0099CC"
+        app:rb_radius="32dp"
+        app:rb_rippleAmount="4"
+        app:rb_duration="3000"
+        app:rb_scale="6">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:transformPivotY="-18dp"
+
+            android:src="@drawable/ic_placeholder"
+
+
+
+
+            />
+
+    </com.skyfishjy.library.RippleBackground>
+
+
+
+    <!-- Adding bottom sheet after main content -->
+    <include layout="@layout/explore_nearby_layout" />
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>
+

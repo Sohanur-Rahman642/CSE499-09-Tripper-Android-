@@ -1,12 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
+
     >
 
 
-    <Button
-        android:id="@+id/fakesignout1"
+    <FrameLayout
+        android:id="@+id/main_container_of_confirmed_trips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/myLayout_confirmed_trips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp">
+
+
+            <include layout="@layout/toolbar_for_adding_packages"
+                android:id="@+id/toolbar_for_confirmed_trips"/>
+
+            <!--<include layout="@layout/tab_bar_confirmed"
+                android:id="@+id/tab_bar_for_confirmed_trips" />-->
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager_for_confirmed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="52dp"
+                />
+
+
+            <TextView
+                android:id="@+id/textConfirmedTrips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirmed Trips"
+                android:textSize="26dp"
+                android:fontFamily="cursive"
+                android:textColor="@color/white"
+                android:layout_margin="14dp"/>
+
+            <!-- <ImageView
+                 android:id="@+id/searchbtn_for_mytours"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/ic_search_black_24dp"
+                 android:layout_toRightOf="@+id/textPackages"
+                 android:layout_alignParentRight="true"
+                 android:layout_marginLeft="200dp"
+                 android:layout_marginTop="14dp"/>-->
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/confirmed_trips_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp">
+
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+    </FrameLayout>
+
+
+    <!--<android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatformytours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SignOut" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="@color/black"
+        app:backgroundTint="@color/Black"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        tools:ignore="VectorDrawableCompat" />-->
+
+
 </RelativeLayout>

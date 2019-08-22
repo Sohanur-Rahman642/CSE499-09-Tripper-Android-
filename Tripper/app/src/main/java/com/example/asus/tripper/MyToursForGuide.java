@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -47,6 +48,11 @@ public class MyToursForGuide extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_tours_for_guide);
+
+
+        getWindow().setFlags(WindowManager.LayoutParams
+                .FLAG_FULLSCREEN, WindowManager.LayoutParams
+                .FLAG_FULLSCREEN);
         //init();
 
        firebaseAuth=  FirebaseAuth.getInstance();
@@ -56,6 +62,10 @@ public class MyToursForGuide extends AppCompatActivity {
 
         BottomNavigationView bottomNav= findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        if (savedInstanceState == null) {
+            bottomNav.setSelectedItemId(R.id.user_home_bnav); // change to whichever id should be default
+        }
 
        /* BottomNavigationView topNav= findViewById(R.id.top_nav_guide);
         topNav.setItemIconTintList(null);
@@ -152,24 +162,29 @@ public class MyToursForGuide extends AppCompatActivity {
             Fragment selectedFragment= null;
 
             switch (item.getItemId()){
-                case R.id.nav_mytours:
+                case R.id.user_home_bnav:
                     selectedFragment= new MyToursFragment();
                     break;
 
-                case R.id.nav_tourists:
+                case R.id.trip_history_bnav:
                     selectedFragment= new TouristsFragment();
                     break;
 
-                case R.id.nav_inbox:
-                    selectedFragment= new InboxFragment();
+                case R.id.explore_nearby_bnav:
+                    selectedFragment= new fragment_explore_nearby();
                     break;
 
-                case R.id.nav_profile:
+                case R.id.profile_bnav:
                     selectedFragment= new ProfileFragment();
                     break;
+
+
             }
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().
+                    replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
 
             return true;
         }

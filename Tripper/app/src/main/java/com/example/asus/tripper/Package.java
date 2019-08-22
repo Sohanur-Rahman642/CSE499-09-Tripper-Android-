@@ -5,51 +5,51 @@ public class Package {
 
 
 
-        private int id;
-        private String title;
-        private String shortDesc;
-        private String packageTitle;
-        private int imageTitle;
-        private int imagePackage;
+    private int id;
+    private String title;
+    private String shortDesc;
+    private String packageTitle;
+    private int imageTitle;
+    private int imagePackage;
 
 
-        public Package(int id,int imageTitle,String title,int imagePackage, String packageTitle,String shortDesc){
+    public Package(int id,int imageTitle,String title,int imagePackage, String packageTitle,String shortDesc){
 
-            this.id= id;
-            this.imageTitle = imageTitle;
-            this.title = title;
-            this.imagePackage = imagePackage;
-            this.packageTitle = packageTitle;
-            this.shortDesc = shortDesc;
-
-
+        this.id= id;
+        this.imageTitle = imageTitle;
+        this.title = title;
+        this.imagePackage = imagePackage;
+        this.packageTitle = packageTitle;
+        this.shortDesc = shortDesc;
 
 
-        }
 
-        public int getId() {
-            return id;
-        }
 
-        public String getTitle() {
-            return title;
-        }
+    }
 
-        public String getShortDesc() {
-            return shortDesc;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public String getPackageTitle() {
-            return packageTitle;
-        }
+    public String getTitle() {
+        return title;
+    }
 
-        public int getImageTitle() {
-            return imageTitle;
-        }
+    public String getShortDesc() {
+        return shortDesc;
+    }
 
-        public int getImagePackage() {
-            return imagePackage;
-        }
+    public String getPackageTitle() {
+        return packageTitle;
+    }
+
+    public int getImageTitle() {
+        return imageTitle;
+    }
+
+    public int getImagePackage() {
+        return imagePackage;
+    }
 
 
 

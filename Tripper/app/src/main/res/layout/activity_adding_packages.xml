@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Tours"
+                android:text="Add Package"
                 android:layout_toRightOf="@+id/back_button_for_adding_packages"
                 android:textSize="20dp"
                 android:textColor="@color/white"
@@ -63,12 +63,12 @@
 
                     >
 
-                   <ImageView
-                       android:id="@+id/addpackage"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:scaleType="centerInside"
-                       android:src="@drawable/hill"/>
+                    <ImageView
+                        android:id="@+id/addpackage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/hill"/>
 
 
 
@@ -91,12 +91,13 @@
                 android:textColorHint="#838282"
                 android:textAlignment="center"
                 android:textSize="20sp"
+                android:inputType="textCapWords|textCapSentences"
 
                 />
 
             <EditText
                 android:id="@+id/start_date_tv1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Start Date"
                 android:layout_below="@id/package_name_ed1"
@@ -107,22 +108,23 @@
                 android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_date_range_black_24dp"
                 android:drawablePadding="5dp"
+                android:layout_centerInParent="true"
                 />
 
             <EditText
                 android:id="@+id/start_time_tv1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Start Time"
-                android:layout_below="@id/package_name_ed1"
-                android:layout_toRightOf="@id/start_date_tv1"
+                android:layout_below="@id/end_date_tv1"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="85dp"
+                android:layout_marginLeft="5dp"
                 android:inputType="time"
                 android:drawablePadding="5dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:drawableLeft="@drawable/timer"/>
+                android:drawableLeft="@drawable/timer"
+                android:layout_centerInParent="true"/>
 
 
 
@@ -130,7 +132,7 @@
 
             <EditText
                 android:id="@+id/end_date_tv1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Finish Date"
                 android:layout_below="@id/start_date_tv1"
@@ -142,32 +144,33 @@
                 android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_flight_black_24dp"
                 android:drawablePadding="5dp"
+                android:layout_centerInParent="true"
                 />
 
             <EditText
                 android:id="@+id/end_time_tv1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Finish Time"
                 android:layout_below="@id/start_time_tv1"
-                android:layout_toRightOf="@id/end_date_tv1"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="76dp"
+                android:layout_marginLeft="5dp"
                 android:inputType="time"
                 android:drawablePadding="5dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_timer_off_black_24dp"
+                android:layout_centerInParent="true"
 
                 />
 
 
             <EditText
                 android:id="@+id/location1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Location"
-                android:layout_below="@id/end_date_tv1"
+                android:layout_below="@id/end_time_tv1"
 
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
@@ -175,33 +178,34 @@
                 android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_location_on_black_24dp"
                 android:drawablePadding="5dp"
+                android:layout_centerInParent="true"
 
 
                 />
 
             <EditText
                 android:id="@+id/price1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Tour Price"
-                android:layout_below="@id/end_time_tv1"
-                android:layout_toRightOf="@id/location1"
+                android:layout_below="@id/location1"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="96dp"
+                android:layout_marginLeft="5dp"
                 android:inputType="number"
                 android:drawablePadding="5dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:drawableLeft="@drawable/money"
+                android:layout_centerInParent="true"
 
                 />
 
             <EditText
                 android:id="@+id/meetpoint1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Meeting Point"
-                android:layout_below="@id/location1"
+                android:layout_below="@id/price1"
 
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
@@ -209,24 +213,25 @@
                 android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_wc_black_24dp"
                 android:drawablePadding="5dp"
+                android:layout_centerInParent="true"
 
 
                 />
 
             <EditText
                 android:id="@+id/group_members1"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Group Members"
-                android:layout_below="@id/price1"
-                android:layout_toRightOf="@id/meetpoint1"
+                android:layout_below="@id/meetpoint1"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="55dp"
+                android:layout_marginLeft="5dp"
                 android:drawablePadding="5dp"
                 android:inputType="number"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_group_black_24dp"
+                android:layout_centerInParent="true"
 
                 />
 
@@ -235,7 +240,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Details"
-                android:layout_below="@id/meetpoint1"
+                android:layout_below="@id/group_members1"
 
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="5dp"

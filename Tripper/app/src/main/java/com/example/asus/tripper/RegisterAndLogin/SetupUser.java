@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +20,9 @@ import com.bumptech.glide.Glide;
 import com.example.asus.tripper.MyToursForGuide;
 import com.example.asus.tripper.R;
 import com.example.asus.tripper.UserDashBoard;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +58,8 @@ public class SetupUser extends AppCompatActivity {
 
     String currentUserId;
     final static int Gallery_Pick = 1;
+
+    //public static final String TAG = "profileimage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +110,18 @@ public class SetupUser extends AppCompatActivity {
 
                         String image = dataSnapshot.child("profileimage").getValue().toString();
 
+                        //Picasso.get().load(image).into(setup_propic);
+
                         //Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
-                       // Picasso.get().load(image).fit().centerCrop().into(setup_propic);
-                        Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
-                        //Glide.with(SetupUser.this).load(image).into(setup_propic);
+                        // Picasso.get().load(image).fit().centerCrop().into(setup_propic);
+                        //Picasso.get().load(image).placeholder(R.drawable.userpic).into(setup_propic);
+                        Picasso.with(SetupUser.this).load(image).into(setup_propic);
+
+                        /*Picasso.get()
+                                .load(image)
+                                .resize(50, 50)
+                                .centerCrop()
+                                .into(setup_propic);*/
                     }
                     else {
                         Toast.makeText(SetupUser.this, "Please select profile image first", Toast.LENGTH_SHORT).show();
@@ -169,13 +182,47 @@ public class SetupUser extends AppCompatActivity {
 
                 Uri resultUri = result.getUri();
 */
-                StorageReference filePath = UserProfileImageRef.child( currentUserId + ".jpg");
+            final StorageReference filePath = UserProfileImageRef.child( currentUserId + ".jpg");
 
-                filePath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
+            filePath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            final String downloadUrl = uri.toString();
+                            usersRef.child("profileimage").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        //Toast.makeText(getApplicationContext(),"Image save in Database Successfully...",Toast.LENGTH_SHORT).show();
+                                        //loadingBar.dismiss();
+                                        Toast.makeText(SetupUser.this, "Profile image stored to firebase database successfully", Toast.LENGTH_SHORT).show();
+                                        loadingbar.dismiss();
+                                    }
+                                    else{
+                                        //String message = task.getException().toString();
+                                        //Toast.makeText(getApplicationContext(),"Error:"+message,Toast.LENGTH_SHORT).show();
+                                        //loadingBar.dismiss();
+                                        String message = task.getException().getMessage();
+                                        Toast.makeText(SetupUser.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                                        loadingbar.dismiss();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
+
+               /* filePath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                                                     @Override
+
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
                         if(task.isSuccessful()){
+                             //filePath.getDownloadUrl();
 
                             //Toast.makeText(SetupUser.this, "Profile image stored successfully", Toast.LENGTH_SHORT).show();
 
@@ -205,15 +252,15 @@ public class SetupUser extends AppCompatActivity {
                             });
                         }
                     }
-                });
-            }
-
-            else {
-
-                Toast.makeText(this, "Error: Image cannot be cropped. ", Toast.LENGTH_SHORT).show();
-                loadingbar.dismiss();
-            }
+                });*/
         }
+
+        else {
+
+            Toast.makeText(this, "Error: Image cannot be cropped. ", Toast.LENGTH_SHORT).show();
+            loadingbar.dismiss();
+        }
+    }
     //}
 
     private void SaveAccountSetupInfo() {
@@ -224,12 +271,12 @@ public class SetupUser extends AppCompatActivity {
         String country = setup_country.getText().toString();
         String phone = setup_phone.getText().toString();
 
-        if(ImageUri==null){
+        /*if(ImageUri==null){
 
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
-        else if(TextUtils.isEmpty(username)){
+        if(TextUtils.isEmpty(username)){
 
             Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT).show();
         }
@@ -287,7 +334,7 @@ public class SetupUser extends AppCompatActivity {
 
     private void SendUserToHome() {
 
-        Intent intent = new Intent(SetupUser.this, MyToursForGuide.class);
+        Intent intent = new Intent(SetupUser.this, MyToursForGuide.class);      //before mytoursforguide
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

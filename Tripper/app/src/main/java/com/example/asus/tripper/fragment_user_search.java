@@ -31,7 +31,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
 
 
 public class fragment_user_search extends Fragment {
@@ -59,7 +59,7 @@ public class fragment_user_search extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
         setHasOptionsMenu(true);
 
-       /* fakesignout = (Button) rootView.findViewById(R.id.fakesignout);
+        fakesignout = (Button) rootView.findViewById(R.id.fakesignout);
         fakesignout.setOnClickListener(new View.OnClickListener() {
 
                                            @Override
@@ -71,7 +71,7 @@ public class fragment_user_search extends Fragment {
                                                startActivity(i);
                                            }
                                        }
-        );*/
+        );
 
 
         return rootView;

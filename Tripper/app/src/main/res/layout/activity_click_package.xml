@@ -24,34 +24,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include layout="@layout/toolbar_for_adding_packages"
-                android:id="@+id/toolbar_for_adding_packages1"/>
+            <!--<include layout="@layout/toolbar_for_adding_packages"
+                android:id="@+id/toolbar_for_adding_packages1"/>-->
 
-            <ImageView
-                android:id="@+id/back_button_for_adding_packages1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                app:srcCompat="@drawable/ic_arrow_back_black_24dp"
-                android:layout_margin="12dp"
-                tools:ignore="VectorDrawableCompat" />
+            <!-- <ImageView
+                 android:id="@+id/back_button_for_adding_packages1"
+                 android:layout_width="30dp"
+                 android:layout_height="30dp"
+                 app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+                 android:layout_margin="12dp"
+                 tools:ignore="VectorDrawableCompat" />-->
 
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Tours"
+                android:text="Package"
                 android:layout_toRightOf="@+id/back_button_for_adding_packages1"
                 android:textSize="20dp"
                 android:textColor="@color/white"
-                android:layout_margin="14dp"/>
+                android:layout_margin="14dp"/>-->
 
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cv0"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="12dp"
+                android:layout_height="340dp"
+                android:layout_margin="0dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@+id/toolbar_for_adding_packages1"
 
                 >
 
@@ -68,7 +67,17 @@
                         android:id="@+id/clickaddpackagepic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/hill" />
+                        android:src="@drawable/loadingpic"
+                        android:scaleType="centerCrop"/>
+
+                    <ImageButton
+                        android:id="@+id/back_button_for_adding_packages1"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/circle_black"
+                        android:src="@drawable/ic_arrow_back_black_24dp" />
 
 
 
@@ -84,23 +93,32 @@
                 android:layout_margin="5dp"
                 android:layout_below="@+id/cv0">
 
-            <TextView
-                android:id="@+id/clickpackagename"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/clickpackagename"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
 
-                android:text="Package Name"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                    android:text="Package Name"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
 
-                android:textAlignment="center"
-                android:textSize="22sp"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
 
 
-                />
+                    />
+
+                <!--<ImageView
+                    android:id="@+id/editpackagebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_edit_black_24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="94dp"
+                    />-->
             </RelativeLayout>
 
             <RelativeLayout
@@ -109,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:layout_below="@+id/rl2"
-               >
+                >
 
                 <TextView
                     android:id="@+id/clickdetail"
@@ -130,7 +148,9 @@
                 android:layout_height="180dp"
                 android:layout_margin="12dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@+id/cv1">
+                android:layout_below="@+id/cv1"
+                app:cardBackgroundColor="#B0B5E9"
+                app:cardCornerRadius="5dp">
 
 
                 <LinearLayout
@@ -144,14 +164,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Start Date"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:drawableLeft="@drawable/ic_date_range_black_24dp"
-                    android:textSize="16dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Start Date"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:drawableLeft="@drawable/ic_date_range_black_24dp"
+                            android:textSize="16dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -170,29 +190,29 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/clickstartdate"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginStart="25dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" 12/13/2019"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:textSize="14dp"/>
+                        <TextView
+                            android:id="@+id/clickstartdate"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="25dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 12/13/2019"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:textSize="14dp"/>
 
 
 
-                    <TextView
-                        android:id="@+id/clickstarttime"
-                        android:layout_marginTop="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" 11.20.30 p.m."
-                        android:layout_marginStart="120dp"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:textSize="14dp"/>
+                        <TextView
+                            android:id="@+id/clickstarttime"
+                            android:layout_marginTop="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 11.20.30 p.m."
+                            android:layout_marginStart="120dp"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
 
@@ -271,7 +291,9 @@
                 android:layout_height="180dp"
                 android:layout_margin="12dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@+id/cv2">
+                android:layout_below="@+id/cv2"
+                app:cardBackgroundColor="#6DD7E2"
+                app:cardCornerRadius="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -280,15 +302,15 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" Location"
-                            android:textColor="@color/black"
-                            android:textAlignment="center"
-                            android:drawableLeft="@drawable/ic_location_on_black_24dp"
-                            android:textSize="16dp"
-                            android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Location"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                        android:textSize="16dp"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/clicklocation"
@@ -328,7 +350,7 @@
 
 
 
-                    </LinearLayout>
+                </LinearLayout>
 
 
 
@@ -343,7 +365,9 @@
                 android:layout_height="100dp"
                 android:layout_margin="12dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@+id/cv3">
+                android:layout_below="@+id/cv3"
+                app:cardBackgroundColor="#6DBE71"
+                app:cardCornerRadius="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -352,61 +376,61 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Group Members"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:drawableLeft="@drawable/ic_group_black_24dp"
-                        android:textSize="16dp"/>
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Group Members"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:drawableLeft="@drawable/ic_group_black_24dp"
+                            android:textSize="16dp"/>
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Tour Price"
+                            android:layout_marginStart="60dp"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:drawableLeft="@drawable/money"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Tour Price"
-                        android:layout_marginStart="60dp"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:drawableLeft="@drawable/money"
-                        android:textSize="16dp" />
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/clickmembers"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginStart="50dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" 8"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:textSize="14dp"/>
+                        <TextView
+                            android:id="@+id/clickmembers"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="50dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 8"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:textSize="14dp"/>
 
 
 
-                    <TextView
-                        android:id="@+id/clickprice"
-                        android:layout_marginTop="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" 10000 Tk"
-                        android:layout_marginStart="200dp"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:textSize="14dp"/>
+                        <TextView
+                            android:id="@+id/clickprice"
+                            android:layout_marginTop="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 10000 Tk"
+                            android:layout_marginStart="200dp"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:textSize="14dp"/>
 
-                </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
 
@@ -415,7 +439,7 @@
 
 
 
-            <Button
+            <!--<Button
                 android:id="@+id/editpackagebtn"
                 android:layout_width="290dp"
                 android:layout_height="wrap_content"
@@ -428,28 +452,52 @@
                 android:layout_margin="5dp"
                 android:layout_centerHorizontal="true"
 
-                />
+                />-->
 
             <Button
                 android:id="@+id/deletepackagebtn"
-                android:layout_width="290dp"
+                android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_create_packages"
                 android:text="Delete"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:layout_below="@id/editpackagebtn"
                 android:layout_marginTop="40dp"
                 android:layout_margin="5dp"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@+id/cv4"
 
                 />
 
+            <Button
+                android:id="@+id/confirm_package_btn"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_create_packages"
+                android:text="Confirm Trip"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_marginTop="40dp"
+                android:layout_margin="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/deletepackagebtn"
 
+                />
 
+            <Button
+                android:id="@+id/cancel_package_btn"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_create_packages"
+                android:text="Cancel Trip"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:layout_marginTop="40dp"
+                android:layout_margin="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/cv4"
 
-
-
+                />
 
         </RelativeLayout>
 
