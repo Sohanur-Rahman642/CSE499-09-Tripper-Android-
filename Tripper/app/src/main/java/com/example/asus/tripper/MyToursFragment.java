@@ -243,38 +243,7 @@ public class MyToursFragment extends Fragment  {
             confirmed_text = itemView.findViewById(R.id.confirmed_text);
         }
 
-      /*  public void setFullname(String fullname){
-            TextView name = (TextView)mView.findViewById(R.id.package_user_name);
-            name.setText(fullname);
-        }
-        public void setProfileimage(Context ctx, String profileimage){
-            CircleImageView image = (CircleImageView) mView.findViewById(R.id.package_profile_image);
-            Picasso.get().load(profileimage).into(image);
-        }
-        public void setPackageimage(Context ctx1, String packageimage){
-            ImageView postimage = (ImageView) mView.findViewById(R.id.package_image);
-            Picasso.get().load(packageimage).into(postimage);
-        }
-        public void setTime(String time){
-            TextView posttime=(TextView) mView.findViewById(R.id.package_time);
-            posttime.setText(" "+time);
-        }
-        public void setDate(String date){
-            TextView postdate = (TextView) mView.findViewById(R.id.package_date);
-            postdate.setText(" "+date);
-        }
-        public void setPackagename(String packagename){
-            TextView postname = (TextView) mView.findViewById(R.id.package_name);
-            postname.setText(packagename);
-        }
-        public void setPrice(String price){
-            TextView postprice = (TextView) mView.findViewById(R.id.package_price);
-            postprice.setText(price);
-        }
-        public void setGroupmembers(String groupmembers){
-            TextView postgroup = (TextView) mView.findViewById(R.id.package_group_members);
-            postgroup.setText(groupmembers);
-        }*/
+
     }
 
     @Override

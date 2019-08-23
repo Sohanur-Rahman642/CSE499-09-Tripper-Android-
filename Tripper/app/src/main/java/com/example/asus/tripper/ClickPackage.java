@@ -1,3 +1,4 @@
+
 package com.example.asus.tripper;
 
 import android.app.Dialog;
@@ -258,7 +259,7 @@ public class ClickPackage extends AppCompatActivity {
 
     private void ViewProfile() {
 
-        confirm_package_btn.setOnClickListener(new View.OnClickListener() {
+       /* confirm_package_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -266,7 +267,7 @@ public class ClickPackage extends AppCompatActivity {
                 //i.putExtra("userkey", userkey);
                 startActivity(i);
             }
-        });
+        });*/
     }
 
    /* private void AcceptTrip() {      //this is new
@@ -398,14 +399,14 @@ public class ClickPackage extends AppCompatActivity {
                                 /*cancel_package_btn.setText("View Profile");  // it was not here
                                 cancel_package_btn.setTextColor(getResources().getColor(android.R.color.white)); //it was not here before
 */
-                                confirm_package_btn.setOnClickListener(new View.OnClickListener() {
+                                /*confirm_package_btn.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
 
                                         Intent i =new Intent(ClickPackage.this, FindGuide.class);
                                         startActivity(i);
                                     }
-                                });
+                                });*/
 
 
                             }
@@ -506,9 +507,9 @@ public class ClickPackage extends AppCompatActivity {
                                                 confirm_package_btn.setBackgroundResource(R.drawable.button_delete_packages);
                                                 confirm_package_btn.setTextColor(getResources().getColor(android.R.color.black));
 
-                                                confirm_package_btn.setOnClickListener(new View.OnClickListener() {
+                                               /* confirm_package_btn.setOnClickListener(new View.OnClickListener() {
                                                     @Override
-                                                    public void onClick(View v) {
+                                                    public void onClick(View v) {*/
 
                                    /* AlertDialog.Builder builder = new AlertDialog.Builder(ClickPackage.this);
 
@@ -531,10 +532,10 @@ public class ClickPackage extends AppCompatActivity {
                                     AlertDialog alert = builder.create();
                                     alert.show();*/
 
-                                                        Intent i = new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
+                                                       /* Intent i = new Intent(ClickPackage.this, SeeGuidesProfileAfterConfirmingTrip.class);
                                                         startActivity(i);
                                                     }
-                                                });
+                                                });*/
 
                                             }
                                         }

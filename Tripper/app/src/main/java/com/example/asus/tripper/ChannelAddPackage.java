@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.asus.tripper.RegisterAndLogin.SetupUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -30,30 +28,39 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tiper.MaterialSpinner;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class AddingPackages extends AppCompatActivity {
+public class ChannelAddPackage extends AppCompatActivity {
+
 
     private ProgressDialog loadingBar;
 
-    private ImageView back_button_for_adding_packages, addpackage;
-    private Button createpackage_btn;
-    private EditText start_date_tv1, start_time_tv1, end_date_tv1, end_time_tv1, location1, price1, meetpoint1, group_members1, details1, package_name_ed1;
+    private ImageView back_button_for_adding_packages_of_channel, channel_add_package_image;
 
-    private String details;
-    private String start_date;
-    private String end_date;
-    private String start_time;
-    private String end_time;
-    private String location;
-    private String price;
-    private String meetpoint;
-    private String group_members;
-    private String package_name , packagekey;
+    private Button createpackage_btn_of_channel;
+
+    private EditText channel_start_date_tv1, channel_start_time_tv1, channel_end_date_tv1, channel_end_time_tv1,
+            chaneel_location1, channel_price1, channel_meetpoint1, channel_group_members1, channel_details1, channel_package_name_ed1;
+
+    MaterialSpinner selecyedGuideNameSpinner;
+
+    private String channel_details;
+    private String channel_start_date;
+    private String channel_end_date;
+    private String channel_start_time;
+    private String channel_end_time;
+    private String channel_location;
+    private String channel_price;
+    private String channel_meetpoint;
+    private String channel_group_members;
+    private String channel_package_name, channel_packagekey;
+    private String selecteddGuideName;
+
 
     private StorageReference postimagesreference;
     private DatabaseReference guidesRef, packagesRef, usersRef;
@@ -63,134 +70,128 @@ public class AddingPackages extends AppCompatActivity {
 
     private long countPackages = 0; //new
 
-    private static final int Gallery_Pick=1;
+    private static final int Gallery_Pick = 1;
     private Uri ImageUri;
 
+
     private void init() {
-        back_button_for_adding_packages = (ImageView) findViewById(R.id.back_button_for_adding_packages);
-        back_button_for_adding_packages.setOnClickListener(new View.OnClickListener() {
+        back_button_for_adding_packages_of_channel = (ImageView) findViewById(R.id.back_button_for_adding_packages_of_channel);
+        back_button_for_adding_packages_of_channel.setOnClickListener(new View.OnClickListener() {
 
                                                                @Override
                                                                public void onClick(View v) {
-                                                                   Intent i = new Intent(AddingPackages.this, MyToursForGuide.class);
+                                                                   Intent i = new Intent(ChannelAddPackage.this, Channel_DashBoard.class);
                                                                    startActivity(i);
                                                                }
                                                            }
         );
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adding_packages);
+        setContentView(R.layout.activity_channel_add_package);
+
         init();
 
-        mAuth= FirebaseAuth.getInstance();
-        current_guide_id=mAuth.getCurrentUser().getUid();
+        mAuth = FirebaseAuth.getInstance();
+        current_guide_id = mAuth.getCurrentUser().getUid();
 
-        //packagekey= getIntent().getExtras().get("packagekey").toString();
 
-        postimagesreference= FirebaseStorage.getInstance().getReference();
+        postimagesreference = FirebaseStorage.getInstance().getReference();
+
         guidesRef= FirebaseDatabase.getInstance().getReference().child("Users");
         //usersRef= FirebaseDatabase.getInstance().getReference().child("Users").child(current_guide_id);
-        packagesRef= FirebaseDatabase.getInstance().getReference().child("Packages");
-
-        back_button_for_adding_packages=findViewById(R.id.back_button_for_adding_packages);
-        addpackage=findViewById(R.id.addpackage);
-        createpackage_btn=findViewById(R.id.createpackage_btn);
-        package_name_ed1= findViewById(R.id.package_name_ed1);
-        start_date_tv1=findViewById(R.id.start_date_tv1);
-        start_time_tv1=findViewById(R.id.start_time_tv1);
-        end_date_tv1=findViewById(R.id.end_date_tv1);
-        end_time_tv1=findViewById(R.id.end_time_tv1);
-        location1=findViewById(R.id.location1);
-        price1=findViewById(R.id.price1);
-        meetpoint1=findViewById(R.id.meetpoint1);
-        group_members1=findViewById(R.id.group_members1);
-        details1=findViewById(R.id.details1);
-        loadingBar= new ProgressDialog(this);
+        packagesRef= FirebaseDatabase.getInstance().getReference().child("Channel Packages");
 
 
-        addpackage.setOnClickListener(new View.OnClickListener() {
+
+        back_button_for_adding_packages_of_channel = findViewById(R.id.back_button_for_adding_packages_of_channel);
+        channel_add_package_image = findViewById(R.id.channel_add_package_image);
+        createpackage_btn_of_channel = findViewById(R.id.channel_createpackage_btn);
+        channel_package_name_ed1 = findViewById(R.id.channel_package_name_ed1);
+        channel_start_date_tv1 = findViewById(R.id.channel_start_date_tv1);
+        channel_start_time_tv1 = findViewById(R.id.channel_start_time_tv1);
+        channel_end_date_tv1 = findViewById(R.id.channel_end_date_tv1);
+        channel_end_time_tv1 = findViewById(R.id.channel_end_time_tv1);
+        chaneel_location1 = findViewById(R.id.channel_location1);
+        channel_price1 = findViewById(R.id.channel_price1);
+        channel_meetpoint1 = findViewById(R.id.channel_meetpoint1);
+        channel_group_members1 = findViewById(R.id.channel_group_members1);
+        channel_details1 = findViewById(R.id.channel_details1);
+        selecyedGuideNameSpinner = findViewById(R.id.channel_select_guide);
+
+        loadingBar = new ProgressDialog(this);
+
+        channel_add_package_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenGallery();
             }
         });
 
-        createpackage_btn.setOnClickListener(new View.OnClickListener() {
+
+        createpackage_btn_of_channel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 ValidatePostInfo();
             }
         });
+
+
     }
 
-    private void ValidatePostInfo() {
+    public void ValidatePostInfo() {
 
-        details = details1.getText().toString();
-        package_name = package_name_ed1.getText().toString();
-        start_date = start_date_tv1.getText().toString();
-        end_date = end_date_tv1.getText().toString();
-        start_time = start_time_tv1.getText().toString();
-        end_time = end_time_tv1.getText().toString();
-        location = location1.getText().toString();
-        price = price1.getText().toString();
-        meetpoint = meetpoint1.getText().toString();
-        group_members = group_members1.getText().toString();
 
-        if (ImageUri==null){
+        channel_details = channel_details1.getText().toString();
+        channel_package_name = channel_package_name_ed1.getText().toString();
+        channel_start_date = channel_start_date_tv1.getText().toString();
+        channel_end_date = channel_end_date_tv1.getText().toString();
+        channel_start_time = channel_start_time_tv1.getText().toString();
+        channel_end_time = channel_end_time_tv1.getText().toString();
+        channel_location = chaneel_location1.getText().toString();
+        channel_price = channel_price1.getText().toString();
+        channel_meetpoint = channel_meetpoint1.getText().toString();
+        channel_group_members = channel_group_members1.getText().toString();
+        selecteddGuideName = selecyedGuideNameSpinner.toString();
+
+
+        if (ImageUri == null) {
 
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(package_name)){
+        } else if (TextUtils.isEmpty(channel_package_name)) {
 
             Toast.makeText(this, "Please enter package name", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(start_date)){
+        } else if (TextUtils.isEmpty(channel_start_date)) {
 
             Toast.makeText(this, "Please enter start date", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(end_date)){
+        } else if (TextUtils.isEmpty(channel_end_date)) {
 
             Toast.makeText(this, "Please enter end date", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(start_time)){
+        } else if (TextUtils.isEmpty(channel_start_time)) {
 
             Toast.makeText(this, "Please enter start time", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(end_time)){
+        } else if (TextUtils.isEmpty(channel_end_time)) {
 
             Toast.makeText(this, "Please enter end time", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(location)){
+        } else if (TextUtils.isEmpty(channel_location)) {
 
             Toast.makeText(this, "Please enter location", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(price)){
+        } else if (TextUtils.isEmpty(channel_price)) {
 
             Toast.makeText(this, "Please enter tour price", Toast.LENGTH_SHORT).show();
-        }
+        } /*else if (TextUtils.isEmpty(selecteddGuideName)) {
 
-        else if (TextUtils.isEmpty(meetpoint)){
+            Toast.makeText(this, "Please choose a guide", Toast.LENGTH_SHORT).show();
+        }*/ else if (TextUtils.isEmpty(channel_meetpoint)) {
 
             Toast.makeText(this, "Please enter meeting point", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(details)){
+        } else if (TextUtils.isEmpty(channel_details)) {
 
             Toast.makeText(this, "Please enter details", Toast.LENGTH_SHORT).show();
-        }
-
-        else {
+        } else {
 
             loadingBar.setTitle("Adding New Package...");
             loadingBar.setMessage("Please wait until we are updating new package...");
@@ -200,6 +201,7 @@ public class AddingPackages extends AppCompatActivity {
             StoringImageToFirebaseStorage();
         }
     }
+
 
     private void StoringImageToFirebaseStorage() {
 
@@ -214,7 +216,8 @@ public class AddingPackages extends AppCompatActivity {
         postRandomName = saveCurrentDate + saveCurrentTime;
 
 
-        final StorageReference filepath = postimagesreference.child("Package Images").child(ImageUri.getLastPathSegment() + postRandomName + ".jpg");
+        final StorageReference filepath = postimagesreference.child("Channel Add Package Images")
+                .child(ImageUri.getLastPathSegment() + postRandomName + ".jpg");
 
         filepath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -226,19 +229,18 @@ public class AddingPackages extends AppCompatActivity {
                         packagesRef.child(current_guide_id + postRandomName).child("packageimage").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     //Toast.makeText(getApplicationContext(),"Image save in Database Successfully...",Toast.LENGTH_SHORT).show();
                                     //loadingBar.dismiss();
-                                    Toast.makeText(AddingPackages.this, "Package is created successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ChannelAddPackage.this, "Package is created successfully", Toast.LENGTH_SHORT).show();
                                     //loadingBar.dismiss();
                                     SavingPackageInformationToDatabase();
-                                }
-                                else{
+                                } else {
                                     //String message = task.getException().toString();
                                     //Toast.makeText(getApplicationContext(),"Error:"+message,Toast.LENGTH_SHORT).show();
                                     //loadingBar.dismiss();
                                     String message = task.getException().getMessage();
-                                    Toast.makeText(AddingPackages.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ChannelAddPackage.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                                     //loadingBar.dismiss();
                                 }
                             }
@@ -248,25 +250,9 @@ public class AddingPackages extends AppCompatActivity {
             }
         });
 
-        /*filepath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
-                if (task.isSuccessful()){
-
-                    downloadUrl = task.getResult().getStorage().getDownloadUrl().toString();
-
-                    Toast.makeText(AddingPackages.this, "Package is created successfully", Toast.LENGTH_SHORT).show();
-
-                    SavingPackageInformationToDatabase();
-                }
-                else {
-                    String message = task.getException().getMessage();
-                    Toast.makeText(AddingPackages.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
     }
+
 
     private void SavingPackageInformationToDatabase() {
 
@@ -274,12 +260,11 @@ public class AddingPackages extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
 
                     countPackages = dataSnapshot.getChildrenCount();
 
-                }
-                else {
+                } else {
 
                     countPackages = 0;
 
@@ -290,7 +275,8 @@ public class AddingPackages extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });                                                                       //new end
+        });
+
 
         guidesRef.child(current_guide_id).addValueEventListener(new ValueEventListener() {
             @Override
@@ -307,16 +293,16 @@ public class AddingPackages extends AppCompatActivity {
                     packagesMap.put("gid",current_guide_id);
                     packagesMap.put("date",saveCurrentDate);
                     packagesMap.put("time",saveCurrentTime);
-                    packagesMap.put("packagename", package_name);
-                    packagesMap.put("details",details);
-                    packagesMap.put("startdate",start_date);
-                    packagesMap.put("starttime",start_time);
-                    packagesMap.put("enddate",end_date);
-                    packagesMap.put("endtime",end_time);
-                    packagesMap.put("location",location);
-                    packagesMap.put("price",price);
-                    packagesMap.put("meetpoint",meetpoint);
-                    packagesMap.put("groupmembers",group_members);
+                    packagesMap.put("packagename", channel_package_name);
+                    packagesMap.put("details",channel_details);
+                    packagesMap.put("startdate",channel_start_date);
+                    packagesMap.put("starttime",channel_start_time);
+                    packagesMap.put("enddate",channel_end_date);
+                    packagesMap.put("endtime",channel_end_time);
+                    packagesMap.put("location",channel_location);
+                    packagesMap.put("price",channel_price);
+                    packagesMap.put("meetpoint",channel_meetpoint);
+                    packagesMap.put("groupmembers",channel_group_members);
                     //packagesMap.put("packageimage",downloadUrl);
                     packagesMap.put("profileimage",guideProfileImage);
                     packagesMap.put("fullname",guideFullName);
@@ -332,17 +318,17 @@ public class AddingPackages extends AppCompatActivity {
 
                                 //SendUserToMainActivity();
 
-                                startActivity(new Intent(AddingPackages.this, MyToursForGuide.class));
+                                startActivity(new Intent(ChannelAddPackage.this, Channel_DashBoard.class));
 
                                 finish();
 
-                                Toast.makeText(AddingPackages.this, "New package is created successfully.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChannelAddPackage.this, "New package is created successfully.", Toast.LENGTH_SHORT).show();
 
                                 loadingBar.dismiss();
                             }
                             else {
 
-                                Toast.makeText(AddingPackages.this, "Error occurred while creating the package.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChannelAddPackage.this, "Error occurred while creating the package.", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                             }
                         }
@@ -358,6 +344,7 @@ public class AddingPackages extends AppCompatActivity {
         });
     }
 
+
     private void OpenGallery() {
 
         Intent galleryIntent= new Intent();
@@ -366,6 +353,9 @@ public class AddingPackages extends AppCompatActivity {
         startActivityForResult(galleryIntent, Gallery_Pick);
     }
 
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -373,11 +363,11 @@ public class AddingPackages extends AppCompatActivity {
         if(requestCode==Gallery_Pick && resultCode==RESULT_OK && data!=null){
 
             ImageUri = data.getData();
-            addpackage.setImageURI(ImageUri);
+            channel_add_package_image.setImageURI(ImageUri);
 
             try {
                 Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),ImageUri);
-                addpackage.setImageBitmap(bitmap);
+                channel_add_package_image.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -388,7 +378,3 @@ public class AddingPackages extends AppCompatActivity {
 
 
 }
-
-
-
-

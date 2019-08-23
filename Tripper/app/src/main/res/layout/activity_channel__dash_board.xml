@@ -7,7 +7,7 @@
     tools:context=".Channel_DashBoard"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
+    tools:openDrawer="end"
 
 
 
