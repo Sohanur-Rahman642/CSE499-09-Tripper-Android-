@@ -15,7 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
  
 
-    <title>Sign Up</title>
+    <title>Login</title>
 </head>
 <body>
     
@@ -42,7 +42,6 @@
                                     <li class="main_nav_item "><a href="blog.html">Blog</a></li>
                                     <li class="main_nav_item "><a href="about.html">About us</a></li>
                                     <li class="main_nav_item "><a href="contact.html">Contact</a></li>
-                                   
                                     <li class="main_nav_item "> <a class="nav-link" href="signup.html"><span class="fas fa-user"></span> Sign Up</a> </li>
                                     <li class="main_nav_item "> <a class="nav-link" href="login.html"><span class="fas fa-sign-in"></span> Login</a> </li>
                                 </ul>
@@ -54,56 +53,43 @@
                 </div>
             </div>
         </header>
-        <!-- <div class="signup-form">
-                <form class="" action="index.html" method="post">
-                  <h1>Sign Up</h1>
-                  <input type="text" placeholder="Full Name" class="txtb">
-                  <input type="email" placeholder="Email" class="txtb">
-                  <input type="password" placeholder="Password" class="txtb">
-                  <input type="submit" value="Create Account" class="signup-btn">
-                  <div class="bottom-text">
-                        Already have account? <a href="login.html">Log in</a>
-                      </div>
-                </form>
-              </div> -->
+    
+        <form action="index.html" class="login-form">
+                <h1>Login</h1>
+        
+                <div class="txtb">
+                  <input type="text">
+                  <span data-placeholder="Username"></span>
+                </div>
+        
+                <div class="txtb">
+                  <input type="password">
+                  <span data-placeholder="Password"></span>
+                </div>
+        
+                <input type="submit" class="logbtn" value="Login">
+        
+                <div class="bottom-text">
+                  Don't have account? <a href="signup.html">Sign up</a>
+                </div>
+        
+              </form>
+        
+              <script type="text/javascript">
+              $(".txtb input").on("focus",function(){
+                $(this).addClass("focus");
+              });
+        
+              $(".txtb input").on("blur",function(){
+                if($(this).val() == "")
+                $(this).removeClass("focus");
+              });
+        
+              </script>
+        
+        
 
-              
-              <form action="index.html" class="login-form">
-                    <h1>Sign Up</h1>
-            
-                    <div class="txtb">
-                      <input type="text">
-                      <span data-placeholder="Username"></span>
-                    </div>
-                    <div class="txtb">
-                            <input type="email">
-                            <span data-placeholder="email"></span>
-                     </div>
-            
-                    <div class="txtb">
-                      <input type="password">
-                      <span data-placeholder="Password"></span>
-                    </div>
-            
-                    <input type="submit" class="logbtn" value="Login">
-            
-                    <div class="bottom-text">
-                      Already have account? <a href="login.html">login</a>
-                    </div>
-            
-                  </form>
-            
-                  <script type="text/javascript">
-                  $(".txtb input").on("focus",function(){
-                    $(this).addClass("focus");
-                  });
-            
-                  $(".txtb input").on("blur",function(){
-                    if($(this).val() == "")
-                    $(this).removeClass("focus");
-                  });
-            
-                  </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
