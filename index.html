@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Tripper Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
@@ -15,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
     <link href="plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/responsive.css"> </head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -46,8 +44,8 @@
                                     <li class="main_nav_item "><a href="blog.html">Blog</a></li>
                                     <li class="main_nav_item "><a href="about.html">About us</a></li>
                                     <li class="main_nav_item "><a href="contact.html">Contact</a></li>
-                                    <li class="main_nav_item "> <a class="nav-link" href="signup.html"><span class="fas fa-user"></span> Sign Up</a> </li>
-                                    <li class="main_nav_item "> <a class="nav-link" href="login.html"><span class="fas fa-sign-in"></span> Login</a> </li>
+                                    <li class="main_nav_item "> <a class="nav-link" href="#"><span class="fas fa-user"></span> Sign Up</a> </li>
+                                    <li class="main_nav_item "> <a class="nav-link" href="#"><span class="fas fa-sign-in"></span> Login</a> </li>
                                 </ul>
                             </nav>
                             <!-- Search -->
@@ -72,7 +70,7 @@
                         <li class="menu_item menu_mm"><a href="blog.html">Blog</a></li>
                         <li class="menu_item menu_mm"><a href="about.html">About us</a></li>
                         <li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
-                        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>
                     <!-- Menu Social -->
@@ -89,6 +87,19 @@
             </div>
         </div>
         <!-- Home -->
+        <div class="home">
+            <div class="home_background" style="background-image:url(images/home.jpg)"></div>
+            <div class="home_content">
+                <div class="home_content_inner">
+                    <div class="home_text_large text-danger">Tripper</div>
+                    <div class="home_text_small ">Discover Beautiful Bangladesh With </div>
+                    <div >
+                        <a class="dwnld "  href="https://play.google.com/store/apps"><img src="images/download.png" alt="">
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Find Form -->
     <!-- Top Destinations -->
@@ -97,9 +108,9 @@
             <div class="row">
                 <div class="col">
                     <div class="section_title text-center">
-                        <h1 class="text-danger td"><b>Travel Without Any Hassle
+                        <h1 class="text-danger td"><b>Tours & Guides
 </b></h1>
-                        <div class="text-danger td2">Inside or Outside the city </div>
+                        <div class="text-danger td2">Welcome to tripper! Pick an option below that best fits your needs and start planning your tour </div>
                     </div>
                 </div>
             </div>
@@ -115,11 +126,23 @@
                                 <div class="despription ds1 text-center">
                                     <br><br><h2>Instant Tour</h2> <br><br>
                                     <h4>A vehicle guided tour designed to get you to your next destination with a local who will share their insight and answer questions.</h4>
-                                     <button id="ember744" class="btn btn-lg element hidden-xs ember-view"><a href="findtour.html"></a>Find a Tour</button>
+                                     <button id="ember744" class="btn btn-lg element hidden-xs ember-view">Find a Tour</button>
                                 </div>
                             </li>
                         </div>
-                        
+                        <div class="popular_option">
+                            <li>
+                                <a href="offers.html"> <img src="images/top_1.jpg" alt="image by Egzon Bytyqi"> </a>
+                            </li>
+                            <li>
+                                <div class="despription ds2 text-center">
+                                    <br><br><h2>Shore Excursion</h2> <br><br>
+                                    <h4>Step off of the boat and into an unforgettable adventure with one of our cruise-port tours, a timely excursion with a seasoned local guide.</h4>
+                                     <button id="ember744" class="btn btn-lg element hidden-xs ember-view">Shore Excursion</button>
+                                </div>
+                               
+                            </li>
+                        </div>
                         <div class="popular_option">
                             <li>
                                 <a href="offers.html"> <img src="images/top_1.jpg" alt="image by Egzon Bytyqi"> </a>
@@ -127,7 +150,7 @@
                             <li>
                                 <div class="description ds3 text-center">
                                     <br><br><h2>Tours</h2> <br><br>
-                                    <h4>Search our tour database for hand-crafted and customizable tours created by our network of expert locals Channel</h4>
+                                    <h4>Search our tour database for hand-crafted and customizable tours created by our network of expert locals</h4>
                                     <button id="ember744" class="btn btn-lg element hidden-xs ember-view">Tours</button>
                                 </div>
                             </li>
@@ -139,7 +162,7 @@
                             <li>
                                 <div class="despription ds4 text-center">
                                     <br><br><h2>Guides</h2> <br><br>
-                                    <h4>A tour based on your interests. Get matched with an expert guide for a personal, tailored tour.</h4>
+                                    <h4>An hourly tour based on your interests. Get matched with an expert guide for a personal, tailored tour.</h4>
                                     <button id="ember744" class="btn btn-lg element hidden-xs ember-view">Guides</button>
                                 </div>
                             </li>

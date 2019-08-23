@@ -1,33 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-/******************************
-
-[Table of Contents]
-
-1. Fonts
-2. Body and some general stuff
-3. Home
-4. Header
-	4.1 Logo
-	4.2 Navigation
-	4.3 Search
-	4.4 Hamburger
-5. Menu
-	5.1 Menu Social
-	5.2 Menu copyright
-6. Find
-7. Top Destinations
-8. Last Minute Offer
-9. Video
-10. Popular
-11. Special Offers
-12. Newsletter
-13. Footer
-
-
-******************************/
-
 /***********
 1. Fonts
 ***********/
@@ -791,11 +764,11 @@ position: absolute;
     background-color: rgba(0,0,0,.3);
 }
 @media (max-width: 767px)
-.description.btn {
+/* .description.btn {
     color: #fff;
     background-color: #E63232;
     border-color: #e31c1c;
-}
+} */
 /*********************************
 6. Find
 *********************************/
@@ -1290,6 +1263,72 @@ special_item_background img{
 	color: #FFFFFF !important;
 }
 
+/*
+Sign up
+*/
+body{
+	margin: 0;
+	padding: 0;
+	background: #487eb0;
+  }
+  .signup-form{
+	width: 300px;
+	padding: 20px;
+	text-align: center;
+	background: url(bg.png);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	overflow: hidden;
+  }
+  .signup-form h1{
+	margin-top: 100px;
+	font-family: 'Permanent Marker', cursive;
+	color: #fff;
+	font-size: 40px;
+  }
+  .signup-form input{
+	display: block;
+	width: 100%;
+	padding: 0 16px;
+	height: 44px;
+	text-align: center;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	font-family: "montserrat",sans-serif;
+  }
+  .txtb{
+	margin: 20px 0;
+	background: rgba(255,255,255,.5);
+	border-radius: 6px;
+  }
+  .signup-btn{
+	margin-top: 60px;
+	margin-bottom: 20px;
+	background: #487eb0;
+	color: #fff;
+	border-radius: 44px;
+	cursor: pointer;
+	transition: 0.8s;
+  }
+  .signup-btn:hover{
+	transform: scale(0.96);
+  }
+  .signup-form a{
+	text-decoration: none;
+	color: #fff;
+	font-family: "montserrat",sans-serif;
+	font-size: 14px;
+	padding: 10px;
+	transition: 0.8s;
+	display: block;
+  }
+  .signup-form a:hover{
+	background: rgba(0,0,0,.3);
+  }
+  
 /*********************************
 13. Footer
 *********************************/
@@ -1420,7 +1459,9 @@ special_item_background img{
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     transition: all .5s;
-    overflow: hidden;
+	overflow: hidden;
+	font-size: 1.08em;
+	font-family: 'Lora','serif'
   
 }
 
