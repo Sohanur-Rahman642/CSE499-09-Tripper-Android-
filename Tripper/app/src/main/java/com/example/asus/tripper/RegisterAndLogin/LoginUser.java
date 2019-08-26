@@ -31,7 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LoginUser extends AppCompatActivity {
+public  class LoginUser extends AppCompatActivity {
 
     private Button login_button;
     private EditText login_email, login_password;
@@ -46,6 +46,8 @@ public class LoginUser extends AppCompatActivity {
     private static final String TAG = "LoginUser";
 
     private Boolean emailAddressChecker;
+
+    public static String loginEmail,loginPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,10 @@ public class LoginUser extends AppCompatActivity {
         loadingbar = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        loginEmail = login_email.getText().toString();
+        loginPass = login_password.getText().toString();
 
 
         login_signup.setOnClickListener(new View.OnClickListener() {

@@ -206,6 +206,7 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:hint="Select Guide"
+                android:textColorHint="#FFC107"
                 android:layout_below="@id/channel_price1"
 
                 android:layout_marginTop="10dp"
@@ -215,8 +216,7 @@
                 app:spinnerMode="dialog"
 
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-
-
+                android:background="@color/Darken"
                 android:layout_centerInParent="true"
 
                 tools:text="Guides"

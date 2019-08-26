@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <!--<style name="AppTheme" parent="Theme.NoTitleBar.Fullscreen">-->
@@ -7,7 +7,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
     </style>
+
+
+
 
     <style name="AppTheme.CustomTheme">
 
@@ -15,6 +20,31 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
 
     </style>
+
+    <style name="AppTheme.PopupOverlay">
+
+        <item name="colorPrimary">@color/Darken</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+       <item name="android:textColorPrimary">@color/white</item>
+
+    </style>
+
+    <style name="AppTheme.PopupOverlay2">
+
+        <item name="colorPrimary">@color/Darken</item>
+        <item name="colorPrimaryDark">@color/Darken</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/Darken</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
+    </style>
+
 
 
 

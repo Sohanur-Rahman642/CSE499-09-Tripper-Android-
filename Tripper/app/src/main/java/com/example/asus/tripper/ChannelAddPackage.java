@@ -101,9 +101,9 @@ public class ChannelAddPackage extends AppCompatActivity {
 
         postimagesreference = FirebaseStorage.getInstance().getReference();
 
-        guidesRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        guidesRef= FirebaseDatabase.getInstance().getReference().child("Agency");
         //usersRef= FirebaseDatabase.getInstance().getReference().child("Users").child(current_guide_id);
-        packagesRef= FirebaseDatabase.getInstance().getReference().child("Channel Packages");
+        packagesRef= FirebaseDatabase.getInstance().getReference().child("Agency").child("Channel Packages");
 
 
 
@@ -284,9 +284,9 @@ public class ChannelAddPackage extends AppCompatActivity {
 
                 if(dataSnapshot.exists()){
 
-                    final String guideFullName= dataSnapshot.child("username").getValue().toString();
+                    final String guideFullName= dataSnapshot.child("ownerName").getValue().toString();
                     final String guidePhone = dataSnapshot.child("phone").getValue().toString();
-                    final String guideCountry = dataSnapshot.child("country").getValue().toString();
+                    final String guideCountry = dataSnapshot.child("location").getValue().toString();
                     final String guideProfileImage= dataSnapshot.child("profileimage").getValue().toString();
 
                     HashMap packagesMap = new HashMap();

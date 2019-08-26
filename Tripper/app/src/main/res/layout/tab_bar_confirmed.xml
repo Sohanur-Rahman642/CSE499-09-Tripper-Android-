@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/bg_confirmed_color">
+    android:background="@drawable/bg_confirmed_color"
+    android:backgroundTint="@color/Darken"
+    >
 
     <TextView
         android:id="@+id/confirmed_trips_text"

@@ -22,7 +22,7 @@ public class MainDashBoard extends AppCompatActivity {
 
 
 
-    private ConstraintLayout layoutExplore,layoutGuide, layoutChannel;
+    private ConstraintLayout layoutExplore, layoutChannel;
 
 
     @Override
@@ -32,12 +32,16 @@ public class MainDashBoard extends AppCompatActivity {
 
 
 
+
+
+
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
 
         layoutExplore = (ConstraintLayout) findViewById(R.id.layout_explore);
 
-        layoutGuide= (ConstraintLayout) findViewById(R.id.layout_guide) ;
+
 
         layoutChannel = (ConstraintLayout) findViewById(R.id.layout_channel);
 
@@ -51,6 +55,11 @@ public class MainDashBoard extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                if(layoutExplore.isSelected()){
+                    layoutExplore.setVisibility(layoutExplore.VISIBLE);
+                    layoutChannel.setVisibility(layoutChannel.INVISIBLE);
+                }
+
                 Intent i = new Intent(MainDashBoard.this, LoginUser.class);
                 startActivity(i);
 
@@ -59,19 +68,15 @@ public class MainDashBoard extends AppCompatActivity {
 
 
 
-        layoutGuide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainDashBoard.this, MyToursForGuide.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
         layoutChannel.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                if(layoutChannel.isSelected()){
+                    layoutChannel.setVisibility(layoutChannel.VISIBLE);
+                    layoutExplore.setVisibility(layoutExplore.INVISIBLE);
+                }
                 Intent i = new Intent(MainDashBoard.this,Channel_DashBoard.class);
                 startActivity(i);
 

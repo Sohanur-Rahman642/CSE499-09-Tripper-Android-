@@ -51,7 +51,7 @@ public class RunningFragment extends Fragment {
 
 
         mAuth = FirebaseAuth.getInstance();
-        packagesRef = FirebaseDatabase.getInstance().getReference().child("Channel Packages");
+        packagesRef = FirebaseDatabase.getInstance().getReference().child("Agency").child("Channel Packages");
 
 
         channel_packages_recycle = (RecyclerView) rootView.findViewById(R.id.channel_running_recyclerView);

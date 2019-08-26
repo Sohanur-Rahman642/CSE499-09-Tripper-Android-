@@ -1,4 +1,3 @@
-
 package com.example.asus.tripper;
 
 import android.app.Dialog;
