@@ -10,7 +10,23 @@
 
         tools:ignore="MenuTitle">
 
+
+
     </item>
+
+    <item
+        android:id="@+id/user_home_search"
+
+        android:icon="@drawable/ic_search_white_32dp"
+
+
+        tools:ignore="MenuTitle">
+
+
+
+    </item>
+
+
     <item
         android:id="@+id/trip_history_bnav"
 

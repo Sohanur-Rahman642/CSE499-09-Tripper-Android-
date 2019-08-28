@@ -39,7 +39,17 @@
         <activity android:name=".GuideForgotPass" />
         <activity android:name=".AddingPackages" />
         <activity android:name=".MyToursForGuide" />
-        <activity android:name=".LoginForGuide">
+        <activity android:name=".LoginForGuide"/>
+        <activity android:name=".SeeGuidesProfileAfterConfirmingTrip"/>
+        <activity android:name=".Message"/>
+        <activity android:name=".Ratings"/>
+        <activity android:name=".Settings"/>
+        <activity android:name=".AcceptedTrips"/>
+        <activity android:name=".MyTrips"/>
+        <activity android:name=".SearchForPackage"/>
+        <activity android:name=".UpdatePackage"/>
+        <activity android:name=".FindGuide">
+
 
             <!--
             <intent-filter>

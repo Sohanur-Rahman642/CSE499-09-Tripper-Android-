@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,6 +39,8 @@ public class FindGuide extends AppCompatActivity {
 
     private DatabaseReference allGuidesDatabaseRef;
 
+   MaterialSearchBar materialSearchBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,32 +48,93 @@ public class FindGuide extends AppCompatActivity {
 
         allGuidesDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        mToolbar = findViewById(R.id.find_guide_layout);
+    /*    mToolbar = findViewById(R.id.find_guide_layout);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Search");
-
+*/
         SearchList = findViewById(R.id.search_list);
         SearchList.setHasFixedSize(true);
         SearchList.setLayoutManager(new LinearLayoutManager(this));
 
+       materialSearchBar = (MaterialSearchBar) findViewById(R.id.searchbar_for_guides);
 
-        SearchButton = findViewById(R.id.search_btn);
+
+
+
+       /* SearchButton = findViewById(R.id.search_btn);
         SearchInputText = findViewById(R.id.search_box);
-
-        SearchButton.setOnClickListener(new View.OnClickListener() {
+*/
+       /* SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String searchBoxInput = SearchInputText.getText().toString();
                 SearchGuide(searchBoxInput);
             }
+        });*/
+
+
+
+        materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+
+            }
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+
+                if (buttonCode == MaterialSearchBar.BUTTON_NAVIGATION) {
+
+                    //opening or closing drawer layout
+
+                } else if (buttonCode == MaterialSearchBar.BUTTON_BACK) {
+                    materialSearchBar.disableSearch();
+                }
+
+            }
         });
+
+
+        materialSearchBar.addTextChangeListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                SearchGuide(materialSearchBar.getText());
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
     }
 
     private void SearchGuide(String searchBoxInput) {
 
-        Toast.makeText(this, "Searching...", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "Searching...", Toast.LENGTH_LONG).show();
 
         Query searchGuideQuery = allGuidesDatabaseRef.orderByChild("username")
                 .startAt(searchBoxInput).endAt(searchBoxInput + "\uf8ff");

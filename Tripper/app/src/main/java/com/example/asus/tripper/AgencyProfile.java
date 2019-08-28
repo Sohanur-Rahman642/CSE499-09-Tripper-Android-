@@ -8,20 +8,21 @@ public class AgencyProfile {
     public String buisenss_license;
     public String passport;
     public String phone;
-
+    public String propic;
     //public String profileimage;
 
 
     public AgencyProfile() {
     }
 
-    public AgencyProfile(String name, String email, String location, String buisenss_license, String passport, String phone) {
+    public AgencyProfile(String name, String email, String location, String buisenss_license, String passport, String phone,String propic) {
         this.name = name;
         this.email = email;
         this.location = location;
         this.buisenss_license = buisenss_license;
         this.passport = passport;
         this.phone = phone;
+        this.propic = propic;
     }
 
 
@@ -71,5 +72,13 @@ public class AgencyProfile {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPropic() {
+        return propic;
+    }
+
+    public void setPropic(String propic) {
+        this.propic = propic;
     }
 }

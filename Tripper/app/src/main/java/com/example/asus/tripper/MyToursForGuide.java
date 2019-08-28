@@ -166,6 +166,10 @@ public class MyToursForGuide extends AppCompatActivity {
                     selectedFragment= new MyToursFragment();
                     break;
 
+                case R.id.user_home_search:
+                    selectedFragment= new SearchFragmentForUserHome();
+                    break;
+
                 case R.id.trip_history_bnav:
                     selectedFragment= new TouristsFragment();
                     break;

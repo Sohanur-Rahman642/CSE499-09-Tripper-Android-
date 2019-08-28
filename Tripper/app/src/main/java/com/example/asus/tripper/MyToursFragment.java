@@ -93,7 +93,7 @@ public class MyToursFragment extends Fragment  {
 
                                             @Override
                                             public void onClick(View v) {
-                                                Intent i = new Intent(getActivity(), SearchForPackage.class);
+                                                Intent i = new Intent(getActivity(), FindGuide.class);
                                                 startActivity(i);
                                             }
                                         }

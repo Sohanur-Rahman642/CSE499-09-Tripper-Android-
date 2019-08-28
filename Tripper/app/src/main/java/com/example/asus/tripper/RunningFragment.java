@@ -99,19 +99,9 @@ public class RunningFragment extends Fragment {
                     @Override
                     protected void onBindViewHolder(@NonNull RunningFragment.PackageViewHolder holder, int position, @NonNull ChannelPackageModel model) {
 
-                        /*holder.setFullname(model.getFullname());
-                        holder.setProfileimage(getActivity().getApplicationContext(),model.getProfileimage());
-                        holder.setPackageimage(getActivity().getApplicationContext(),model.getPackageimage());
-                        holder.setDate(model.getDate());
-                        holder.setTime(model.getTime());
-                        holder.setPackagename(model.getPackagename());
-                        holder.setPrice(model.getPrice());
-                        holder.setGroupmembers(model.getGroupmembers());*/
+
 
                         final String packagekey = getRef(position).getKey();
-
-                        //final String userkey = getRef(position).getKey();
-                        //final String userkey= getIntent().getExtras().get("userkey").toString();
 
 
                         holder.confirmed_text.setVisibility(View.INVISIBLE);
@@ -122,8 +112,6 @@ public class RunningFragment extends Fragment {
                         holder.package_time.setText(model.getTime());
                         holder.package_price.setText(model.getPrice());
                         holder.package_group_members.setText(model.getGroupmembers());
-                        //Picasso.get().load(model.getPackageimage()).placeholder(R.drawable.hill).fit().centerCrop().into(holder.package_image);
-                        //Picasso.get().load(model.getProfileimage()).placeholder(R.drawable.userpic).fit().centerCrop().into(holder.package_profile_image);
 
                         Glide.with(getActivity()).load(model.getPackageimage()).placeholder(R.drawable.loadingpic).centerCrop().into(holder.package_image);
                         Glide.with(getActivity()).load(model.getProfileimage()).placeholder(R.drawable.userpic).into(holder.package_profile_image);
