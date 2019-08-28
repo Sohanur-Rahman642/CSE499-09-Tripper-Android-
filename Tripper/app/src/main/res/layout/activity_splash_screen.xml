@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    tools:context=".SplashScreen">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="200dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRIPPER"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="cursive"
+            android:textStyle="bold"
+            android:textSize="22sp"/>
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-TAKE THE TRIP-"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="cursive"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="640dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/agency_icon"
+            android:layout_gravity="center" />
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/white"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AGENCY"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agencies can create"
+                android:textSize="9sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="their desired packages"
+                android:textSize="9sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                />
+
+
+        </LinearLayout>
+
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/guide_icon"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center" />
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/white"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GUIDE"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guides can be both"
+
+                android:textSize="9sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="professional and freelancer"
+
+                android:textSize="9sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
