@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/responsive.css"> </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ 
+
+    <title>Sign Up</title>
+</head>
+<body>
+    
+    <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_container d-flex flex-row align-items-center justify-content-start">
+                            <!-- Logo -->
+                            <div class="logo_container">
+                                <div class="logo">
+                                    <div><a href="index.html">Tripper</a></div>
+                                    <div><a href="index.html">Your Guide</a></div>
+                                    <br>
+                                    <div class="logo_image">
+                                        <a href="index.html"><img src="images/tp.png" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Main Navigation -->
+                            <nav class="main_nav ml-auto">
+                                <ul class="main_nav_list">
+                                    <li class="main_nav_item "><a href="index.html">Home</a></li>
+                                  
+                                    <li class="main_nav_item "><a href="about.html">About us</a></li>
+                                    <li class="main_nav_item "><a href="contact.html">Contact</a></li>
+                                   
+                                    <li class="main_nav_item "> <a class="nav-link" href="signup.html"><span class="fas fa-user"></span> Sign Up</a> </li>
+                                    <li class="main_nav_item "> <a class="nav-link" href="login.html"><span class="fas fa-sign-in"></span> Login</a> </li>
+                                </ul>
+                            </nav>
+                            <!-- Search -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+              
+              <form action="index.html" class="login-form">
+                    <h1>Sign Up</h1>
+            
+                    <div class="txtb">
+                      <input type="text">
+                      <span data-placeholder="Username"></span>
+                    </div>
+                    <div class="txtb">
+                            <input type="email">
+                            <span data-placeholder="email"></span>
+                     </div>
+            
+                    <div class="txtb">
+                      <input type="password">
+                      <span data-placeholder="Password"></span>
+                    </div>
+            
+                    <input type="submit" class="logbtn" value="Login">
+            
+                    <div class="bottom-text">
+                      Already have account? <a href="login.html">login</a>
+                    </div>
+            
+                  </form>
+            
+                  <script type="text/javascript">
+                  $(".txtb input").on("focus",function(){
+                    $(this).addClass("focus");
+                  });
+            
+                  $(".txtb input").on("blur",function(){
+                    if($(this).val() == "")
+                    $(this).removeClass("focus");
+                  });
+            
+                  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
