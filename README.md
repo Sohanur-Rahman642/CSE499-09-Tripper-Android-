@@ -1,7 +1,7 @@
 # CSE499-09-TourGuide
 
 It's an online based android app which helps to connect a bridge between travelers & travel agency services into the same platform which is being instructed by **Mohammad Ashrafuzzaman Khan**
-#### Rest of the Team Members:
+#### Team Members:
 - **Sohanur Rahman**
 - **Deepta Barua**
 - **Delwar Hossain**
@@ -26,7 +26,7 @@ It's an online based android app which helps to connect a bridge between travele
 * [Firebase] (https://firebase.google.com/) (for Backend database)
 #### Language
 * XML (For Frontend)
-* Java (Backend
+* Java (For Backend)
 
 #### The UI of the apps are given below:
 ![Front page](https://github.com/Sohanur-Rahman642/CSE499-09-Tripper-Android-/blob/master/Images/channel%20ui%201.jpg)
