@@ -4,7 +4,7 @@ It's an online based android app which helps to connect a bridge between travele
 #### Team Members:
 - **Sohanur Rahman**
 - **Deepta Barua**
-- **Delwar Hossain**
+- **Delwar Hosen**
 - **Ahmed Jawad**
 - **Sowmikendu Dev**
 #### The main features of the app are:
