@@ -19,11 +19,11 @@ It's an online based android app which helps to connect a bridge between travele
 * Firebase API
 * Material Design Methodologies
 #### Tools we used for this project:
-* Android Studio
-* Git
-* LucidChart (For Diagram)
-* Adobe XD (for Frontend design)
-* Firebase (for Backend database)
+* [Android Studio] (https://developer.android.com/studio)
+* [GitHub](http://github.com)
+* [LucidChart] (https://www.lucidchart.com) (For Diagram)
+* [Adobe XD] (https://www.adobe.com/products/xd.html) (for Frontend design)
+* [Firebase] (https://firebase.google.com/) (for Backend database)
 #### Language
 * XML (For Frontend)
 * Java (Backend
