@@ -13,7 +13,7 @@ It's an online based android app which helps to connect a bridge between travele
 * Search popular & nearby places on google map
 * Tracking local guides
 * Freelancing system for local guides
-#### Technologies we implemented in this project:
+#### API & METHODOLOGIES we implemented in this project:
 * Google map API
 * Google Places API
 * Firebase API
@@ -22,8 +22,8 @@ It's an online based android app which helps to connect a bridge between travele
 * [Android Studio](https://developer.android.com/studio)
 * [GitHub](http://github.com)
 * [LucidChart](https://www.lucidchart.com) (For Diagram)
-* [Adobe XD](https://www.adobe.com/products/xd.html) (for Frontend design)
-* [Firebase](https://firebase.google.com/) (for Backend database)
+* [Adobe XD](https://www.adobe.com/products/xd.html) (For Frontend design)
+* [Firebase](https://firebase.google.com/) (For Backend database)
 #### Language
 * XML (For Frontend)
 * Java (For Backend)
